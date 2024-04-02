@@ -1,3 +1,6 @@
+SRC := $(shell find . -name '*.go')
+BIN := zoe
+
 .PHONY: all clean test run build upgrade help
 
 all: 			# default action
@@ -6,12 +9,16 @@ all: 			# default action
 
 clean:			# clean-up environment
 	@find . -name '*.sw[po]' -delete
+	rm -f $(BIN)
 
 test:			# run test
+	go test -v ./...
 
 run:			# run in the local environment
+	go run
 
 build:			# build the binary/library
+	go build -ldflags "-s -w" -o $(BIN) cmd/$(BIN)/main.go
 
 upgrade:		# upgrade all the necessary packages
 	pre-commit autoupdate
@@ -21,3 +28,8 @@ help:			# show this message
 	@printf "\n"
 	@perl -nle 'print $$& if m{^[\w-]+:.*?#.*$$}' $(MAKEFILE_LIST) | \
 		awk 'BEGIN {FS = ":.*?#"} {printf "    %-18s %s\n", $$1, $$2}'
+
+test run build: linter
+linter:
+	@go mod tidy
+	@gofmt -s -w $(SRC)
