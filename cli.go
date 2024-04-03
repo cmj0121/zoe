@@ -7,6 +7,8 @@ import (
 	"github.com/alecthomas/kong"
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
+
+	"github.com/cmj0121/zoe/pkg/config"
 )
 
 const (
@@ -26,6 +28,8 @@ type Zoe struct {
 
 	// logging options
 	Verbose int `short:"v" name:"verbose" type:"counter" help:"Show the verbose output."`
+
+	Config config.Config `short:"c" name:"config" help:"The configuration file of the zoe service."`
 }
 
 // Create a new Zoe instance with default configuration
@@ -58,6 +62,8 @@ func (z *Zoe) Run() int {
 // run the zoe service which already setup everything well.
 func (z *Zoe) run() int {
 	log.Info().Msg("starting zoe ...")
+
+	fmt.Println(z.Config.ToYAML())
 	return 0
 }
 
