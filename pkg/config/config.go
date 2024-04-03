@@ -1,12 +1,11 @@
 package config
 
 import (
+	"github.com/mitchellh/mapstructure"
 	"github.com/rs/zerolog/log"
 	"github.com/spf13/viper"
 	"gopkg.in/yaml.v3"
 )
-
-type Loggers []string
 
 // The configuration of the Zoe service including
 //   - how to log the behavior
@@ -16,6 +15,7 @@ type Config struct {
 	Loggers // set-up how to log the behavior
 }
 
+// Create a new configuration from the given path, parse and return it
 func New(path string) (*Config, error) {
 	config := &Config{}
 
@@ -25,9 +25,20 @@ func New(path string) (*Config, error) {
 		return nil, err
 	}
 
-	return config, viper.Unmarshal(&config)
+	decoder := func(c *mapstructure.DecoderConfig) {
+		// executes all input hook functions until one of them returns no error.
+		c.DecodeHook = mapstructure.OrComposeDecodeHookFunc(
+			StringToURLHookFunc(),
+			mapstructure.StringToIPHookFunc(),
+			mapstructure.StringToIPNetHookFunc(),
+			mapstructure.StringToTimeDurationHookFunc(),
+		)
+	}
+
+	return config, viper.Unmarshal(&config, decoder)
 }
 
+// The customized unmarshaler for the configuration from path to Config
 func (c *Config) UnmarshalText(text []byte) error {
 	path := string(text)
 	switch config, err := New(path); err {
@@ -39,6 +50,7 @@ func (c *Config) UnmarshalText(text []byte) error {
 	}
 }
 
+// Show the configuration in YAML format
 func (c Config) ToYAML() string {
 	switch data, err := yaml.Marshal(c); err {
 	case nil:

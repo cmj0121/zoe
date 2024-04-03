@@ -32,6 +32,10 @@ type Zoe struct {
 	Config config.Config `short:"c" name:"config" help:"The configuration file of the zoe service."`
 }
 
+func init() {
+	zerolog.SetGlobalLevel(zerolog.ErrorLevel)
+}
+
 // Create a new Zoe instance with default configuration
 func New() *Zoe {
 	return &Zoe{}
