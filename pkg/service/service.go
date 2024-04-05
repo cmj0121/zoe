@@ -14,7 +14,7 @@ import (
 // The virtual service interface to be implemented the honeypot service
 type Service interface {
 	// execute the service and return the error if any
-	Run(ch <-chan types.Message) error
+	Run(ch chan<- *types.Message) error
 }
 
 func StringToServiceHookFunc() mapstructure.DecodeHookFunc {

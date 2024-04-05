@@ -16,6 +16,8 @@ var (
 
 // The honeypot service for SSH
 type SSH struct {
+	ch chan<- *types.Message `-` // The channel to send the message
+
 	*types.Auth
 
 	Bind    string   // the address to listen
@@ -26,8 +28,9 @@ type SSH struct {
 }
 
 // Run the SSH honeypot service
-func (s *SSH) Run(ch <-chan types.Message) error {
+func (s *SSH) Run(ch chan<- *types.Message) error {
 	log.Info().Msg("running the SSH honeypot service ...")
+	s.ch = ch
 
 	// Set-up the SSH server configuration
 	signer, err := s.getSigner()
@@ -40,19 +43,22 @@ func (s *SSH) Run(ch <-chan types.Message) error {
 		PasswordCallback: func(conn ssh.ConnMetadata, pwd []byte) (*ssh.Permissions, error) {
 			username := conn.User()
 			password := string(pwd)
+			remote := conn.RemoteAddr().String()
+
+			// send the authentication message
+			s.sendAuthMessage(username, password, remote)
 
 			if s.Auth == nil {
 				log.Debug().Str("service", SVC_NAME).Msg("disabled the authentication")
 				return nil, fmt.Errorf("authentication disabled")
 			}
 
-			client := conn.RemoteAddr().String()
 			if username == s.Auth.Username && password == s.Auth.Password {
-				log.Info().Str("service", SVC_NAME).Str("client", client).Msg("authenticated")
+				log.Info().Str("service", SVC_NAME).Str("client", remote).Msg("authenticated")
 				return nil, nil
 			}
 
-			log.Info().Str("service", SVC_NAME).Str("client", client).Msg("authentication failed")
+			log.Info().Str("service", SVC_NAME).Str("client", remote).Msg("authentication failed")
 			return nil, fmt.Errorf("authentication failed: %v", conn.User())
 		},
 	}
@@ -137,4 +143,15 @@ func (s *SSH) getSigner() (ssh.Signer, error) {
 	}
 
 	return s.signer, nil
+}
+
+func (s *SSH) sendAuthMessage(username string, password string, remote string) {
+	message := types.New(SVC_NAME)
+	message.SetRemote(remote)
+	message.SetAuth(&types.Auth{
+		Username: username,
+		Password: password,
+	})
+
+	s.ch <- message
 }

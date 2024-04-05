@@ -69,8 +69,11 @@ func (z *Zoe) Run() int {
 func (z *Zoe) run() int {
 	log.Info().Msg("starting zoe ...")
 
-	community := make(chan types.Message)
+	community := make(chan *types.Message)
 	defer close(community)
+
+	// start receiving the message from the community channel
+	go z.Config.Loggers.Run(community)
 
 	wg := sync.WaitGroup{}
 	for svc_name, svc := range z.Config.Services {

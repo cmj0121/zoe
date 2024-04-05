@@ -17,7 +17,7 @@ test:			# run test
 run:			# run in the local environment
 	go run
 
-build:			# build the binary/library
+build: $(SRC)	# build the binary/library
 	go build -ldflags "-s -w" -o $(BIN) cmd/$(BIN)/main.go
 
 upgrade:		# upgrade all the necessary packages
