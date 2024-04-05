@@ -3,12 +3,14 @@ package zoe
 import (
 	"fmt"
 	"os"
+	"sync"
 
 	"github.com/alecthomas/kong"
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
 
 	"github.com/cmj0121/zoe/pkg/config"
+	"github.com/cmj0121/zoe/pkg/service/types"
 )
 
 const (
@@ -67,7 +69,25 @@ func (z *Zoe) Run() int {
 func (z *Zoe) run() int {
 	log.Info().Msg("starting zoe ...")
 
-	fmt.Println(z.Config.ToYAML())
+	community := make(chan types.Message)
+	defer close(community)
+
+	wg := sync.WaitGroup{}
+	for svc_name, svc := range z.Config.Services {
+		log.Info().Str("service", svc_name).Msg("running the service ...")
+
+		wg.Add(1)
+		go func() {
+			defer wg.Done()
+
+			if err := svc.Run(community); err != nil {
+				log.Error().Err(err).Str("service", svc_name).Msg("failed to run the service")
+				return
+			}
+		}()
+	}
+
+	wg.Wait()
 	return 0
 }
 
