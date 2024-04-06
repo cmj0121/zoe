@@ -6,6 +6,7 @@ import (
 	"github.com/cmj0121/zoe/pkg/service/types"
 )
 
+// Save the logger and the writer to the console
 type ConsoleLogger struct{}
 
 func (c *ConsoleLogger) Write(msg *types.Message) error {

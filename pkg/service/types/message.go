@@ -17,7 +17,7 @@ type Message struct {
 // Create a new message instance.
 func New(svc string) *Message {
 	return &Message{
-		Service: svc,
+		Service:   svc,
 		CreatedAt: time.Now(),
 	}
 }

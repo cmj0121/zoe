@@ -33,6 +33,24 @@ func (l *Loggers) prologue() error {
 		switch logger.Scheme {
 		case "console", "stdout":
 			(*l)[index].WriteCloser = &ConsoleLogger{}
+		case "file":
+			path := fmt.Sprintf("%s%s", logger.Host, logger.Path)
+			file, err := NewFileLogger(path)
+			if err != nil {
+				log.Error().Err(err).Str("path", path).Msg("failed to open the file")
+				return err
+			}
+
+			(*l)[index].WriteCloser = file
+		case "sqlite", "sqlite3":
+			path := fmt.Sprintf("%s%s", logger.Host, logger.Path)
+			db, err := NewSQLiteLogger(path)
+			if err != nil {
+				log.Error().Err(err).Str("path", path).Msg("failed to open the sqlite")
+				return err
+			}
+
+			(*l)[index].WriteCloser = db
 		default:
 			err := fmt.Errorf("unknown logger: %s", logger.String())
 			return err

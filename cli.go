@@ -32,6 +32,18 @@ type Zoe struct {
 	Verbose int `short:"v" name:"verbose" type:"counter" help:"Show the verbose output."`
 
 	Config config.Config `short:"c" name:"config" help:"The configuration file of the zoe service."`
+
+	// execute migration
+	Migrate struct {
+		// the target database to execute
+		Database string `args:"" name:"database" help:"The target database to execute."`
+
+		// the migration file
+		Folder string `args:"" name:"folder" help:"The migration folder to execute."`
+	} `cmd:"" help:"Execute the migration to the latest version."`
+
+	// launch the zoe service
+	Launch struct{} `cmd:"" help:"Launch the zoe service."`
 }
 
 func init() {
@@ -53,16 +65,21 @@ func (z *Zoe) ParseAndRun() int {
 		},
 	}
 
-	kong.Parse(z, options...)
-	return z.Run()
+	ctx := kong.Parse(z, options...)
+	return z.Run(ctx.Command())
 }
 
 // Run the Zoe with the given configuration
-func (z *Zoe) Run() int {
+func (z *Zoe) Run(command string) int {
 	z.prologue()
 	defer z.epilogue()
 
-	return z.run()
+	switch command {
+	case "migrate":
+		return MigrateUp(z.Migrate.Database, z.Migrate.Folder)
+	default:
+		return z.run()
+	}
 }
 
 // run the zoe service which already setup everything well.
