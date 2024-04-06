@@ -36,10 +36,7 @@ type Zoe struct {
 	// execute migration
 	Migrate struct {
 		// the target database to execute
-		Database string `args:"" name:"database" help:"The target database to execute."`
-
-		// the migration file
-		Folder string `args:"" name:"folder" help:"The migration folder to execute."`
+		Database string `arg:"" help:"The target database to execute."`
 	} `cmd:"" help:"Execute the migration to the latest version."`
 
 	// launch the zoe service
@@ -75,8 +72,8 @@ func (z *Zoe) Run(command string) int {
 	defer z.epilogue()
 
 	switch command {
-	case "migrate":
-		return MigrateUp(z.Migrate.Database, z.Migrate.Folder)
+	case "migrate <database>":
+		return MigrateUp(z.Migrate.Database)
 	default:
 		return z.run()
 	}

@@ -1,18 +1,25 @@
 package zoe
 
 import (
-	"fmt"
+	"embed"
 
 	"github.com/golang-migrate/migrate/v4"
 	_ "github.com/golang-migrate/migrate/v4/database/sqlite3"
-	_ "github.com/golang-migrate/migrate/v4/source/file"
+	"github.com/golang-migrate/migrate/v4/source/iofs"
 	"github.com/rs/zerolog/log"
 )
 
-func MigrateUp(database, folder string) int {
-	log.Info().Str("database", database).Str("folder", folder).Msg("execute the migration")
+//go:embed assets/migrations/*.sql
+var fs embed.FS
 
-	switch m, err := migrate.New(fmt.Sprintf("file://%s", folder), database); err {
+func MigrateUp(database string) int {
+	source, err := iofs.New(fs, "assets/migrations")
+	if err != nil {
+		log.Error().Err(err).Msg("failed to create the migration source")
+		return 1
+	}
+
+	switch m, err := migrate.NewWithSourceInstance("iofs", source, database); err {
 	case nil:
 		switch err := m.Up(); err {
 		case nil:
