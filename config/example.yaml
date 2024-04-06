@@ -1,0 +1,12 @@
+loggers:
+  - console://
+  - sqlite3:///svc/zoe/records.db
+
+services:
+  # simulate the SSH service
+  ssh:
+    bind: :2222
+    banner: SSH-2.0-OpenSSH_9.5
+
+    # the valid username and password and set null to disable the authentication
+    # default: null

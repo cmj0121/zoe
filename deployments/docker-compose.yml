@@ -1,0 +1,11 @@
+version: '3.9'
+
+services:
+  zoe:
+    build:
+      context: ..
+      dockerfile: deployments/Dockerfile
+    ports:
+      - '2222:2222'
+    volumes:
+      - ./.volume:/svc/zoe
