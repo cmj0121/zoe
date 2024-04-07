@@ -1,6 +1,7 @@
 package monitor
 
 import (
+	"database/sql"
 	"fmt"
 	"net/http"
 	"strconv"
@@ -16,12 +17,21 @@ var (
 	DEFAULT_SIZE = 40
 )
 
+// Do query the from SQL statement and return the result
+func (m *Monitor) query(query string, args ...any) (*sql.Rows, error) {
+	stmt, err := m.Prepare(query)
+
+	if err != nil {
+		log.Error().Err(err).Str("query", query).Msg("failed to prepare the statement")
+		return nil, err
+	}
+
+	return stmt.Query(args...)
+}
+
 // List all the records with pagination
 func (m *Monitor) listMessages(c *gin.Context) {
-	before := m.PageBefore(c)
-	size := m.PageSize(c)
-
-	stmt, err := m.Prepare(`
+	stmt := `
 		SELECT
 			message.service,
 			message.client_ip,
@@ -32,13 +42,8 @@ func (m *Monitor) listMessages(c *gin.Context) {
 		WHERE created_at < ?
 		ORDER BY created_at DESC
 		LIMIT ?
-	`)
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-		return
-	}
-
-	rows, err := stmt.Query(before.UnixNano(), size)
+	`
+	rows, err := m.query(stmt, m.PageBefore(c).UnixNano(), m.PageSize(c))
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
@@ -56,6 +61,43 @@ func (m *Monitor) listMessages(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, messages)
+}
+
+// List the number of records per remote IP
+func (m *Monitor) groupByRemote(c *gin.Context) {
+	stmt := `
+		SELECT
+			COUNT(message.client_ip) AS count,
+			message.client_ip
+		FROM message
+		GROUP BY message.client_ip
+		ORDER BY count DESC
+	`
+
+	rows, err := m.query(stmt)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+
+	type record struct {
+		Count  int
+		Remote string
+	}
+	records := []record{}
+
+	for rows.Next() {
+		var r record
+
+		if err := rows.Scan(&r.Count, &r.Remote); err != nil {
+			log.Error().Err(err).Msg("failed to scan the row")
+			continue
+		}
+
+		records = append(records, r)
+	}
+
+	c.JSON(http.StatusOK, records)
 }
 
 // Get the pagination size from the query string and return the

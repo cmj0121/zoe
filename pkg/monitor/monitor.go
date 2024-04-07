@@ -86,4 +86,5 @@ func (m *Monitor) register(r *gin.Engine) {
 	r.GET("/livez", m.livez)
 	r.GET("/readyz", m.readyz)
 	r.GET("/api/v1/messages", m.listMessages)
+	r.GET("/api/v1/statistics/remotes", m.groupByRemote)
 }
