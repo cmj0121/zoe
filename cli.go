@@ -41,6 +41,9 @@ type Zoe struct {
 
 	// launch the zoe service
 	Launch struct{} `cmd:"" help:"Launch the zoe service."`
+
+	// Show the current configuration
+	Show struct{} `cmd:"" help:"Show the current configuration."`
 }
 
 func init() {
@@ -74,6 +77,9 @@ func (z *Zoe) Run(command string) int {
 	switch command {
 	case "migrate <database>":
 		return MigrateUp(z.Migrate.Database)
+	case "show":
+		fmt.Println(z.Config.ToYAML())
+		return 0
 	default:
 		return z.run()
 	}
