@@ -18,7 +18,7 @@ var (
 
 // List all the records with pagination
 func (m *Monitor) listMessages(c *gin.Context) {
-	after := m.PageAfter(c)
+	before := m.PageBefore(c)
 	size := m.PageSize(c)
 
 	stmt, err := m.Prepare(`
@@ -38,8 +38,7 @@ func (m *Monitor) listMessages(c *gin.Context) {
 		return
 	}
 
-	log.Info().Str("after", after.String()).Int("size", size).Msg("list the messages")
-	rows, err := stmt.Query(after, size)
+	rows, err := stmt.Query(before.UnixNano(), size)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
@@ -73,12 +72,17 @@ func (m *Monitor) PageSize(c *gin.Context) int {
 
 // Get the pagination after time from the query string and return
 // the now if the given time is invalid or not exists
-func (m *Monitor) PageAfter(c *gin.Context) time.Time {
-	after := c.DefaultQuery("after", "")
-	switch after, err := time.Parse("2006-01-02T15:04:05", after); err {
-	case nil:
-		return after
-	default:
+func (m *Monitor) PageBefore(c *gin.Context) time.Time {
+	before := c.DefaultQuery("before", "")
+	switch before {
+	case "":
 		return time.Now()
+	default:
+		switch ns, err := strconv.Atoi(before); err {
+		case nil:
+			return time.Unix(int64(ns)/1e9, int64(ns)%1e9)
+		default:
+			return time.Now()
+		}
 	}
 }

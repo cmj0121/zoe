@@ -37,13 +37,12 @@ func (s *SQLiteLogger) Write(msg *types.Message) error {
 		return err
 	}
 
-	created_at := msg.CreatedAt.UTC().Format("2006-01-02T15:04:05")
 	switch msg.Auth {
 	case nil:
 		null := sql.NullString{}
-		_, err = stmt.Exec(msg.Service, msg.Remote, null, null, created_at)
+		_, err = stmt.Exec(msg.Service, msg.Remote, null, null, msg.CreatedAt.UnixNano())
 	default:
-		_, err = stmt.Exec(msg.Service, msg.Remote, msg.Auth.Username, msg.Auth.Password, created_at)
+		_, err = stmt.Exec(msg.Service, msg.Remote, msg.Auth.Username, msg.Auth.Password, msg.CreatedAt.UnixNano())
 	}
 
 	return err

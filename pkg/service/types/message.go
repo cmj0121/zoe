@@ -2,10 +2,9 @@ package types
 
 import (
 	"database/sql"
+	"encoding/json"
 	"fmt"
 	"time"
-
-	"github.com/rs/zerolog/log"
 )
 
 // The exchange message between the honeypot service and the monitor.
@@ -29,18 +28,13 @@ func MessageFromRows(rows *sql.Rows) (*Message, error) {
 	var message Message
 	var username sql.NullString
 	var password sql.NullString
-	var created_at string
+	var ns int64
 
-	if err := rows.Scan(&message.Service, &message.Remote, &username, &password, &created_at); err != nil {
+	if err := rows.Scan(&message.Service, &message.Remote, &username, &password, &ns); err != nil {
 		return nil, err
 	}
 
-	switch created_at, err := time.Parse("2006-01-02T15:04:05", created_at); err {
-	case nil:
-		message.CreatedAt = created_at
-	default:
-		log.Error().Err(err).Msg("failed to parse the created_at")
-	}
+	message.CreatedAt = time.Unix(ns/1e9, ns%1e9)
 
 	if username.Valid && password.Valid {
 		message.Auth = &Auth{
@@ -69,6 +63,23 @@ func (m *Message) SetRemote(remote string) *Message {
 func (m *Message) SetAuth(auth *Auth) *Message {
 	m.Auth = auth
 	return m
+}
+
+// The customized message JSON marshaler.
+func (m Message) MarshalJSON() ([]byte, error) {
+	message := struct {
+		Service   string // the service name
+		Remote    string // the remote client IP address
+		Auth      *Auth  // the authentication configuration
+		CreatedAt int64  // the message created time
+	}{
+		Service:   m.Service,
+		Remote:    m.Remote,
+		Auth:      m.Auth,
+		CreatedAt: m.CreatedAt.UnixNano(),
+	}
+
+	return json.Marshal(message)
 }
 
 // The interface to write the message and close the writer.
