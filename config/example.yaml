@@ -1,6 +1,10 @@
 loggers:
   - console://
-  - sqlite3:///svc/zoe/records.db
+  - sqlite3://zoe.db
+
+monitor:
+  bind: 127.0.0.1:8080
+  database: sqlite3://zoe.db
 
 services:
   # simulate the SSH service

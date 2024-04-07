@@ -1,8 +1,11 @@
 package types
 
 import (
+	"database/sql"
 	"fmt"
 	"time"
+
+	"github.com/rs/zerolog/log"
 )
 
 // The exchange message between the honeypot service and the monitor.
@@ -20,6 +23,33 @@ func New(svc string) *Message {
 		Service:   svc,
 		CreatedAt: time.Now(),
 	}
+}
+
+func MessageFromRows(rows *sql.Rows) (*Message, error) {
+	var message Message
+	var username sql.NullString
+	var password sql.NullString
+	var created_at string
+
+	if err := rows.Scan(&message.Service, &message.Remote, &username, &password, &created_at); err != nil {
+		return nil, err
+	}
+
+	switch created_at, err := time.Parse("2006-01-02T15:04:05", created_at); err {
+	case nil:
+		message.CreatedAt = created_at
+	default:
+		log.Error().Err(err).Msg("failed to parse the created_at")
+	}
+
+	if username.Valid && password.Valid {
+		message.Auth = &Auth{
+			Username: username.String,
+			Password: password.String,
+		}
+	}
+
+	return &message, nil
 }
 
 // Show the message as a string.

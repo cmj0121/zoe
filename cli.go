@@ -95,6 +95,12 @@ func (z *Zoe) run() int {
 	// start receiving the message from the community channel
 	go z.Config.Loggers.Run(community)
 
+	// start the monitor service
+	if z.Config.Monitor != nil {
+		log.Info().Str("bind", z.Config.Monitor.Bind).Msg("starting the monitor ...")
+		go z.Config.Monitor.Serve()
+	}
+
 	wg := sync.WaitGroup{}
 	for svc_name, svc := range z.Config.Services {
 		log.Info().Str("service", svc_name).Msg("running the service ...")

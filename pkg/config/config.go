@@ -6,6 +6,7 @@ import (
 	"github.com/spf13/viper"
 	"gopkg.in/yaml.v3"
 
+	"github.com/cmj0121/zoe/pkg/monitor"
 	"github.com/cmj0121/zoe/pkg/service"
 )
 
@@ -14,7 +15,8 @@ import (
 //   - the web interface to show the behavior
 //   - the honeypot service to catch the behavior
 type Config struct {
-	Loggers // set-up how to log the behavior
+	Loggers          // set-up how to log the behavior
+	*monitor.Monitor // set-up the web interface to show the behavior
 
 	Services map[string]service.Service // set-up the honeypot service to catch the behavior
 }
