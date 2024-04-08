@@ -14,3 +14,6 @@ services:
 
     # the valid username and password and set null to disable the authentication
     # default: null
+
+    ciphers:
+      - ssh-ed25519
