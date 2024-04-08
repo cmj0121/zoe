@@ -31,6 +31,8 @@ func (s *SSH) Run(ch chan<- *types.Message) error {
 	s.ch = ch
 
 	config := &ssh.ServerConfig{
+		MaxAuthTries:  3,
+		ServerVersion: s.Banner,
 		PasswordCallback: func(conn ssh.ConnMetadata, pwd []byte) (*ssh.Permissions, error) {
 			username := conn.User()
 			password := string(pwd)
