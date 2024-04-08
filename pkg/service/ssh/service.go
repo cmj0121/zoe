@@ -14,15 +14,20 @@ var (
 	SVC_NAME = "ssh"
 )
 
+// The cipher suite for the SSH honeypot service
+type Cipher struct {
+	HostKeys []string // The server hostkey algorithms
+}
+
 // The honeypot service for SSH
 type SSH struct {
 	ch chan<- *types.Message `-` // The channel to send the message
 
 	*types.Auth
+	Cipher // the cipher suite for the SSH service
 
-	Bind    string   // the address to listen
-	Banner  string   // the service's banner to show to the client
-	Ciphers []string // the list of ciphers to use
+	Bind   string // the address to listen
+	Banner string // the service's banner to show to the client
 }
 
 // Run the SSH honeypot service
@@ -86,10 +91,18 @@ func (s *SSH) Run(ch chan<- *types.Message) error {
 // Add the host key to the SSH server configuration
 func (s *SSH) AddHostKey(conf *ssh.ServerConfig) error {
 	allErrors := []error{}
-	for _, suite := range s.Ciphers {
+	for _, suite := range s.Cipher.HostKeys {
 		switch suite {
 		case "ssh-ed25519":
 			if err := s.AddEd25519Key(conf); err != nil {
+				allErrors = append(allErrors, err)
+			}
+		case "rsa-sha2-256":
+			if err := s.AddRsaSha256Key(conf); err != nil {
+				allErrors = append(allErrors, err)
+			}
+		case "rsa-sha2-512":
+			if err := s.AddRsaSha512Key(conf); err != nil {
 				allErrors = append(allErrors, err)
 			}
 		default:
