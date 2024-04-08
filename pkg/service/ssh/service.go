@@ -118,7 +118,8 @@ func (s *SSH) AddHostKey(conf *ssh.ServerConfig) error {
 func (s *SSH) handleConn(conn net.Conn, config *ssh.ServerConfig) {
 	defer conn.Close()
 
-	log.Info().Str("service", SVC_NAME).Str("bind", s.Bind).Msg("handling the connection ...")
+	remote := conn.RemoteAddr().String()
+	log.Info().Str("service", SVC_NAME).Str("remote", remote).Str("bind", s.Bind).Msg("handling the connection ...")
 	// Before use, a handshake must be performed on the incoming net.Conn.
 	sshConn, chans, reqs, err := ssh.NewServerConn(conn, config)
 	if err != nil {
