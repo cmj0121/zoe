@@ -28,12 +28,13 @@
       <hr class='m2'>
       <ul class="container no-bullets">
         {{ range $message := .messages }}
-        <li class="m2 ellipsis">
+        <li class="m2 ellipsis container">
           <label>{{- $message.CreatedTime -}}</label>
           <span>
-            <span class="cell">{{- $message.Remote -}}</span>
-            <span>
-              <span class="right cell">{{- $message.Auth.Username -}}</span>
+            <a class="cell" href="/?client_ip={{- $message.Remote -}}">{{- $message.Remote -}}</a>
+            <span class='container'>
+              <small class="s-cell">{{- $message.Service -}}</small>
+              <a class="right cell" href="/?username={{- $message.Auth.Username -}}">{{- $message.Auth.Username -}}</a>
               →
               <span>{{- $message.Auth.Password -}}</span>
             </span>

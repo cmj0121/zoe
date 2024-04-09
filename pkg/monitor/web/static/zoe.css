@@ -56,6 +56,11 @@ footer {
   text-align: right;
 }
 
+.s-cell {
+  display: inline-block;
+  width: 60px;
+}
+
 .cell {
   display: inline-block;
   width: 140px;

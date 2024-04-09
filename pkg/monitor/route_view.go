@@ -15,8 +15,8 @@ import (
 var static embed.FS
 
 // List the messages from the database
-func (m *Monitor) messages() ([]*types.Message, error) {
-	stmt := `
+func (m *Monitor) messages(filter string, args ...any) ([]*types.Message, error) {
+	stmt := fmt.Sprintf(`
 		SELECT
 			message.service,
 			message.client_ip,
@@ -24,13 +24,15 @@ func (m *Monitor) messages() ([]*types.Message, error) {
 			message.password,
 			message.created_at
 		FROM message
-		WHERE created_at < ?
+		WHERE %v
 		ORDER BY created_at DESC
 		LIMIT ?
-	`
+	`, filter)
 
-	now_ns := time.Now().UnixNano()
-	rows, err := m.Query(stmt, now_ns, 20)
+	// limit the query result
+	args = append(args, 20)
+
+	rows, err := m.Query(stmt, args...)
 	if err != nil {
 		log.Warn().Err(err).Msg("failed to query the messages")
 		return nil, err
@@ -52,7 +54,28 @@ func (m *Monitor) messages() ([]*types.Message, error) {
 
 // Show the index page of the monitor service
 func (m *Monitor) index(c *gin.Context) {
-	switch messages, err := m.messages(); err {
+	now_ns := time.Now().UnixNano()
+	args := []any{now_ns}
+
+	filter := "created_at < ?"
+
+	// process the query filter
+	if client_ip, ok := c.GetQuery("client_ip"); ok {
+		filter += " AND client_ip = ?"
+		args = append(args, client_ip)
+	}
+
+	if username, ok := c.GetQuery("username"); ok {
+		filter += " AND username = ?"
+		args = append(args, username)
+	}
+
+	if password, ok := c.GetQuery("password"); ok {
+		filter += " AND password = ?"
+		args = append(args, password)
+	}
+
+	switch messages, err := m.messages(filter, args...); err {
 	case nil:
 		c.HTML(http.StatusOK, "index.htm", gin.H{
 			"year":     time.Now().Year(),
