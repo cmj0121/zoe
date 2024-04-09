@@ -7,5 +7,6 @@ services:
       dockerfile: deployments/Dockerfile
     ports:
       - '2222:2222'
+      - '127.0.0.1:8080:8080'
     volumes:
       - ./.volume:/svc/zoe

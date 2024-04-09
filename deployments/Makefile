@@ -1,4 +1,4 @@
-.PHONY: all clean test run stop build help
+.PHONY: all clean test run stop build upgrade help
 
 all: 			# default action
 
@@ -15,6 +15,11 @@ stop:
 
 build:			# build the binary/library
 	docker compose build
+
+upgrade:		# upgrade all the necessary packages
+	( git stash || true ) && git pull --rebase && ( git stash pop || true )
+	docker compose build
+	docker compose restart
 
 help:			# show this message
 	@printf "Usage: make [OPTION]\n"
