@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"net"
+	"strings"
 
 	"github.com/cmj0121/zoe/pkg/service/types"
 	"github.com/rs/zerolog/log"
@@ -42,9 +43,10 @@ func (s *SSH) Run(ch chan<- *types.Message) error {
 			username := conn.User()
 			password := string(pwd)
 			remote := conn.RemoteAddr().String()
+			client_ip := strings.Split(remote, ":")[0]
 
 			// send the authentication message
-			s.sendAuthMessage(username, password, remote)
+			s.sendAuthMessage(username, password, client_ip)
 
 			if s.Auth == nil {
 				log.Debug().Str("service", SVC_NAME).Msg("disabled the authentication")
