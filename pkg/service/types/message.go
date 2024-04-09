@@ -53,6 +53,11 @@ func (m Message) String() string {
 	return str
 }
 
+// Show the CreatedAt time as a string.
+func (m Message) CreatedTime() string {
+	return m.CreatedAt.UTC().Format("2006-01-02T15:04:05Z")
+}
+
 // Set the remote client IP address.
 func (m *Message) SetRemote(remote string) *Message {
 	m.Remote = remote

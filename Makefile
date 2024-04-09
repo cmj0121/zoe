@@ -1,3 +1,6 @@
+SCSS := $(shell find . -name '*.scss')
+CSS  := $(SCSS:.scss=.css)
+
 SRC := $(shell find . -name '*.go')
 BIN := zoe
 
@@ -17,7 +20,7 @@ test:			# run test
 run:			# run in the local environment
 	go run
 
-build: $(SRC)	# build the binary/library
+build: $(SRC) $(CSS)	# build the binary/library
 	go build -ldflags "-s -w" -o $(BIN) cmd/$(BIN)/main.go
 
 upgrade:		# upgrade all the necessary packages
@@ -33,3 +36,6 @@ test run build: linter
 linter:
 	@go mod tidy
 	@gofmt -s -w $(SRC)
+
+%.css: %.scss
+	sass $< $@

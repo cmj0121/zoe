@@ -2,8 +2,10 @@ package monitor
 
 import (
 	"database/sql"
+	"embed"
 	"errors"
 	"fmt"
+	"html/template"
 	"net/url"
 
 	"github.com/gin-contrib/logger"
@@ -11,6 +13,9 @@ import (
 	_ "github.com/mattn/go-sqlite3"
 	"github.com/rs/zerolog/log"
 )
+
+//go:embed web/template/*.htm
+var templates embed.FS
 
 // The type instance of Monitor that show the records from the honeypot
 type Monitor struct {
@@ -41,6 +46,16 @@ func (m *Monitor) serve() error {
 	routes.Use(logger.SetLogger())
 	// register the routes
 	m.register(routes)
+
+	// setup HTML templates
+	switch tmpl, err := template.ParseFS(templates, "web/template/*.htm"); err {
+	case nil:
+		routes.SetHTMLTemplate(tmpl)
+	default:
+		log.Warn().Err(err).Msg("failed to parse the HTML templates")
+		return err
+	}
+
 	// run the monitor service
 	return routes.Run(m.Bind)
 }
@@ -73,6 +88,7 @@ func (m *Monitor) prologue() error {
 
 	// set the gin to release mode
 	gin.SetMode(gin.ReleaseMode)
+
 	return nil
 }
 
@@ -83,8 +99,8 @@ func (m *Monitor) epilogue() {
 
 // register the routes for the monitor service
 func (m *Monitor) register(r *gin.Engine) {
+	r.GET("/", m.index)
+	r.GET("/static/:filepath", m.static)
 	r.GET("/livez", m.livez)
 	r.GET("/readyz", m.readyz)
-	r.GET("/api/v1/messages", m.listMessages)
-	r.GET("/api/v1/statistics/remotes", m.groupByRemote)
 }

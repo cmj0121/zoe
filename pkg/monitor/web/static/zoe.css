@@ -1,0 +1,69 @@
+* {
+  box-sizing: border-box;
+  line-height: 1.5em;
+}
+
+body {
+  margin: 0 auto;
+  width: 100vw;
+  font-family: monospace;
+  font-size: 1rem;
+  color: #ececff;
+  background-color: #17191c;
+  flex-direction: column;
+  align-items: center;
+}
+body a {
+  color: #21e5f3;
+  text-decoration: none;
+}
+body ul.no-bullets {
+  list-style-type: none;
+}
+body label {
+  margin-right: 1em;
+}
+
+header {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1em 2em;
+}
+
+main {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  border-top: 1px solid #222425;
+  width: 100%;
+  padding: 0.5em 0;
+  text-align: center;
+  color: #585f67;
+}
+
+.right {
+  margin-left: auto;
+  text-align: right;
+}
+
+.cell-1 {
+  display: inline-block;
+  width: 80px;
+}
+
+.cell-2 {
+  display: inline-block;
+  width: 120px;
+}
+
+/*# sourceMappingURL=zoe.css.map */
