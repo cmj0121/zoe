@@ -1,4 +1,22 @@
 #################################
+## Builder Stage - SASS        ##
+#################################
+FROM dart:stable AS css-builder
+
+ARG DART_SASS_VERSION=1.71.1
+ARG DART_SASS_TAR=dart-sass-${DART_SASS_VERSION}-linux-x64.tar.gz
+ARG DART_SASS_URL=https://github.com/sass/dart-sass/releases/download/${DART_SASS_VERSION}/${DART_SASS_TAR}
+
+WORKDIR /opt
+
+ADD ${DART_SASS_URL} .
+RUN tar -xzf ${DART_SASS_TAR} && rm ${DART_SASS_TAR}
+
+WORKDIR /app
+COPY pkg/monitor/web/static/zoe.scss  .
+RUN /opt/dart-sass/sass zoe.scss zoe.css
+
+#################################
 ## Builder Stage               ##
 #################################
 FROM golang:alpine3.19 AS builder
@@ -12,6 +30,7 @@ RUN apk add --no-cache build-base musl-dev sqlite-dev
 COPY  go.mod go.sum ./
 RUN go mod download
 
+COPY --from=css-builder /app/zoe.css pkg/monitor/web/static/zoe.css
 COPY . .
 RUN go build -ldflags "-s -w" -o zoe cmd/zoe/main.go
 

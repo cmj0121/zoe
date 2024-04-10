@@ -6,22 +6,30 @@
 body {
   margin: 0 auto;
   width: 100vw;
+
   font-family: monospace;
   font-size: 1rem;
+
   color: #ececff;
   background-color: #17191c;
+
   flex-direction: column;
   align-items: center;
-}
-body a {
-  color: #21e5f3;
-  text-decoration: none;
-}
-body ul.no-bullets {
-  list-style-type: none;
-}
-body label {
-  margin-right: 1em;
+
+  a {
+    color: #21e5f3;
+    text-decoration: none;
+  }
+
+  ul {
+    &.no-bullets {
+      list-style-type: none;
+    }
+  }
+
+  label {
+    margin-right: 1em;
+  }
 }
 
 header {
@@ -70,5 +78,3 @@ footer {
   display: inline-block;
   width: 360px;
 }
-
-/*# sourceMappingURL=zoe.css.map */
