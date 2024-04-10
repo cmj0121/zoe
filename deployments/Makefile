@@ -19,7 +19,8 @@ build:			# build the binary/library
 upgrade:		# upgrade all the necessary packages
 	( git stash || true ) && git pull --rebase && ( git stash pop || true )
 	docker compose build
-	docker compose restart
+	docker compose stop
+	docker compose up -d
 
 help:			# show this message
 	@printf "Usage: make [OPTION]\n"
