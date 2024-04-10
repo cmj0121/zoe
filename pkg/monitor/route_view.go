@@ -133,8 +133,10 @@ func (m *Monitor) group_by(c *gin.Context) {
 		return
 	}
 
-	filter := "created_at < ?"
-	args := []any{time.Now().UnixNano()}
+	time_diff := time.Hour * 24
+	now_ns := time.Now().Add(-time_diff).UnixNano()
+	filter := "created_at > ?"
+	args := []any{now_ns}
 
 	switch group_by, err := m.queryGroupBy(field, filter, args...); err {
 	case nil:
