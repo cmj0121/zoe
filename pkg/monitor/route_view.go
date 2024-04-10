@@ -15,7 +15,7 @@ import (
 var static embed.FS
 
 // List the messages from the database
-func (m *Monitor) messages(filter string, args ...any) ([]*types.Message, error) {
+func (m *Monitor) queryMessages(filter string, args ...any) ([]*types.Message, error) {
 	stmt := fmt.Sprintf(`
 		SELECT
 			message.service,
@@ -52,6 +52,42 @@ func (m *Monitor) messages(filter string, args ...any) ([]*types.Message, error)
 	return messages, nil
 }
 
+func (m *Monitor) queryGroupBy(field, filter string, args ...any) ([]*types.GroupBy, error) {
+	stmt := fmt.Sprintf(`
+		SELECT
+			message.%[1]v,
+			COUNT(message.%[1]v) AS count,
+			MAX(message.created_at) AS last_seen
+		FROM message
+		WHERE %[2]v
+		GROUP BY message.%[1]v
+		ORDER BY count DESC
+		LIMIT ?
+	`, field, filter)
+
+	// limit the query result
+	args = append(args, 20)
+
+	rows, err := m.Query(stmt, args...)
+	if err != nil {
+		log.Warn().Err(err).Msg("failed to query the group_by")
+		return nil, err
+	}
+
+	var group_by []*types.GroupBy
+	for rows.Next() {
+		switch gb, err := types.GroupByFromRows(rows); err {
+		case nil:
+			group_by = append(group_by, gb)
+		default:
+			log.Warn().Err(err).Msg("failed to parse the group_by")
+			continue
+		}
+	}
+
+	return group_by, nil
+}
+
 // Show the index page of the monitor service
 func (m *Monitor) index(c *gin.Context) {
 	now_ns := time.Now().UnixNano()
@@ -75,11 +111,38 @@ func (m *Monitor) index(c *gin.Context) {
 		args = append(args, password)
 	}
 
-	switch messages, err := m.messages(filter, args...); err {
+	switch messages, err := m.queryMessages(filter, args...); err {
 	case nil:
 		c.HTML(http.StatusOK, "index.htm", gin.H{
 			"year":     time.Now().Year(),
 			"messages": messages,
+		})
+	default:
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+	}
+}
+
+// Show the group-by page of the monitor service
+func (m *Monitor) group_by(c *gin.Context) {
+	var field string
+	switch field = c.Param("field"); field {
+	case "client_ip", "username", "password":
+	default:
+		c.Header("Content-Type", "text/plain")
+		c.String(http.StatusNotFound, "404 page not found")
+		return
+	}
+
+	filter := "created_at < ?"
+	args := []any{time.Now().UnixNano()}
+
+	switch group_by, err := m.queryGroupBy(field, filter, args...); err {
+	case nil:
+		c.HTML(http.StatusOK, "group_by.htm", gin.H{
+			"year":     time.Now().Year(),
+			"fields":   []string{"client_ip", "username", "password"},
+			"field":    field,
+			"group_by": group_by,
 		})
 	default:
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})

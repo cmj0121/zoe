@@ -100,6 +100,7 @@ func (m *Monitor) epilogue() {
 // register the routes for the monitor service
 func (m *Monitor) register(r *gin.Engine) {
 	r.GET("/", m.index)
+	r.GET("/view/group_by/:field", m.group_by)
 	r.GET("/static/:filepath", m.static)
 	r.GET("/livez", m.livez)
 	r.GET("/readyz", m.readyz)

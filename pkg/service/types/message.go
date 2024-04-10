@@ -7,6 +7,30 @@ import (
 	"time"
 )
 
+// The group-by result of the message
+type GroupBy struct {
+	Field    string    // the group-by field
+	Count    int64     // the count of the field
+	LastSeen time.Time // the last seen time
+}
+
+// Show the CreatedAt time as a string.
+func (g GroupBy) LastSeenTime() string {
+	return g.LastSeen.UTC().Format("2006-01-02T15:04:05Z")
+}
+
+func GroupByFromRows(rows *sql.Rows) (*GroupBy, error) {
+	var gb GroupBy
+	var ns int64
+
+	if err := rows.Scan(&gb.Field, &gb.Count, &ns); err != nil {
+		return nil, err
+	}
+
+	gb.LastSeen = time.Unix(ns/1e9, ns%1e9)
+	return &gb, nil
+}
+
 // The exchange message between the honeypot service and the monitor.
 type Message struct {
 	Service string // the service name

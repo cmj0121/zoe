@@ -25,20 +25,23 @@
     </header>
 
     <main>
-      <pre class='h4'>Try to access the honeypot ...</pre>
+
+      {{ $field := .field }}
+      <pre class='h4'>Top records to access the honeypot ...</pre>
       <hr class='m2'>
+      <div class="container mb-2">
+        {{ range $field := .fields }}
+        <a class="btn" href="/view/group_by/{{- $field -}}">{{- $field -}}</a>
+        {{ end }}
+      </div>
+
       <ul class="container no-bullets">
-        {{ range $message := .messages }}
-        <li class="m2 ellipsis container">
-          <label>{{- $message.CreatedTime -}}</label>
+        {{ range $message := .group_by }}
+        <li class="m2 ellipsis">
+          <label>{{- $message.LastSeenTime -}}</label>
           <span>
-            <a class="cell" href="/?client_ip={{- $message.Remote -}}">{{- $message.Remote -}}</a>
-            <span class='container'>
-              <small class="s-cell">{{- $message.Service -}}</small>
-              <a class="right cell" href="/?username={{- $message.Auth.Username -}}">{{- $message.Auth.Username -}}</a>
-              →
-              <span>{{- $message.Auth.Password -}}</span>
-            </span>
+            <a class="xl-cell" href="/?{{- $field -}}={{- $message.Field -}}">{{- $message.Field -}}</a>
+            <span>{{- $message.Count -}}</span>
           </span>
         </li>
         {{ end }}

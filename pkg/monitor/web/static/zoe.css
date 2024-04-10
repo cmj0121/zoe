@@ -66,4 +66,9 @@ footer {
   width: 140px;
 }
 
+.xl-cell {
+  display: inline-block;
+  width: 360px;
+}
+
 /*# sourceMappingURL=zoe.css.map */
