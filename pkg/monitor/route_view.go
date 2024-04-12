@@ -139,8 +139,8 @@ func (m *Monitor) group_by(c *gin.Context) {
 		return
 	}
 
-	time_diff := time.Hour * 24
-	now_ns := time.Now().Add(-time_diff).UnixNano()
+	duration := time.Duration(time.Hour * 24 * 30)
+	now_ns := time.Now().Add(-duration).UnixNano()
 	filter := "created_at > ?"
 	args := []any{now_ns}
 
@@ -151,6 +151,7 @@ func (m *Monitor) group_by(c *gin.Context) {
 			"fields":   []string{"client_ip", "username", "password", "command"},
 			"field":    field,
 			"group_by": group_by,
+			"duration": fmt.Sprintf("%v days", duration.Hours()/24),
 		})
 	default:
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})

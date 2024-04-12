@@ -27,7 +27,8 @@
     <main>
 
       {{ $field := .field }}
-      <pre class='h4'>Top records to access the honeypot ...</pre>
+      {{ $duration := .duration }}
+      <pre><span class='h4'>Top records to access the honeypot</span><small>({{- $duration -}})</small></pre>
       <hr class='m2'>
       <div class="container mb-2">
         {{ range $field := .fields }}
