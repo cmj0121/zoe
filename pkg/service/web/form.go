@@ -18,12 +18,15 @@ var (
 
 // The honeypot service for Web Login Form
 type Form struct {
+	ch chan<- *types.Message `-` // The channel to send the message
+
 	Bind string // the address to listen
 }
 
 // Run the Form honeypot service
 func (f *Form) Run(ch chan<- *types.Message) error {
 	log.Info().Msg("running the Form honeypot service ...")
+	f.ch = ch
 
 	// set the gin to release mode
 	gin.SetMode(gin.ReleaseMode)
@@ -67,7 +70,7 @@ func (f *Form) formPage(c *gin.Context) {
 		username := c.PostForm("username")
 		password := c.PostForm("password")
 
-		log.Info().Str("username", username).Str("password", password).Msg("login failed")
+		f.sendAuthMessage(username, password, c.ClientIP())
 	}
 
 	c.HTML(http.StatusOK, "index.htm", gin.H{
@@ -81,4 +84,15 @@ func (f *Form) formPage(c *gin.Context) {
 func (f *Form) static(c *gin.Context) {
 	filepath := fmt.Sprintf("web/static/%v", c.Param("filepath"))
 	c.FileFromFS(filepath, http.FS(static))
+}
+
+func (f *Form) sendAuthMessage(username string, password string, remote string) {
+	message := types.New(FORM_SVC_NAME)
+	message.SetRemote(remote)
+	message.SetAuth(&types.Auth{
+		Username: username,
+		Password: password,
+	})
+
+	f.ch <- message
 }
