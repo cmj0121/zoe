@@ -33,7 +33,10 @@ RUN go mod download
 
 COPY --from=css-builder /app/zoe.css pkg/monitor/web/static/zoe.css
 COPY --from=css-builder /app/dashboard.css pkg/service/web/web/static/dashboard.css
-COPY . .
+COPY *.go .
+COPY cmd cmd
+COPY pkg pkg
+COPY assets assets
 RUN go build -ldflags "-s -w" -o zoe cmd/zoe/main.go
 
 #################################
