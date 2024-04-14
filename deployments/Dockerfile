@@ -15,10 +15,7 @@ RUN tar -xzf ${DART_SASS_TAR} && rm ${DART_SASS_TAR}
 WORKDIR /app
 COPY pkg/monitor/web/static/zoe.scss  .
 COPY pkg/service/web/web/static/dashboard.scss  .
-RUN << __EOF__
-/opt/dart-sass/sass zoe.scss zoe.css
-/opt/dart-sass/sass dashboard.scss dashboard.css
-__EOF__
+RUN /opt/dart-sass/sass zoe.scss zoe.css && /opt/dart-sass/sass dashboard.scss dashboard.css
 
 #################################
 ## Builder Stage               ##
