@@ -20,3 +20,6 @@ services:
         - ssh-ed25519
         - rsa-sha2-256
         - rsa-sha2-512
+
+  form:
+    bind: :9999

@@ -9,6 +9,7 @@ import (
 
 	"github.com/cmj0121/zoe/pkg/service/ssh"
 	"github.com/cmj0121/zoe/pkg/service/types"
+	"github.com/cmj0121/zoe/pkg/service/web"
 )
 
 // The virtual service interface to be implemented the honeypot service
@@ -46,6 +47,16 @@ func mapToService(data map[string]interface{}) (interface{}, error) {
 			switch err := mapstructure.Decode(value, &sshService); err {
 			case nil:
 				svc[key] = &sshService
+			default:
+				log.Error().Err(err).Str("service", key).Msg("failed to decode the service")
+				return data, err
+			}
+		case web.FORM_SVC_NAME:
+			formService := web.Form{}
+
+			switch err := mapstructure.Decode(value, &formService); err {
+			case nil:
+				svc[key] = &formService
 			default:
 				log.Error().Err(err).Str("service", key).Msg("failed to decode the service")
 				return data, err
