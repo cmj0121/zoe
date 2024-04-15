@@ -9,6 +9,7 @@ import (
 	"github.com/cmj0121/zoe/pkg/service/types"
 	"github.com/rs/zerolog/log"
 	"golang.org/x/crypto/ssh"
+	"golang.org/x/term"
 )
 
 var (
@@ -22,7 +23,8 @@ type Cipher struct {
 
 // The honeypot service for SSH
 type SSH struct {
-	ch chan<- *types.Message `-` // The channel to send the message
+	ch             chan<- *types.Message `-` // The channel to send the message
+	*term.Terminal `-`                   // The terminal for the SSH service
 
 	*types.Auth
 	Cipher // the cipher suite for the SSH service
@@ -184,9 +186,40 @@ func (s SSH) handleChannel(newChannel ssh.NewChannel) {
 
 			// close the channel
 			return
+		case "pty-req":
+			s.Terminal = term.NewTerminal(channel, s.prompt())
+			req.Reply(true, nil)
+		case "shell":
+			go s.handleShell(channel, s.Terminal)
+			req.Reply(true, nil)
 		default:
 			log.Warn().Str("service", SVC_NAME).Interface("req", req).Msg("unsupported request")
 			req.Reply(false, nil)
+		}
+	}
+}
+
+func (s *SSH) handleShell(channel ssh.Channel, term *term.Terminal) {
+	defer log.Info().Str("service", SVC_NAME).Msg("closing the shell ...")
+	defer channel.Close()
+
+	term.SetPrompt(s.prompt())
+	for {
+		line, err := term.ReadLine()
+		if err != nil {
+			log.Warn().Err(err).Msg("failed to read the line")
+			break
+		}
+
+		switch line {
+		case "":
+		case "exit":
+			result := s.handleCommand(line)
+			term.Write([]byte(result))
+			return
+		default:
+			result := s.handleCommand(line)
+			term.Write([]byte(result))
 		}
 	}
 }
@@ -198,12 +231,14 @@ func (s *SSH) handleCommand(command string) string {
 	for _, cmd := range commands {
 		cmd = strings.TrimSpace(cmd)
 		switch cmd {
+		case "exit":
+			result = append(result, "logout")
 		default:
 			result = append(result, fmt.Sprintf("bash: %s: command not found", command))
 		}
 	}
 
-	return strings.Join(result, "\n")
+	return strings.Join(result, "\n") + "\n"
 }
 
 func (s *SSH) sendAuthMessage(username string, password string, remote string) {
@@ -215,4 +250,9 @@ func (s *SSH) sendAuthMessage(username string, password string, remote string) {
 	})
 
 	s.ch <- message
+}
+
+// The prompt for the SSH service
+func (s *SSH) prompt() string {
+	return fmt.Sprintf("%s: ~ $ ", s.Auth.Username)
 }
