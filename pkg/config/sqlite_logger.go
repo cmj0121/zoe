@@ -29,22 +29,32 @@ func NewSQLiteLogger(path string) (*SQLiteLogger, error) {
 
 func (s *SQLiteLogger) Write(msg *types.Message) error {
 	stmt, err := s.Prepare(`
-		INSERT OR IGNORE INTO message (service, client_ip, username, password, created_at)
-		VALUES (?, ?, ?, ?, ?)
+		INSERT OR IGNORE INTO message (service, client_ip, username, password, command, created_at)
+		VALUES (?, ?, ?, ?, ?, ?)
 	`)
 	if err != nil {
 		log.Error().Err(err).Msg("failed to prepare the statement")
 		return err
 	}
 
+	args := []any{msg.Service, msg.Remote}
+	null := sql.NullString{}
 	switch msg.Auth {
 	case nil:
-		null := sql.NullString{}
-		_, err = stmt.Exec(msg.Service, msg.Remote, null, null, msg.CreatedAt.UnixNano())
+		args = append(args, null, null)
 	default:
-		_, err = stmt.Exec(msg.Service, msg.Remote, msg.Auth.Username, msg.Auth.Password, msg.CreatedAt.UnixNano())
+		args = append(args, msg.Auth.Username, msg.Auth.Password)
 	}
 
+	switch msg.Command {
+	case nil:
+		args = append(args, null)
+	default:
+		args = append(args, *msg.Command)
+	}
+
+	args = append(args, msg.CreatedAt.UnixNano())
+	_, err = stmt.Exec(args...)
 	return err
 }
 

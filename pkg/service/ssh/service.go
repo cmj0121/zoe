@@ -9,10 +9,12 @@ import (
 	"github.com/cmj0121/zoe/pkg/service/types"
 	"github.com/rs/zerolog/log"
 	"golang.org/x/crypto/ssh"
+	"golang.org/x/term"
 )
 
 var (
-	SVC_NAME = "ssh"
+	SVC_NAME   = "ssh"
+	SHELL_NAME = "shell"
 )
 
 // The cipher suite for the SSH honeypot service
@@ -22,7 +24,8 @@ type Cipher struct {
 
 // The honeypot service for SSH
 type SSH struct {
-	ch chan<- *types.Message `-` // The channel to send the message
+	ch             chan<- *types.Message `-` // The channel to send the message
+	*term.Terminal `-`                   // The terminal for the SSH service
 
 	*types.Auth
 	Cipher // the cipher suite for the SSH service
@@ -136,21 +139,110 @@ func (s *SSH) handleConn(conn net.Conn, config *ssh.ServerConfig) {
 	// Service the incoming Channel channel.
 	for newChannel := range chans {
 		// handle the channel in another goroutine
-		go s.handleChannel(newChannel)
+		log.Info().Str("service", SVC_NAME).Interface("channel", newChannel).Msg("new channel")
+		client_ip := strings.Split(remote, ":")[0]
+		go s.handleChannel(newChannel, client_ip)
 	}
 
 	log.Info().Str("service", SVC_NAME).Str("bind", s.Bind).Msg("closing the connection ...")
 }
 
 // Handle the incoming SSH channel
-func (s SSH) handleChannel(newChannel ssh.NewChannel) {
+func (s SSH) handleChannel(newChannel ssh.NewChannel, remote string) {
+	defer log.Info().Str("service", SVC_NAME).Msg("closing the channel ...")
+
 	// Accept the channel
-	channel, _, err := newChannel.Accept()
+	channel, reqs, err := newChannel.Accept()
 	if err != nil {
 		log.Error().Err(err).Msg("failed to accept the channel")
 		return
 	}
 	defer channel.Close()
+
+	for req := range reqs {
+		log.Info().Str("service", SVC_NAME).Str("type", req.Type).Msg("handling the request ...")
+
+		switch req.Type {
+		case "env":
+			// ignore the environment request
+			if req.WantReply {
+				req.Reply(true, nil)
+			}
+			log.Info().Str("service", SVC_NAME).Str("type", req.Type).Msg("ignoring the request")
+		case "subsystem":
+			// reject the subsystem request
+			if req.WantReply {
+				req.Reply(false, nil)
+			}
+			log.Info().Str("service", SVC_NAME).Str("type", req.Type).Msg("rejecting the request")
+		case "exec":
+			command := string(req.Payload[4:])
+			result := s.handleCommand(command, remote)
+
+			// reply the command result
+			if req.WantReply {
+				req.Reply(true, nil)
+			}
+			channel.Write([]byte(result))
+			log.Info().Str("service", SVC_NAME).Str("type", req.Type).Str("command", command).Msg("executing the command")
+
+			// close the channel
+			return
+		case "pty-req":
+			s.Terminal = term.NewTerminal(channel, s.prompt())
+			req.Reply(true, nil)
+		case "shell":
+			go s.handleShell(channel, s.Terminal, remote)
+			req.Reply(true, nil)
+		default:
+			log.Warn().Str("service", SVC_NAME).Interface("req", req).Msg("unsupported request")
+			req.Reply(false, nil)
+		}
+	}
+}
+
+func (s *SSH) handleShell(channel ssh.Channel, term *term.Terminal, remote string) {
+	defer log.Info().Str("service", SVC_NAME).Msg("closing the shell ...")
+	defer channel.Close()
+
+	term.SetPrompt(s.prompt())
+	for {
+		line, err := term.ReadLine()
+		if err != nil {
+			log.Warn().Err(err).Msg("failed to read the line")
+			break
+		}
+
+		switch line {
+		case "":
+		case "exit":
+			result := s.handleCommand(line, remote)
+			term.Write([]byte(result))
+			return
+		default:
+			result := s.handleCommand(line, remote)
+			term.Write([]byte(result))
+		}
+	}
+}
+
+func (s *SSH) handleCommand(command, remote string) string {
+	var result []string
+
+	commands := strings.Split(command, ";")
+	for _, cmd := range commands {
+		cmd = strings.TrimSpace(cmd)
+
+		switch cmd {
+		case "exit":
+			result = append(result, "logout")
+		default:
+			s.sendShellMessage(cmd, remote)
+			result = append(result, fmt.Sprintf("bash: %s: command not found", command))
+		}
+	}
+
+	return strings.Join(result, "\n") + "\n"
 }
 
 func (s *SSH) sendAuthMessage(username string, password string, remote string) {
@@ -162,4 +254,17 @@ func (s *SSH) sendAuthMessage(username string, password string, remote string) {
 	})
 
 	s.ch <- message
+}
+
+func (s *SSH) sendShellMessage(command string, remote string) {
+	message := types.New(SHELL_NAME)
+	message.SetRemote(remote)
+	message.Command = &command
+
+	s.ch <- message
+}
+
+// The prompt for the SSH service
+func (s *SSH) prompt() string {
+	return fmt.Sprintf("%s: ~ $ ", s.Auth.Username)
 }

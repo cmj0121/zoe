@@ -22,6 +22,7 @@ func (m *Monitor) queryMessages(filter string, args ...any) ([]*types.Message, e
 			message.client_ip,
 			message.username,
 			message.password,
+			message.command,
 			message.created_at
 		FROM message
 		WHERE %v
@@ -111,6 +112,11 @@ func (m *Monitor) index(c *gin.Context) {
 		args = append(args, password)
 	}
 
+	if command, ok := c.GetQuery("command"); ok {
+		filter += " AND command = ?"
+		args = append(args, command)
+	}
+
 	switch messages, err := m.queryMessages(filter, args...); err {
 	case nil:
 		c.HTML(http.StatusOK, "index.htm", gin.H{
@@ -126,7 +132,7 @@ func (m *Monitor) index(c *gin.Context) {
 func (m *Monitor) group_by(c *gin.Context) {
 	var field string
 	switch field = c.Param("field"); field {
-	case "client_ip", "username", "password":
+	case "client_ip", "username", "password", "command":
 	default:
 		c.Header("Content-Type", "text/plain")
 		c.String(http.StatusNotFound, "404 page not found")
@@ -142,7 +148,7 @@ func (m *Monitor) group_by(c *gin.Context) {
 	case nil:
 		c.HTML(http.StatusOK, "group_by.htm", gin.H{
 			"year":     time.Now().Year(),
-			"fields":   []string{"client_ip", "username", "password"},
+			"fields":   []string{"client_ip", "username", "password", "command"},
 			"field":    field,
 			"group_by": group_by,
 		})

@@ -14,6 +14,9 @@ services:
 
     # the valid username and password and set null to disable the authentication
     # default: null
+    auth:
+      username: root
+      password: Password
 
     cipher:
       hostkeys:
