@@ -53,9 +53,10 @@ func MessageFromRows(rows *sql.Rows) (*Message, error) {
 	var message Message
 	var username sql.NullString
 	var password sql.NullString
+	var command sql.NullString
 	var ns int64
 
-	if err := rows.Scan(&message.Service, &message.Remote, &username, &password, &ns); err != nil {
+	if err := rows.Scan(&message.Service, &message.Remote, &username, &password, &command, &ns); err != nil {
 		return nil, err
 	}
 
@@ -66,6 +67,10 @@ func MessageFromRows(rows *sql.Rows) (*Message, error) {
 			Username: username.String,
 			Password: password.String,
 		}
+	}
+
+	if command.Valid {
+		message.Command = &command.String
 	}
 
 	return &message, nil
@@ -103,14 +108,16 @@ func (m *Message) SetAuth(auth *Auth) *Message {
 // The customized message JSON marshaler.
 func (m Message) MarshalJSON() ([]byte, error) {
 	message := struct {
-		Service   string // the service name
-		Remote    string // the remote client IP address
-		Auth      *Auth  // the authentication configuration
-		CreatedAt int64  // the message created time
+		Service   string  // the service name
+		Remote    string  // the remote client IP address
+		Auth      *Auth   // the authentication configuration
+		Command   *string // the command executed by the client
+		CreatedAt int64   // the message created time
 	}{
 		Service:   m.Service,
 		Remote:    m.Remote,
 		Auth:      m.Auth,
+		Command:   m.Command,
 		CreatedAt: m.CreatedAt.UnixNano(),
 	}
 

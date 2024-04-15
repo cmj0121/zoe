@@ -35,9 +35,18 @@
             <a class="cell" href="/?client_ip={{- $message.Remote -}}">{{- $message.Remote -}}</a>
             <span class='container'>
               <small class="s-cell">{{- $message.Service -}}</small>
+
+              {{ if $message.Auth }}
               <a class="right cell" href="/?username={{- $message.Auth.Username -}}">{{- $message.Auth.Username -}}</a>
               →
               <span>{{- $message.Auth.Password -}}</span>
+              {{ end }}
+
+              {{ if $message.Command }}
+              <span class="right cell"></span>
+              ➤
+              <span>{{- $message.Command -}}</span>
+              {{ end }}
             </span>
           </span>
         </li>
