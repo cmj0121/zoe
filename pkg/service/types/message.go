@@ -33,9 +33,10 @@ func GroupByFromRows(rows *sql.Rows) (*GroupBy, error) {
 
 // The exchange message between the honeypot service and the monitor.
 type Message struct {
-	Service string // the service name
-	Remote  string // the remote client IP address
-	Auth    *Auth  // the authentication configuration
+	Service string  // the service name
+	Remote  string  // the remote client IP address
+	Auth    *Auth   // the authentication configuration
+	Command *string // the command executed by the client
 
 	CreatedAt time.Time // the message created time
 }
@@ -73,8 +74,13 @@ func MessageFromRows(rows *sql.Rows) (*Message, error) {
 // Show the message as a string.
 func (m Message) String() string {
 	time := m.CreatedAt.UTC().Format("2006-01-02T15:04:05")
-	str := fmt.Sprintf("[%v] <%s@%v> %v", time, m.Service, m.Remote, m.Auth)
-	return str
+
+	switch m.Auth {
+	case nil:
+		return fmt.Sprintf("[%v] <%s@%v> %v", time, m.Service, m.Remote, *m.Command)
+	default:
+		return fmt.Sprintf("[%v] <%s@%v> %v", time, m.Service, m.Remote, m.Auth)
+	}
 }
 
 // Show the CreatedAt time as a string.

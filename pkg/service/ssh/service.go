@@ -13,7 +13,8 @@ import (
 )
 
 var (
-	SVC_NAME = "ssh"
+	SVC_NAME   = "ssh"
+	SHELL_NAME = "shell"
 )
 
 // The cipher suite for the SSH honeypot service
@@ -139,14 +140,15 @@ func (s *SSH) handleConn(conn net.Conn, config *ssh.ServerConfig) {
 	for newChannel := range chans {
 		// handle the channel in another goroutine
 		log.Info().Str("service", SVC_NAME).Interface("channel", newChannel).Msg("new channel")
-		go s.handleChannel(newChannel)
+		client_ip := strings.Split(remote, ":")[0]
+		go s.handleChannel(newChannel, client_ip)
 	}
 
 	log.Info().Str("service", SVC_NAME).Str("bind", s.Bind).Msg("closing the connection ...")
 }
 
 // Handle the incoming SSH channel
-func (s SSH) handleChannel(newChannel ssh.NewChannel) {
+func (s SSH) handleChannel(newChannel ssh.NewChannel, remote string) {
 	defer log.Info().Str("service", SVC_NAME).Msg("closing the channel ...")
 
 	// Accept the channel
@@ -175,7 +177,7 @@ func (s SSH) handleChannel(newChannel ssh.NewChannel) {
 			log.Info().Str("service", SVC_NAME).Str("type", req.Type).Msg("rejecting the request")
 		case "exec":
 			command := string(req.Payload[4:])
-			result := s.handleCommand(command)
+			result := s.handleCommand(command, remote)
 
 			// reply the command result
 			if req.WantReply {
@@ -190,7 +192,7 @@ func (s SSH) handleChannel(newChannel ssh.NewChannel) {
 			s.Terminal = term.NewTerminal(channel, s.prompt())
 			req.Reply(true, nil)
 		case "shell":
-			go s.handleShell(channel, s.Terminal)
+			go s.handleShell(channel, s.Terminal, remote)
 			req.Reply(true, nil)
 		default:
 			log.Warn().Str("service", SVC_NAME).Interface("req", req).Msg("unsupported request")
@@ -199,7 +201,7 @@ func (s SSH) handleChannel(newChannel ssh.NewChannel) {
 	}
 }
 
-func (s *SSH) handleShell(channel ssh.Channel, term *term.Terminal) {
+func (s *SSH) handleShell(channel ssh.Channel, term *term.Terminal, remote string) {
 	defer log.Info().Str("service", SVC_NAME).Msg("closing the shell ...")
 	defer channel.Close()
 
@@ -214,26 +216,28 @@ func (s *SSH) handleShell(channel ssh.Channel, term *term.Terminal) {
 		switch line {
 		case "":
 		case "exit":
-			result := s.handleCommand(line)
+			result := s.handleCommand(line, remote)
 			term.Write([]byte(result))
 			return
 		default:
-			result := s.handleCommand(line)
+			result := s.handleCommand(line, remote)
 			term.Write([]byte(result))
 		}
 	}
 }
 
-func (s *SSH) handleCommand(command string) string {
+func (s *SSH) handleCommand(command, remote string) string {
 	var result []string
 
 	commands := strings.Split(command, ";")
 	for _, cmd := range commands {
 		cmd = strings.TrimSpace(cmd)
+
 		switch cmd {
 		case "exit":
 			result = append(result, "logout")
 		default:
+			s.sendShellMessage(cmd, remote)
 			result = append(result, fmt.Sprintf("bash: %s: command not found", command))
 		}
 	}
@@ -248,6 +252,14 @@ func (s *SSH) sendAuthMessage(username string, password string, remote string) {
 		Username: username,
 		Password: password,
 	})
+
+	s.ch <- message
+}
+
+func (s *SSH) sendShellMessage(command string, remote string) {
+	message := types.New(SHELL_NAME)
+	message.SetRemote(remote)
+	message.Command = &command
 
 	s.ch <- message
 }
