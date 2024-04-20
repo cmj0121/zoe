@@ -46,10 +46,10 @@ func (s *SSH) Run(ch chan<- *types.Message) error {
 			username := conn.User()
 			password := string(pwd)
 			remote := conn.RemoteAddr().String()
-			client_ip := strings.Split(remote, ":")[0]
+			clientIP := strings.Split(remote, ":")[0]
 
 			// send the authentication message
-			s.sendAuthMessage(username, password, client_ip)
+			s.sendAuthMessage(username, password, clientIP)
 
 			if s.Auth == nil {
 				log.Debug().Str("service", SVC_NAME).Msg("disabled the authentication")
@@ -140,8 +140,8 @@ func (s *SSH) handleConn(conn net.Conn, config *ssh.ServerConfig) {
 	for newChannel := range chans {
 		// handle the channel in another goroutine
 		log.Info().Str("service", SVC_NAME).Interface("channel", newChannel).Msg("new channel")
-		client_ip := strings.Split(remote, ":")[0]
-		go s.handleChannel(newChannel, client_ip)
+		clientIP := strings.Split(remote, ":")[0]
+		go s.handleChannel(newChannel, clientIP)
 	}
 
 	log.Info().Str("service", SVC_NAME).Str("bind", s.Bind).Msg("closing the connection ...")
