@@ -101,6 +101,7 @@ func (m *Monitor) epilogue() {
 func (m *Monitor) register(r *gin.Engine) {
 	r.GET("/", m.index)
 	r.GET("/view/group_by/:field", m.group_by)
+	r.GET("/view/chart/:field", m.chart)
 	r.GET("/static/:filepath", m.static)
 	r.GET("/livez", m.livez)
 	r.GET("/readyz", m.readyz)

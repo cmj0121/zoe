@@ -158,6 +158,51 @@ func (m *Monitor) group_by(c *gin.Context) {
 	}
 }
 
+// Show the chart page of the monitor service
+func (m *Monitor) chart(c *gin.Context) {
+	var field string
+
+	stmt := `
+		SELECT
+			COUNT(*),
+			created_at / 1000000000 / 60 / 60 AS hour
+		FROM message
+		WHERE service = ?
+		GROUP BY hour
+		ORDER BY hour DESC;
+	`
+
+	switch field = c.Param("field"); field {
+	case "ssh", "form", "shell":
+	default:
+		c.Header("Content-Type", "text/plain")
+		c.String(http.StatusNotFound, "404 page not found")
+		return
+	}
+
+	rows, err := m.Query(stmt, field)
+	if err != nil {
+		log.Warn().Err(err).Msg("failed to query the chart data")
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+	}
+	var charts []*types.Chart
+	for rows.Next() {
+		switch chart, err := types.ChartFromRows(rows); err {
+		case nil:
+			charts = append(charts, chart)
+		default:
+			log.Warn().Err(err).Msg("failed to parse the chart data")
+			continue
+		}
+	}
+
+	c.HTML(http.StatusOK, "chart.htm", gin.H{
+		"year":   time.Now().Year(),
+		"fields": []string{"ssh", "form", "shell"},
+		"charts": charts,
+	})
+}
+
 // Get the static file from the embed.FS
 func (m *Monitor) static(c *gin.Context) {
 	filepath := fmt.Sprintf("web/static/%v", c.Param("filepath"))
