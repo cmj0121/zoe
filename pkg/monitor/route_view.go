@@ -139,8 +139,8 @@ func (m *Monitor) group_by(c *gin.Context) {
 		return
 	}
 
-	time_diff := time.Hour * 24
-	now_ns := time.Now().Add(-time_diff).UnixNano()
+	duration := time.Duration(time.Hour * 24 * 30)
+	now_ns := time.Now().Add(-duration).UnixNano()
 	filter := "created_at > ?"
 	args := []any{now_ns}
 
@@ -151,10 +151,56 @@ func (m *Monitor) group_by(c *gin.Context) {
 			"fields":   []string{"client_ip", "username", "password", "command"},
 			"field":    field,
 			"group_by": group_by,
+			"duration": fmt.Sprintf("%v days", duration.Hours()/24),
 		})
 	default:
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 	}
+}
+
+// Show the chart page of the monitor service
+func (m *Monitor) chart(c *gin.Context) {
+	var field string
+
+	stmt := `
+		SELECT
+			COUNT(*),
+			created_at / 1000000000 / 60 / 60 AS hour
+		FROM message
+		WHERE service = ?
+		GROUP BY hour
+		ORDER BY hour DESC;
+	`
+
+	switch field = c.Param("field"); field {
+	case "ssh", "form", "shell":
+	default:
+		c.Header("Content-Type", "text/plain")
+		c.String(http.StatusNotFound, "404 page not found")
+		return
+	}
+
+	rows, err := m.Query(stmt, field)
+	if err != nil {
+		log.Warn().Err(err).Msg("failed to query the chart data")
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+	}
+	var charts []*types.Chart
+	for rows.Next() {
+		switch chart, err := types.ChartFromRows(rows); err {
+		case nil:
+			charts = append(charts, chart)
+		default:
+			log.Warn().Err(err).Msg("failed to parse the chart data")
+			continue
+		}
+	}
+
+	c.HTML(http.StatusOK, "chart.htm", gin.H{
+		"year":   time.Now().Year(),
+		"fields": []string{"ssh", "form", "shell"},
+		"charts": charts,
+	})
 }
 
 // Get the static file from the embed.FS
