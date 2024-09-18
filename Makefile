@@ -1,7 +1,9 @@
 SRC := $(shell find . -name '*.go')
 BIN := bin/zoe
 
-.PHONY: all clean test run build upgrade help prologue
+SUBDIR := deployments
+
+.PHONY: all clean test run build upgrade help prologue $(SUBDIR)
 
 all: 					# default action
 	@pre-commit install --install-hooks
@@ -29,3 +31,7 @@ help:					# show this message
 prologue: $(SRC)
 	@go mod tidy
 	@gofmt -s -w $(SRC)
+
+all clean test build: $(SUBDIR)
+$(SUBDIR):
+	$(MAKE) -C $@ $(MAKECMDGOALS)

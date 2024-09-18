@@ -1,0 +1,6 @@
+services:
+  zoe:
+    build:
+      context: ..
+      dockerfile: deployments/Dockerfile
+    platform: linux/amd64
