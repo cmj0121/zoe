@@ -10,6 +10,8 @@ import (
 	"github.com/alecthomas/kong"
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
+
+	"github.com/cmj0121/zoe/pkg/honeypot/ssh"
 )
 
 const (
@@ -29,6 +31,8 @@ type Zoe struct {
 	// The logger options.
 	Verbose int  `short:"v" xor:"quite,verbose" type:"counter" help:"Show the verbose output" default:"0"`
 	Quiet   bool `short:"q" xor:"quite,verbose" help:"Show no output"`
+
+	SSH *ssh.HoneypotSSH `cmd help:"The SSH-based honeypot service that provides the semi-interactive shell."`
 }
 
 func init() {
@@ -87,7 +91,7 @@ func (z *Zoe) Run() error {
 func (z *Zoe) run(ctx context.Context) error {
 	log.Info().Msg("starting run the zoe ...")
 
-	return nil
+	return z.SSH.Run(ctx)
 }
 
 func (z *Zoe) prologue() {
