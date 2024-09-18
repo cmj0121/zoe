@@ -1,8 +1,11 @@
 package zoe
 
 import (
+	"context"
 	"fmt"
 	"os"
+	"os/signal"
+	"syscall"
 
 	"github.com/alecthomas/kong"
 	"github.com/rs/zerolog"
@@ -59,10 +62,31 @@ func (z *Zoe) Run() error {
 	z.prologue()
 	defer z.epilogue()
 
-	return z.run()
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+
+	// starting the graceful shutdown, catch the signal SIGINT and SIGTERM
+	sig := make(chan os.Signal, 1)
+	signal.Notify(sig, syscall.SIGINT, syscall.SIGTERM, syscall.SIGQUIT)
+
+	go func() {
+		defer signal.Stop(sig)
+		defer close(sig)
+
+		select {
+		case <-sig:
+			log.Info().Msg("received the signal, starting the graceful shutdown ...")
+			cancel()
+		case <-ctx.Done():
+		}
+	}()
+
+	return z.run(ctx)
 }
 
-func (z *Zoe) run() error {
+func (z *Zoe) run(ctx context.Context) error {
+	log.Info().Msg("starting run the zoe ...")
+
 	return nil
 }
 
@@ -82,7 +106,11 @@ func (z *Zoe) prologue() {
 	default:
 		zerolog.SetGlobalLevel(zerolog.TraceLevel)
 	}
+
+	log.Info().Msg("finished the prologue ...")
 }
 
 func (z *Zoe) epilogue() {
+	log.Info().Msg("starting the epilogue ...")
+	log.Info().Msg("finished the epilogue ...")
 }
