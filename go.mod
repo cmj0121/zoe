@@ -6,6 +6,7 @@ require (
 	github.com/alecthomas/kong v1.2.1
 	github.com/rs/zerolog v1.33.0
 	golang.org/x/crypto v0.27.0
+	golang.org/x/term v0.24.0
 )
 
 require (

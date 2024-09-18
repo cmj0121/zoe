@@ -7,6 +7,9 @@ import (
 
 	"github.com/rs/zerolog/log"
 	"golang.org/x/crypto/ssh"
+	"golang.org/x/term"
+
+	"github.com/cmj0121/zoe/pkg/shell"
 )
 
 // The SSH-based honeypot service that provides the semi-interactive shell.
@@ -15,6 +18,7 @@ type HoneypotSSH struct {
 	Server   string `help:"The server version" default:"SSH-2.0-Open"`
 	MaxRetry int    `short:"r" help:"The maximum number of the retry" default:"3"`
 
+	Prompt   string   `help:"The prompt of the shell" default:"$ "`
 	Username *string  `short:"u" help:"The authorized username"`
 	Password *string  `short:"P" help:"The authorized password"`
 	Cipher   []string `help:"The list of the cipher" default:"ssh-ed25519,rsa-sha2-256,rsa-sha2-512"`
@@ -136,15 +140,59 @@ func (h *HoneypotSSH) handleSSHChannel(ctx context.Context, channel ssh.NewChann
 
 	defer ch.Close()
 
+	var terminal *term.Terminal
 	for req := range reqs {
 		switch req.Type {
+		case "env":
+			h.reply(req, true)
+		case "pty-req":
+			terminal = term.NewTerminal(ch, h.Prompt)
+			h.reply(req, true)
+		case "shell":
+			go h.handleShellReq(ch, terminal)
+			h.reply(req, true)
+		case "exec":
+			command := string(req.Payload[4:])
+
+			shell := shell.New()
+			output := shell.Exec(command) + "\n"
+
+			_, _ = ch.Write([]byte(output))
+			h.reply(req, true)
+
+			// close the channel after the command is executed
+			return
 		default:
 			log.Warn().Str("type", req.Type).Msg("unsupported request")
-
-			if err := req.Reply(false, nil); err != nil {
-				log.Warn().Err(err).Msg("failed to reply the request")
-				continue
-			}
+			h.reply(req, false)
 		}
+	}
+}
+
+// Reply the request with the given status, which depends on the request wants the reply
+// or not.
+func (h *HoneypotSSH) reply(req *ssh.Request, ok bool) {
+	if req.WantReply {
+		if err := req.Reply(ok, nil); err != nil {
+			log.Warn().Err(err).Msg("failed to reply the request")
+			return
+		}
+	}
+}
+
+// Handle the shell request with the given channel and terminal.
+func (h *HoneypotSSH) handleShellReq(channel ssh.Channel, term *term.Terminal) {
+	defer channel.Close()
+
+	shell := shell.New()
+	for {
+		line, err := term.ReadLine()
+		if err != nil {
+			log.Warn().Err(err).Msg("failed to read the line")
+			return
+		}
+
+		output := shell.Exec(line) + "\n"
+		_, _ = term.Write([]byte(output))
 	}
 }
