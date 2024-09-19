@@ -10,6 +10,7 @@ import (
 	"github.com/alecthomas/kong"
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
+	"github.com/spf13/viper"
 
 	"github.com/cmj0121/zoe/pkg/honeypot/ssh"
 )
@@ -32,7 +33,10 @@ type Zoe struct {
 	Verbose int  `short:"v" xor:"quite,verbose" type:"counter" help:"Show the verbose output" default:"0"`
 	Quiet   bool `short:"q" xor:"quite,verbose" help:"Show no output"`
 
-	SSH *ssh.HoneypotSSH `cmd help:"The SSH-based honeypot service that provides the semi-interactive shell."`
+	// The external configuration
+	Config *string `short:"c" help:"The external configuration file"`
+
+	SSH *ssh.HoneypotSSH `cmd:"" help:"The SSH-based honeypot service that provides the semi-interactive shell."`
 }
 
 func init() {
@@ -104,17 +108,42 @@ func (z *Zoe) prologue() {
 	case 0:
 		zerolog.SetGlobalLevel(zerolog.ErrorLevel)
 	case 1:
-		zerolog.SetGlobalLevel(zerolog.InfoLevel)
+		zerolog.SetGlobalLevel(zerolog.WarnLevel)
 	case 2:
+		zerolog.SetGlobalLevel(zerolog.InfoLevel)
+	case 3:
 		zerolog.SetGlobalLevel(zerolog.DebugLevel)
 	default:
 		zerolog.SetGlobalLevel(zerolog.TraceLevel)
 	}
 
 	log.Info().Msg("finished the prologue ...")
+	z.loadConfig()
 }
 
 func (z *Zoe) epilogue() {
 	log.Info().Msg("starting the epilogue ...")
 	log.Info().Msg("finished the epilogue ...")
+}
+
+func (z *Zoe) loadConfig() {
+	if z.Config == nil {
+		log.Debug().Msg("skip the external configuration")
+		return
+	}
+
+	v := viper.New()
+	v.SetConfigFile(*z.Config)
+	v.AutomaticEnv()
+
+	if err := v.ReadInConfig(); err != nil {
+		log.Warn().Err(err).Msg("failed to read the external configuration")
+		return
+	}
+
+	// override the configuration by the external configuration
+	if err := v.Unmarshal(z); err != nil {
+		log.Warn().Err(err).Msg("failed to unmarshal the external configuration")
+		return
+	}
 }

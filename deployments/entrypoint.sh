@@ -1,4 +1,8 @@
 #! /usr/bin/env sh
 set -e
 
-/usr/local/bin/zoe -vv
+# replace the config file with env vars
+envsubst < /app/zoe.yml > zoe.yml
+mkdir -p .ssh/
+
+/usr/local/bin/zoe -vv -c zoe.yml ssh

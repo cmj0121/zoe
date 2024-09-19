@@ -4,3 +4,10 @@ services:
       context: ..
       dockerfile: deployments/Dockerfile
     platform: linux/amd64
+    environment:
+      - ZOE_BIND=:2022
+      - ZOE_SERVER=SSH-2.0-OpenSSH_9.8
+      - ZOE_USERNAME=root
+      - ZOE_PASSWORD=P@ssw0rd
+    ports:
+      - "2022:2022"

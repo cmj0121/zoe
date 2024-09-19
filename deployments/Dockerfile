@@ -16,9 +16,16 @@ RUN go build -ldflags "-s -w" -o bin/zoe cmd/zoe/main.go
 #################################
 FROM alpine:3.20
 
+RUN apk add --no-cache envsubst
+
 COPY --from=builder /src/bin/zoe /usr/local/bin/zoe
 
-WORKDIR /app
+# downgrade the non-root user
+RUN addgroup -g 1000 -S app && adduser -u 1000 -S app -G app
+USER app
+
+WORKDIR /home/app
+COPY deployments/zoe.yml.template /app/zoe.yml.template
 COPY deployments/entrypoint.sh /app/entrypoint.sh
 
 CMD ["/app/entrypoint.sh"]

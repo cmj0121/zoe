@@ -1,0 +1,5 @@
+ssh:
+  bind: ${ZOE_BIND}
+  server: ${ZOE_SERVER}
+  username: ${ZOE_USERNAME}
+  password: ${ZOE_PASSWORD}
