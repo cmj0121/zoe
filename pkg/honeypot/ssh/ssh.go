@@ -18,6 +18,8 @@ type IP string
 var (
 	// The target IP
 	TargetIP IP = "ip"
+
+	ServiceName = "ssh"
 )
 
 // The SSH-based honeypot service that provides the semi-interactive shell.
@@ -48,7 +50,7 @@ func (h *HoneypotSSH) Run(ctx context.Context) error {
 
 			message := types.Message{
 				IP:       conn.RemoteAddr().String(),
-				Service:  "ssh",
+				Service:  ServiceName,
 				Username: &username,
 				Password: &password,
 			}
@@ -139,6 +141,16 @@ func (h *HoneypotSSH) handleSSHConn(ctx context.Context, conn net.Conn, cfg *ssh
 	sshConn, chans, reqs, err := ssh.NewServerConn(conn, cfg)
 	if err != nil {
 		log.Warn().Err(err).Msg("failed to handshake the SSH connection")
+
+		message := types.Message{
+			IP:      remote,
+			Service: ServiceName,
+		}
+		if err := message.Insert(); err != nil {
+			log.Warn().Err(err).Msg("failed to insert the message")
+			// always accept the connection
+		}
+
 		return
 	}
 
@@ -178,7 +190,7 @@ func (h *HoneypotSSH) handleSSHChannel(ctx context.Context, channel ssh.NewChann
 
 			message := types.Message{
 				IP:      ctx.Value(TargetIP).(string),
-				Service: "ssh",
+				Service: ServiceName,
 				Command: &command,
 			}
 			if err := message.Insert(); err != nil {
@@ -226,7 +238,7 @@ func (h *HoneypotSSH) handleShellReq(ctx context.Context, channel ssh.Channel, t
 
 		message := types.Message{
 			IP:      ctx.Value(TargetIP).(string),
-			Service: "ssh",
+			Service:  ServiceName,
 			Command: &line,
 		}
 		if err := message.Insert(); err != nil {
