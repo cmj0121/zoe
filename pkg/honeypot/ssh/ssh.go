@@ -46,17 +46,6 @@ func (h *HoneypotSSH) Run(ctx context.Context) error {
 			username := conn.User()
 			password := string(bytes)
 
-			switch {
-			case h.Username == nil:
-				log.Debug().Msg("no authorized username, always reject the connection")
-				return nil, fmt.Errorf("no authorized username")
-			case username == *h.Username && h.Password == nil:
-				log.Debug().Msg("no authorized password, always accept the connection")
-			case username != *h.Username || password != *h.Password:
-				log.Debug().Msg("invalid username or password")
-				return nil, fmt.Errorf("invalid username or password")
-			}
-
 			message := types.Message{
 				IP:       conn.RemoteAddr().String(),
 				Service:  "ssh",
@@ -66,6 +55,17 @@ func (h *HoneypotSSH) Run(ctx context.Context) error {
 			if err := message.Insert(); err != nil {
 				log.Warn().Err(err).Msg("failed to insert the message")
 				// always accept the connection
+			}
+
+			switch {
+			case h.Username == nil:
+				log.Debug().Msg("no authorized username, always reject the connection")
+				return nil, fmt.Errorf("no authorized username")
+			case username == *h.Username && h.Password == nil:
+				log.Debug().Msg("no authorized password, always accept the connection")
+			case username != *h.Username || password != *h.Password:
+				log.Debug().Msg("invalid username or password")
+				return nil, fmt.Errorf("invalid username or password")
 			}
 
 			log.Info().Str("username", username).Str("password", password).Msg("accept the SSH connection")
