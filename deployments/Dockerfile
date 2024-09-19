@@ -25,7 +25,7 @@ RUN addgroup -g 1000 -S app && adduser -u 1000 -S app -G app
 USER app
 
 WORKDIR /home/app
-COPY deployments/zoe.yml.template /app/zoe.yml.template
+COPY deployments/zoe.yml /app/zoe.yml
 COPY deployments/entrypoint.sh /app/entrypoint.sh
 
 CMD ["/app/entrypoint.sh"]

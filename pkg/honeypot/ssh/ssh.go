@@ -14,15 +14,15 @@ import (
 
 // The SSH-based honeypot service that provides the semi-interactive shell.
 type HoneypotSSH struct {
-	Bind     string `short:"b" help:"The address to bind" default:":2022"`
-	Server   string `help:"The server version" default:"SSH-2.0-Open"`
-	MaxRetry int    `short:"r" help:"The maximum number of the retry" default:"3"`
-	Homedir  string `help:"The home directory of the shell" default:"~"`
+	Bind     string
+	Server   string
+	MaxRetry int
+	Homedir  string
 
-	Prompt   string   `help:"The prompt of the shell" default:"$ "`
-	Username *string  `short:"u" help:"The authorized username"`
-	Password *string  `short:"P" help:"The authorized password"`
-	Cipher   []string `help:"The list of the cipher" default:"ssh-ed25519,rsa-sha2-256,rsa-sha2-512"`
+	Prompt   string
+	Username *string
+	Password *string
+	Cipher   []string
 }
 
 func New() *HoneypotSSH {

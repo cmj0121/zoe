@@ -12,7 +12,7 @@ import (
 	"github.com/rs/zerolog/log"
 	"github.com/spf13/viper"
 
-	"github.com/cmj0121/zoe/pkg/honeypot/ssh"
+	"github.com/cmj0121/zoe/pkg/honeypot"
 )
 
 const (
@@ -36,7 +36,7 @@ type Zoe struct {
 	// The external configuration
 	Config *string `short:"c" help:"The external configuration file"`
 
-	SSH *ssh.HoneypotSSH `cmd:"" help:"The SSH-based honeypot service that provides the semi-interactive shell."`
+	Service honeypot.Service `arg:"" help:"The honeypot service" default:"ssh"`
 }
 
 func init() {
@@ -89,13 +89,7 @@ func (z *Zoe) Run() error {
 		}
 	}()
 
-	return z.run(ctx)
-}
-
-func (z *Zoe) run(ctx context.Context) error {
-	log.Info().Msg("starting run the zoe ...")
-
-	return z.SSH.Run(ctx)
+	return z.Service.Run(ctx)
 }
 
 func (z *Zoe) prologue() {
@@ -146,4 +140,7 @@ func (z *Zoe) loadConfig() {
 		log.Warn().Err(err).Msg("failed to unmarshal the external configuration")
 		return
 	}
+
+	// override the configuration by the external configuration
+	z.Service.Viper = v.Sub("service")
 }
