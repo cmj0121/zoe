@@ -38,8 +38,19 @@ func (m *Message) Insert() error {
 	return err
 }
 
+func MessageFromRow(rows *sql.Rows) (*Message, error) {
+	var msg Message
+
+	err := rows.Scan(&msg.ID, &msg.IP, &msg.Service, &msg.Username, &msg.Password, &msg.Command, &msg.CreatedAt)
+	if err != nil {
+		return nil, err
+	}
+
+	return &msg, nil
+}
+
 // Iter the message from the database.
-func (m *Message) Iter(ctx context.Context) <-chan *Message {
+func IterMessage(ctx context.Context) <-chan *Message {
 	ch := make(chan *Message, 1)
 
 	sess := database.Session()
@@ -65,7 +76,7 @@ func (m *Message) Iter(ctx context.Context) <-chan *Message {
 			}
 
 			for rows.Next() {
-				switch msg, err := FromRow(rows); err {
+				switch msg, err := MessageFromRow(rows); err {
 				case nil:
 					base_id = msg.ID
 					select {
@@ -82,15 +93,4 @@ func (m *Message) Iter(ctx context.Context) <-chan *Message {
 	}()
 
 	return ch
-}
-
-func FromRow(rows *sql.Rows) (*Message, error) {
-	var msg Message
-
-	err := rows.Scan(&msg.ID, &msg.IP, &msg.Service, &msg.Username, &msg.Password, &msg.Command, &msg.CreatedAt)
-	if err != nil {
-		return nil, err
-	}
-
-	return &msg, nil
 }

@@ -67,4 +67,5 @@ func (s *Server) serve() *http.Server {
 // register the routes of the HTTP server.
 func (s *Server) register() {
 	s.Engine.GET("/", routes.APIIndex)
+	s.Engine.GET("/messages/daily-popular/:field", routes.APIMessagePopular)
 }
