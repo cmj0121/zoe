@@ -186,7 +186,7 @@ func (h *HoneypotSSH) handleShellReq(channel ssh.Channel, term *term.Terminal) {
 	defer channel.Close()
 
 	shell := shell.New()
-	for {
+	for !shell.IsExit() {
 		line, err := term.ReadLine()
 		if err != nil {
 			log.Warn().Err(err).Msg("failed to read the line")
@@ -196,4 +196,6 @@ func (h *HoneypotSSH) handleShellReq(channel ssh.Channel, term *term.Terminal) {
 		output := shell.Exec(line) + "\n"
 		_, _ = term.Write([]byte(output))
 	}
+
+	channel.Close()
 }

@@ -10,7 +10,9 @@ import (
 
 // The restricted bash shell that provides the limited bash shell.
 // It is the semi-interactive shell that accepts the command and returns the output.
-type RBash struct{}
+type RBash struct {
+	exit bool
+}
 
 // New creates a new RBash instance that provides the restricted bash shell.
 func New() *RBash {
@@ -43,6 +45,11 @@ func (r *RBash) Exec(command string) string {
 
 		args := strings.Split(cmd, " ")
 		result = append(result, r.exec(args[0], args[1:]...))
+
+		if r.IsExit() {
+			log.Info().Msg("exit the restricted bash shell")
+			break
+		}
 	}
 
 	return strings.Join(result, "\n")
@@ -62,9 +69,15 @@ func (r *RBash) exec(command string, args ...string) string {
 		output = "nobody"
 	case "echo":
 		output = strings.Join(args, " ")
+	case "exit":
+		r.exit = true
 	default:
 		output = fmt.Sprintf("bash: %s: command not found", command)
 	}
 
 	return output
+}
+
+func (r *RBash) IsExit() bool {
+	return r.exit
 }
