@@ -3,8 +3,8 @@ package routes
 import (
 	"net/http"
 
-	"github.com/gin-gonic/gin"
 	"github.com/cmj0121/zoe/pkg/types"
+	"github.com/gin-gonic/gin"
 )
 
 // Get the daily popular messages based on the passed-in field.

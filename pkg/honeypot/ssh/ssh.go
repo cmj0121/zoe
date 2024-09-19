@@ -10,6 +10,14 @@ import (
 	"golang.org/x/term"
 
 	"github.com/cmj0121/zoe/pkg/shell"
+	"github.com/cmj0121/zoe/pkg/types"
+)
+
+type IP string
+
+var (
+	// The target IP
+	TargetIP IP = "ip"
 )
 
 // The SSH-based honeypot service that provides the semi-interactive shell.
@@ -49,6 +57,17 @@ func (h *HoneypotSSH) Run(ctx context.Context) error {
 				return nil, fmt.Errorf("invalid username or password")
 			}
 
+			message := types.Message{
+				IP:       conn.RemoteAddr().String(),
+				Service:  "ssh",
+				Username: &username,
+				Password: &password,
+			}
+			if err := message.Insert(); err != nil {
+				log.Warn().Err(err).Msg("failed to insert the message")
+				// always accept the connection
+			}
+
 			log.Info().Str("username", username).Str("password", password).Msg("accept the SSH connection")
 			return nil, nil
 		},
@@ -74,6 +93,8 @@ func (h *HoneypotSSH) run(ctx context.Context, cfg *ssh.ServerConfig) error {
 			log.Info().Msg("the service is shutting down")
 			return nil
 		case conn := <-handler:
+			ip := conn.RemoteAddr().String()
+			ctx = context.WithValue(ctx, TargetIP, ip)
 			go h.handleSSHConn(ctx, conn, cfg)
 		}
 	}
@@ -150,10 +171,20 @@ func (h *HoneypotSSH) handleSSHChannel(ctx context.Context, channel ssh.NewChann
 			terminal = term.NewTerminal(ch, h.Prompt)
 			h.reply(req, true)
 		case "shell":
-			go h.handleShellReq(ch, terminal)
+			go h.handleShellReq(ctx, ch, terminal)
 			h.reply(req, true)
 		case "exec":
 			command := string(req.Payload[4:])
+
+			message := types.Message{
+				IP:      ctx.Value(TargetIP).(string),
+				Service: "ssh",
+				Command: &command,
+			}
+			if err := message.Insert(); err != nil {
+				log.Warn().Err(err).Msg("failed to insert the message")
+				// always accept the command
+			}
 
 			shell := shell.New()
 			output := shell.Exec(command) + "\n"
@@ -182,7 +213,7 @@ func (h *HoneypotSSH) reply(req *ssh.Request, ok bool) {
 }
 
 // Handle the shell request with the given channel and terminal.
-func (h *HoneypotSSH) handleShellReq(channel ssh.Channel, term *term.Terminal) {
+func (h *HoneypotSSH) handleShellReq(ctx context.Context, channel ssh.Channel, term *term.Terminal) {
 	defer channel.Close()
 
 	shell := shell.New()
@@ -191,6 +222,16 @@ func (h *HoneypotSSH) handleShellReq(channel ssh.Channel, term *term.Terminal) {
 		if err != nil {
 			log.Warn().Err(err).Msg("failed to read the line")
 			return
+		}
+
+		message := types.Message{
+			IP:      ctx.Value(TargetIP).(string),
+			Service: "ssh",
+			Command: &line,
+		}
+		if err := message.Insert(); err != nil {
+			log.Warn().Err(err).Msg("failed to insert the message")
+			// always accept the command
 		}
 
 		output := shell.Exec(line) + "\n"
