@@ -34,7 +34,8 @@ type Zoe struct {
 	Quiet   bool `short:"q" xor:"quite,verbose" help:"Show no output"`
 
 	// The external configuration
-	Config *string `short:"c" help:"The external configuration file"`
+	Config   *string   `short:"c" help:"The external configuration file"`
+	Database *Database `embed:"" help:"The database service"`
 
 	Service honeypot.Service `arg:"" help:"The honeypot service" default:"ssh"`
 }
@@ -113,6 +114,8 @@ func (z *Zoe) prologue() {
 
 	log.Info().Msg("finished the prologue ...")
 	z.loadConfig()
+	z.Database.Init()
+	z.Database.Migrate()
 }
 
 func (z *Zoe) epilogue() {
