@@ -13,6 +13,7 @@ import (
 	"github.com/spf13/viper"
 
 	"github.com/cmj0121/zoe/pkg/honeypot"
+	"github.com/cmj0121/zoe/pkg/monitor"
 )
 
 const (
@@ -34,8 +35,9 @@ type Zoe struct {
 	Quiet   bool `short:"q" xor:"quite,verbose" help:"Show no output"`
 
 	// The external configuration
-	Config   *string   `short:"c" help:"The external configuration file"`
-	Database *Database `embed:"" help:"The database service"`
+	Config   *string         `short:"c" help:"The external configuration file"`
+	Database *Database       `embed:"" help:"The database service"`
+	Server   *monitor.Server `embed:"" help:"The MongoDB service"`
 
 	Service honeypot.Service `arg:"" help:"The honeypot service" default:"ssh"`
 }
@@ -90,6 +92,7 @@ func (z *Zoe) Run() error {
 		}
 	}()
 
+	go z.Server.Run(ctx)
 	return z.Service.Run(ctx)
 }
 
