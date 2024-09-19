@@ -1,4 +1,5 @@
-bind: :8080
+server:
+  bind: :8080
 
 service:
   ssh:

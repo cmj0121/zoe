@@ -11,3 +11,4 @@ services:
       - ZOE_PASSWORD=P@ssw0rd
     ports:
       - "2022:2022"
+      - "127.0.0.1:8080:8080"
