@@ -1,108 +1,71 @@
 package monitor
 
 import (
-	"database/sql"
-	"embed"
-	"errors"
-	"fmt"
-	"html/template"
-	"net/url"
+	"context"
+	"net/http"
 
 	"github.com/gin-contrib/logger"
 	"github.com/gin-gonic/gin"
-	_ "github.com/mattn/go-sqlite3"
 	"github.com/rs/zerolog/log"
+
+	"github.com/cmj0121/zoe/pkg/monitor/routes"
 )
 
-//go:embed web/template/*.htm
-var templates embed.FS
+// The HTTP server that show the records of the honeypot.
+type Server struct {
+	Bind *string `name:"bind" help:"The address to bind the HTTP server"`
 
-// The type instance of Monitor that show the records from the honeypot
-type Monitor struct {
-	// The database connection
-	*sql.DB `-`
-
-	Bind     string // The bind address of the monitor
-	Database string // The database URI
+	*gin.Engine `kong:"-"`
 }
 
-// Serve the monitor service
-func (m *Monitor) Serve() error {
-	err := m.prologue()
-	if err != nil {
-		log.Error().Err(err).Msg("failed to setup the monitor service")
-		return err
+func (s *Server) Run(ctx context.Context) {
+	if s.Bind == nil {
+		log.Info().Msg("no bind address, skip the HTTP server")
+		return
 	}
-	defer m.epilogue()
 
-	return m.serve()
+	srv := s.serve()
+	// gracefun shutdown the server
+	<-ctx.Done()
+	if err := srv.Shutdown(ctx); err != nil {
+		log.Fatal().Err(err).Msg("failed to shutdown the HTTP server")
+		return
+	}
+
+	log.Info().Msg("successfully shutdown the HTTP server")
 }
 
-// setup the HTTP server and run the monitor service
-func (m *Monitor) serve() error {
-	routes := gin.New()
-	// setup the middleware
-	routes.Use(gin.Recovery())
-	routes.Use(logger.SetLogger())
-	// register the routes
-	m.register(routes)
-
-	// setup HTML templates
-	switch tmpl, err := template.ParseFS(templates, "web/template/*.htm"); err {
-	case nil:
-		routes.SetHTMLTemplate(tmpl)
-	default:
-		log.Warn().Err(err).Msg("failed to parse the HTML templates")
-		return err
-	}
-
-	// run the monitor service
-	return routes.Run(m.Bind)
-}
-
-// setup everything before running the monitor service
-func (m *Monitor) prologue() error {
-	// parse the database URI
-	uri, err := url.Parse(m.Database)
-	if err != nil {
-		log.Warn().Err(err).Str("database", m.Database).Msg("failed to parse the database URI")
-		return err
-	}
-
-	switch uri.Scheme {
-	case "sqlite", "sqlite3":
-		path := fmt.Sprintf("%s%s", uri.Host, uri.Path)
-		// open the database connection
-		db, err := sql.Open("sqlite3", path)
-		if err != nil {
-			log.Warn().Err(err).Str("database", m.Database).Msg("failed to open the database")
-			return err
-		}
-
-		m.DB = db
-	default:
-		err := errors.New("unsupported database")
-		log.Warn().Err(err).Str("database", m.Database).Msg("unsupported database")
-		return err
-	}
-
-	// set the gin to release mode
+func (s *Server) serve() *http.Server {
 	gin.SetMode(gin.ReleaseMode)
 
-	return nil
+	s.Engine = gin.New()
+	// setup the middleware
+	s.Engine.Use(gin.Recovery())
+	s.Engine.Use(logger.SetLogger())
+	s.register()
+
+	srv := &http.Server{
+		Addr:    *s.Bind,
+		Handler: s.Engine,
+	}
+
+	go func() {
+		switch err := srv.ListenAndServe(); err {
+		case nil:
+			log.Info().Msg("start the HTTP server")
+		case http.ErrServerClosed:
+			log.Info().Msg("shutdown the HTTP server")
+		default:
+			log.Fatal().Err(err).Msg("failed to start the HTTP server")
+		}
+	}()
+
+	log.Info().Str("bind", *s.Bind).Msg("starting the HTTP server")
+	return srv
 }
 
-// close all the allocated resources after running the monitor service
-func (m *Monitor) epilogue() {
-	m.DB.Close()
-}
-
-// register the routes for the monitor service
-func (m *Monitor) register(r *gin.Engine) {
-	r.GET("/", m.index)
-	r.GET("/view/group_by/:field", m.group_by)
-	r.GET("/view/chart/:field", m.chart)
-	r.GET("/static/:filepath", m.static)
-	r.GET("/livez", m.livez)
-	r.GET("/readyz", m.readyz)
+// register the routes of the HTTP server.
+func (s *Server) register() {
+	s.Engine.GET("/", routes.APIIndex)
+	s.Engine.GET("/messages/daily-popular/:field", routes.APIMessagePopular)
 }

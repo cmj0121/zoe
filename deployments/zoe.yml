@@ -1,0 +1,5 @@
+service:
+  ssh:
+    server: ${ZOE_SERVER}
+    username: ${ZOE_USERNAME}
+    password: ${ZOE_PASSWORD}

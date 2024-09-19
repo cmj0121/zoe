@@ -1,26 +1,21 @@
-.PHONY: all clean test run stop build upgrade help
+.PHONY: all clean test run build upgrade run stop help
 
 all: 			# default action
 
 clean:			# clean-up environment
-	docker compose down -v
 
 test:			# run test
-
-run:			# run in the local environment
-	docker compose up -d
-
-stop:
-	docker compose down
 
 build:			# build the binary/library
 	docker compose build
 
 upgrade:		# upgrade all the necessary packages
-	( git stash || true ) && git pull --rebase && ( git stash pop || true )
-	docker compose build
-	docker compose stop
+
+run:			# run the service in local
 	docker compose up -d
+
+stop:			# stop the service in local
+	docker compose stop
 
 help:			# show this message
 	@printf "Usage: make [OPTION]\n"
