@@ -17,6 +17,7 @@ type HoneypotSSH struct {
 	Bind     string `short:"b" help:"The address to bind" default:":2022"`
 	Server   string `help:"The server version" default:"SSH-2.0-Open"`
 	MaxRetry int    `short:"r" help:"The maximum number of the retry" default:"3"`
+	Homedir  string `help:"The home directory of the shell" default:"~"`
 
 	Prompt   string   `help:"The prompt of the shell" default:"$ "`
 	Username *string  `short:"u" help:"The authorized username"`
