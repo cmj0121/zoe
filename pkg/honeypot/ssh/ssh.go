@@ -238,7 +238,7 @@ func (h *HoneypotSSH) handleShellReq(ctx context.Context, channel ssh.Channel, t
 
 		message := types.Message{
 			IP:      ctx.Value(TargetIP).(string),
-			Service:  ServiceName,
+			Service: ServiceName,
 			Command: &line,
 		}
 		if err := message.Insert(); err != nil {
