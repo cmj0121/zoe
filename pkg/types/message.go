@@ -3,7 +3,9 @@ package types
 import (
 	"context"
 	"database/sql"
+	"fmt"
 	"math"
+	"net"
 	"time"
 
 	"github.com/rs/zerolog/log"
@@ -32,6 +34,12 @@ func (m *Message) Insert() error {
 		m.CreatedAt = time.Now().UTC()
 	}
 
+	// truncate the IP:PORT to IP
+	switch host, _, err := net.SplitHostPort(m.IP); err {
+	case nil:
+		m.IP = host
+	}
+
 	stmt := `INSERT INTO message (client_ip, service, username, password, command, created_at) VALUES (?, ?, ?, ?, ?, ?)`
 	_, err := sess.Exec(stmt, m.IP, m.Service, m.Username, m.Password, m.Command, m.CreatedAt)
 
@@ -44,6 +52,12 @@ func MessageFromRow(rows *sql.Rows) (*Message, error) {
 	err := rows.Scan(&msg.ID, &msg.IP, &msg.Service, &msg.Username, &msg.Password, &msg.Command, &msg.CreatedAt)
 	if err != nil {
 		return nil, err
+	}
+
+	// truncate the IP:PORT to IP
+	switch host, _, err := net.SplitHostPort(msg.IP); err {
+	case nil:
+		msg.IP = host
 	}
 
 	return &msg, nil
@@ -61,7 +75,7 @@ func IterMessage(ctx context.Context) <-chan *Message {
 		defer close(ch)
 
 		stmt := `
-			SELECT id, ip, service, username, password, command, created_at
+			SELECT id, client_ip, service, username, password, command, created_at
 			FROM message
 			WHERE id < ?
 			ORDER BY id DESC
@@ -93,4 +107,36 @@ func IterMessage(ctx context.Context) <-chan *Message {
 	}()
 
 	return ch
+}
+
+// Get the daily messages based on the passed-in field.
+func DailyMessage(ctx context.Context, field string) []*Message {
+	sess := database.Session()
+	today := time.Now().Truncate(24 * time.Hour).Add(-24 * time.Hour).Format("2006-01-02")
+
+	stmt := fmt.Sprintf(`
+		SELECT id, client_ip, service, username, password, command, created_at
+		FROM message
+		WHERE
+			DATE(message.created_at) = ? AND message.%[1]v IS NOT NULL
+	`, field)
+
+	rows, err := sess.QueryContext(ctx, stmt, today)
+	if err != nil {
+		log.Warn().Err(err).Str("field", field).Msg("failed to query the popular messages")
+		return nil
+	}
+
+	var messages []*Message
+	for rows.Next() {
+		msg, err := MessageFromRow(rows)
+		if err != nil {
+			log.Warn().Err(err).Msg("failed to parse the popular message")
+			continue
+		}
+
+		messages = append(messages, msg)
+	}
+
+	return messages
 }
