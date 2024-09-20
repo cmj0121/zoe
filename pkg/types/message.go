@@ -5,6 +5,7 @@ import (
 	"database/sql"
 	"fmt"
 	"math"
+	"net"
 	"time"
 
 	"github.com/rs/zerolog/log"
@@ -33,6 +34,12 @@ func (m *Message) Insert() error {
 		m.CreatedAt = time.Now().UTC()
 	}
 
+	// truncate the IP:PORT to IP
+	switch host, _, err := net.SplitHostPort(m.IP); err {
+	case nil:
+		m.IP = host
+	}
+
 	stmt := `INSERT INTO message (client_ip, service, username, password, command, created_at) VALUES (?, ?, ?, ?, ?, ?)`
 	_, err := sess.Exec(stmt, m.IP, m.Service, m.Username, m.Password, m.Command, m.CreatedAt)
 
@@ -45,6 +52,12 @@ func MessageFromRow(rows *sql.Rows) (*Message, error) {
 	err := rows.Scan(&msg.ID, &msg.IP, &msg.Service, &msg.Username, &msg.Password, &msg.Command, &msg.CreatedAt)
 	if err != nil {
 		return nil, err
+	}
+
+	// truncate the IP:PORT to IP
+	switch host, _, err := net.SplitHostPort(msg.IP); err {
+	case nil:
+		msg.IP = host
 	}
 
 	return &msg, nil
