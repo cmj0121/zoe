@@ -23,7 +23,7 @@ const (
 	// The version of the Zoe.
 	MAJOR = 0
 	MINOR = 2
-	MICRO = 4
+	MICRO = 5
 )
 
 // The Zoe instance that holds the CLI and the logger.
