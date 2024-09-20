@@ -1,6 +1,6 @@
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.5.0
+    rev: v4.6.0
     hooks:
       - id: check-added-large-files
       - id: check-byte-order-marker
@@ -13,3 +13,10 @@ repos:
       - id: pretty-format-json
       - id: end-of-file-fixer
       - id: trailing-whitespace
+
+  # -------- golang related linter --------
+  - repo: https://github.com/dnephin/pre-commit-golang
+    rev: v0.5.1
+    hooks:
+      - id: go-fmt
+      - id: go-mod-tidy
