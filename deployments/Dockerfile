@@ -10,7 +10,10 @@ RUN apk add --no-cache gcc musl-dev
 COPY  go.mod go.sum ./
 RUN go mod download
 
-COPY . .
+COPY *.go ./
+COPY cmd cmd/
+COPY pkg pkg/
+COPY assets assets/
 RUN go build -ldflags "-s -w" -o bin/zoe cmd/zoe/main.go
 
 #################################
