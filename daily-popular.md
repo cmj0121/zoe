@@ -13,52 +13,48 @@ system. The table is sorted by the number of attempts.
 
 | Client IP | Count    |
 |-----------|----------|
-| 147.182.164.92 | 43307 |
-| 47.115.231.124 | 20179 |
-| 163.172.120.204 | 4930 |
-| 149.129.249.160 | 4331 |
-| 47.76.227.20 | 4220 |
-| 8.219.148.39 | 1859 |
-| 47.108.137.159 | 524 |
-| 8.216.85.26 | 200 |
-| 120.26.121.171 | 159 |
-| 182.92.202.15 | 159 |
+| 147.182.164.92 | 21784 |
+| 47.108.137.159 | 4399 |
+| 47.253.160.199 | 4303 |
+| 8.217.98.216 | 1326 |
+| 47.93.38.195 | 299 |
+| 8.216.83.6 | 296 |
+| 107.170.241.104 | 98 |
+| 112.133.206.55 | 98 |
+| 116.204.183.207 | 98 |
+| 146.190.76.99 | 98 |
 
 ### Top 10 malicious try to login as
 
 | Usernames | Count    |
 |-----------|----------|
-| root | 22510 |
-| log | 8283 |
-| ubuntu | 378 |
-| test | 262 |
-| user | 167 |
-| admin | 121 |
-| sysadmin | 89 |
-| support | 83 |
-| steam | 59 |
-| odoo | 46 |
+| root | 11523 |
+| ubuntu | 316 |
+| test | 203 |
+| user | 136 |
+| admin | 120 |
+| sysadmin | 91 |
+| support | 69 |
+| postgres | 59 |
+| steam | 44 |
+| odoo | 43 |
 
 ### Top 10 malicious try to authenticate with
 
 | Password | Count    |
 |-----------|----------|
-| password | 138 |
-| P@ssw0rd | 138 |
-| test | 85 |
-| 123456 | 84 |
-| 1qq2w3e4r5t | 80 |
-| admin | 64 |
-| root | 60 |
-| 1 | 52 |
-| 12345678 | 48 |
-| ubuntu123 | 45 |
+| P@ssw0rd | 114 |
+| password | 112 |
+| test | 72 |
+| 1qq2w3e4r5t | 65 |
+| 123456 | 62 |
+| admin | 56 |
+| root | 55 |
+| secret | 37 |
+| 1qaz@WSX3edc | 36 |
+| ubuntu123 | 35 |
 
 ### Top malicious commands try to execute
 
 | Client | Command |
 |--------|---------|
-| 182.92.202.15 | uname -s -m |
-| 182.92.237.4 | uname -s -m |
-| 120.26.121.171 | uname -s -m |
-| 147.182.164.92 | echo -e "\x6F\x6B" |
