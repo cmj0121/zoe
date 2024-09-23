@@ -13,46 +13,46 @@ system. The table is sorted by the number of attempts.
 
 | Client IP | Count    |
 |-----------|----------|
-| 147.182.164.92 | 21784 |
-| 47.108.137.159 | 4399 |
-| 47.253.160.199 | 4303 |
-| 8.217.98.216 | 1326 |
-| 47.93.38.195 | 299 |
-| 8.216.83.6 | 296 |
-| 107.170.241.104 | 98 |
-| 112.133.206.55 | 98 |
-| 116.204.183.207 | 98 |
-| 146.190.76.99 | 98 |
+| 47.74.213.140 | 4589 |
+| 81.0.248.203 | 795 |
+| 47.250.191.125 | 782 |
+| 47.104.150.169 | 611 |
+| 8.130.102.128 | 270 |
+| 47.93.38.195 | 225 |
+| 8.216.121.252 | 194 |
+| 103.165.231.131 | 98 |
+| 103.183.75.199 | 98 |
+| 141.94.115.212 | 98 |
 
 ### Top 10 malicious try to login as
 
 | Usernames | Count    |
 |-----------|----------|
-| root | 11523 |
-| ubuntu | 316 |
-| test | 203 |
-| user | 136 |
-| admin | 120 |
-| sysadmin | 91 |
-| support | 69 |
-| postgres | 59 |
-| steam | 44 |
-| odoo | 43 |
+| root | 600 |
+| ubuntu | 223 |
+| test | 142 |
+| user | 102 |
+| admin | 99 |
+| sysadmin | 55 |
+| support | 49 |
+| odoo | 30 |
+| steam | 30 |
+| testuser | 28 |
 
 ### Top 10 malicious try to authenticate with
 
 | Password | Count    |
 |-----------|----------|
-| P@ssw0rd | 114 |
-| password | 112 |
-| test | 72 |
-| 1qq2w3e4r5t | 65 |
-| 123456 | 62 |
-| admin | 56 |
-| root | 55 |
-| secret | 37 |
-| 1qaz@WSX3edc | 36 |
-| ubuntu123 | 35 |
+| P@ssw0rd | 88 |
+| 123456 | 82 |
+| password | 76 |
+| test | 51 |
+| 1qq2w3e4r5t | 48 |
+| admin | 39 |
+| 1 | 32 |
+| root | 30 |
+| 12345678 | 28 |
+| testuser | 27 |
 
 ### Top malicious commands try to execute
 
