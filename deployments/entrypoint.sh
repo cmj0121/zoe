@@ -5,4 +5,4 @@ set -e
 envsubst < /app/zoe.yml > zoe.yml
 mkdir -p .ssh/
 
-/usr/local/bin/zoe -vv -c zoe.yml ssh
+/usr/local/bin/zoe -v -c zoe.yml ssh
