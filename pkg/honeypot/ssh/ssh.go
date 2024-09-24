@@ -140,8 +140,6 @@ func (h *HoneypotSSH) handleSSHConn(ctx context.Context, conn net.Conn, cfg *ssh
 
 	sshConn, chans, reqs, err := ssh.NewServerConn(conn, cfg)
 	if err != nil {
-		log.Warn().Err(err).Msg("failed to handshake the SSH connection")
-
 		message := types.Message{
 			IP:      remote,
 			Service: ServiceName,
