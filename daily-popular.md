@@ -13,18 +13,50 @@ system. The table is sorted by the number of attempts.
 
 | Client IP | Count    |
 |-----------|----------|
+| 39.106.143.108 | 4655 |
+| 121.41.52.153 | 4559 |
+| 47.240.110.116 | 3472 |
+| 149.129.249.160 | 1485 |
+| 182.52.90.208 | 1236 |
+| 8.130.102.128 | 422 |
+| 47.89.242.141 | 172 |
+| 120.26.119.108 | 159 |
+| 47.95.0.178 | 110 |
+| 176.107.51.85 | 100 |
 
 ### Top 10 malicious try to login as
 
 | Usernames | Count    |
 |-----------|----------|
+| root | 447 |
+| ubuntu | 188 |
+| test | 119 |
+| admin | 84 |
+| user | 79 |
+| sysadmin | 44 |
+| support | 40 |
+| steam | 25 |
+| odoo | 23 |
+| username | 22 |
 
 ### Top 10 malicious try to authenticate with
 
 | Password | Count    |
 |-----------|----------|
+| P@ssw0rd | 74 |
+| password | 72 |
+| 123456 | 43 |
+| test | 40 |
+| 1qq2w3e4r5t | 36 |
+| admin | 33 |
+| root | 32 |
+| 1 | 22 |
+| ubuntu | 21 |
+| thomas | 21 |
 
 ### Top malicious commands try to execute
 
 | Client | Command |
 |--------|---------|
+| 47.251.103.74 | uname -s -m |
+| 120.26.119.108 | uname -s -m |
