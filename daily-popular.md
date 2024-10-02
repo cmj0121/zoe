@@ -13,51 +13,53 @@ system. The table is sorted by the number of attempts.
 
 | Client IP | Count    |
 |-----------|----------|
-| 47.100.240.164 | 11234 |
-| 8.216.82.111 | 4166 |
-| 47.253.163.160 | 2377 |
-| 47.243.49.178 | 653 |
-| 8.130.102.128 | 394 |
-| 8.216.95.92 | 210 |
-| 154.94.4.21 | 159 |
-| 182.52.90.208 | 151 |
-| 103.146.141.249 | 98 |
-| 103.161.133.159 | 98 |
+| 47.242.200.71 | 4454 |
+| 39.106.143.108 | 2976 |
+| 8.217.19.19 | 2071 |
+| 47.253.163.160 | 1747 |
+| 47.253.158.216 | 1583 |
+| 14.225.206.94 | 616 |
+| 47.251.104.144 | 340 |
+| 8.130.102.128 | 299 |
+| 120.27.219.138 | 170 |
+| 120.27.208.28 | 159 |
 
 ### Top 10 malicious try to login as
 
 | Usernames | Count    |
 |-----------|----------|
-| test | 723 |
-| root | 540 |
-| guest | 523 |
-| 1234 | 518 |
-| Admin | 514 |
-| vagrant | 503 |
-| apache | 502 |
-| cassandra | 502 |
-| lab | 502 |
-| sandbox | 501 |
+| root | 896 |
+| ubuntu | 182 |
+| test | 116 |
+| user | 76 |
+| sysadmin | 43 |
+| admin | 42 |
+| support | 35 |
+| odoo | 21 |
+| postgres | 21 |
+| testuser | 21 |
 
 ### Top 10 malicious try to authenticate with
 
 | Password | Count    |
 |-----------|----------|
-| password | 109 |
-| P@ssw0rd | 106 |
-| test | 75 |
-| 123456 | 74 |
-| root | 58 |
-| 1qq2w3e4r5t | 57 |
-| admin | 45 |
-| 12345678 | 42 |
-| secret | 41 |
-| 1qaz@WSX3edc | 40 |
+| password | 74 |
+| 123456 | 70 |
+| P@ssw0rd | 63 |
+| 1qq2w3e4r5t | 41 |
+| test | 39 |
+| 12345678 | 31 |
+| root | 30 |
+| admin | 29 |
+| 1 | 24 |
+| 1qaz@WSX3edc | 22 |
 
 ### Top malicious commands try to execute
 
 | Client | Command |
 |--------|---------|
-| 47.251.103.74 | uname -s -m |
-| 154.94.4.21 | uname -s -m |
-| 223.4.87.78 | uname -s -m |
+| 120.27.219.138 | uname -s -m |
+| 120.27.208.28 | uname -s -m |
+| 182.92.166.28 | uname -s -m |
+| 120.27.219.138 | uname -s -m |
+| 182.92.184.221 | uname -s -m |
