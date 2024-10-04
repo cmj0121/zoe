@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"math"
 	"net"
+	"strings"
 	"time"
 
 	"github.com/rs/zerolog/log"
@@ -58,6 +59,11 @@ func MessageFromRow(rows *sql.Rows) (*Message, error) {
 	switch host, _, err := net.SplitHostPort(msg.IP); err {
 	case nil:
 		msg.IP = host
+	}
+
+	if msg.Command != nil {
+		command := strings.TrimSpace(*msg.Command)
+		msg.Command = &command
 	}
 
 	return &msg, nil
