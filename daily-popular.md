@@ -13,54 +13,50 @@ system. The table is sorted by the number of attempts.
 
 | Client IP | Count    |
 |-----------|----------|
-| 123.56.126.166 | 51936 |
-| 47.243.28.138 | 4755 |
-| 47.76.207.192 | 4216 |
-| 47.94.153.187 | 3703 |
-| 8.141.56.237 | 3571 |
-| 47.253.163.202 | 2053 |
-| 87.120.112.86 | 1132 |
-| 8.218.203.129 | 807 |
-| 51.79.248.239 | 802 |
-| 106.15.237.72 | 380 |
+| 39.106.32.28 | 7208 |
+| 47.99.104.30 | 5586 |
+| 120.77.235.53 | 4621 |
+| 8.216.123.54 | 4171 |
+| 8.216.121.252 | 548 |
+| 47.253.161.200 | 256 |
+| 182.92.219.129 | 180 |
+| 8.130.102.128 | 178 |
+| 128.199.225.7 | 163 |
+| 120.26.246.115 | 159 |
 
 ### Top 10 malicious try to login as
 
 | Usernames | Count    |
 |-----------|----------|
-| root | 29054 |
-| celica | 502 |
-| jose | 500 |
-| linux | 500 |
-| admin | 105 |
-| dev | 89 |
-| ubuntu | 81 |
-| postgres | 80 |
-| steam | 72 |
-| jenkins | 69 |
+| root | 850 |
+| test01 | 503 |
+| remote | 502 |
+| matrix | 501 |
+| tony | 501 |
+| shutdown | 500 |
+| testuser | 96 |
+| admin | 94 |
+| steam | 88 |
+| ftpuser | 81 |
 
 ### Top 10 malicious try to authenticate with
 
 | Password | Count    |
 |-----------|----------|
-| 123456 | 214 |
-| 123 | 193 |
-| password | 48 |
-| 111111 | 40 |
-| qwerty | 38 |
-| test@123 | 37 |
-| 1234567890 | 37 |
-| 123456789 | 34 |
-| 12345 | 33 |
-| Admin@123 | 32 |
+| 123 | 152 |
+| 123456 | 131 |
+| test@123 | 55 |
+| adminpassword | 53 |
+| ubuntupassword | 49 |
+| ftpuserpassword | 48 |
+| testuserpassword | 47 |
+| postgrespassword | 47 |
+| userpassword | 46 |
+| steampassword | 46 |
 
 ### Top malicious commands try to execute
 
 | Client | Command |
 |--------|---------|
-| 87.120.112.86 | uname -a |
-| 45.151.123.174 | uname -s -m |
-| 87.120.112.86 | uname -a |
-| 123.56.126.166 | echo -e "\x6F\x6B" |
-| 120.27.133.147 | uname -s -m |
-| 182.92.202.15 | uname -s -m |
+| 182.92.219.129 | uname -s -m |
+| 120.26.246.115 | uname -s -m |
