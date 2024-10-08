@@ -13,50 +13,51 @@ system. The table is sorted by the number of attempts.
 
 | Client IP | Count    |
 |-----------|----------|
-| 39.106.32.28 | 7208 |
-| 47.99.104.30 | 5586 |
-| 120.77.235.53 | 4621 |
-| 8.216.123.54 | 4171 |
-| 8.216.121.252 | 548 |
-| 47.253.161.200 | 256 |
-| 182.92.219.129 | 180 |
-| 8.130.102.128 | 178 |
-| 128.199.225.7 | 163 |
-| 120.26.246.115 | 159 |
+| 114.215.46.56 | 4379 |
+| 149.129.234.231 | 4274 |
+| 112.124.71.133 | 4007 |
+| 47.253.161.200 | 3462 |
+| 39.106.32.28 | 2001 |
+| 47.74.213.140 | 1150 |
+| 8.130.102.128 | 325 |
+| 121.250.190.43 | 159 |
+| 42.203.111.50 | 159 |
+| 107.173.179.195 | 88 |
 
 ### Top 10 malicious try to login as
 
 | Usernames | Count    |
 |-----------|----------|
-| root | 850 |
-| test01 | 503 |
-| remote | 502 |
-| matrix | 501 |
-| tony | 501 |
-| shutdown | 500 |
-| testuser | 96 |
-| admin | 94 |
-| steam | 88 |
-| ftpuser | 81 |
+| root | 889 |
+| testuser | 72 |
+| ubuntu | 61 |
+| postgres | 59 |
+| ftpuser | 55 |
+| admin | 52 |
+| user | 50 |
+| dev | 44 |
+| steam | 42 |
+| deploy | 41 |
 
 ### Top 10 malicious try to authenticate with
 
 | Password | Count    |
 |-----------|----------|
-| 123 | 152 |
-| 123456 | 131 |
-| test@123 | 55 |
-| adminpassword | 53 |
-| ubuntupassword | 49 |
-| ftpuserpassword | 48 |
-| testuserpassword | 47 |
-| postgrespassword | 47 |
-| userpassword | 46 |
-| steampassword | 46 |
+| 123456 | 245 |
+| 123 | 150 |
+| password | 51 |
+| deploypassword | 37 |
+| adminpassword | 37 |
+| ubuntupassword | 36 |
+| testuserpassword | 36 |
+| oraclepassword | 36 |
+| odoopassword | 36 |
+| ftpuserpassword | 36 |
 
 ### Top malicious commands try to execute
 
 | Client | Command |
 |--------|---------|
-| 182.92.219.129 | uname -s -m |
-| 120.26.246.115 | uname -s -m |
+| 1.94.236.100 | uname -s -m |
+| 42.203.111.50 | uname -s -m |
+| 121.250.190.43 | uname -s -m |
