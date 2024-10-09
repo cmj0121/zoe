@@ -13,51 +13,51 @@ system. The table is sorted by the number of attempts.
 
 | Client IP | Count    |
 |-----------|----------|
-| 114.215.46.56 | 4379 |
-| 149.129.234.231 | 4274 |
-| 112.124.71.133 | 4007 |
-| 47.253.161.200 | 3462 |
-| 39.106.32.28 | 2001 |
-| 47.74.213.140 | 1150 |
-| 8.130.102.128 | 325 |
-| 121.250.190.43 | 159 |
-| 42.203.111.50 | 159 |
-| 107.173.179.195 | 88 |
+| 159.223.75.125 | 28791 |
+| 112.74.38.153 | 11003 |
+| 47.242.200.71 | 4893 |
+| 47.103.111.151 | 4510 |
+| 112.74.78.128 | 1956 |
+| 112.124.71.133 | 655 |
+| 120.78.6.26 | 655 |
+| 8.142.114.147 | 651 |
+| 47.239.50.169 | 644 |
+| 118.31.22.32 | 637 |
 
 ### Top 10 malicious try to login as
 
 | Usernames | Count    |
 |-----------|----------|
-| root | 889 |
-| testuser | 72 |
-| ubuntu | 61 |
-| postgres | 59 |
-| ftpuser | 55 |
-| admin | 52 |
-| user | 50 |
-| dev | 44 |
-| steam | 42 |
-| deploy | 41 |
+| root | 15535 |
+| support | 510 |
+| aaron | 507 |
+| test1 | 507 |
+| daedalus | 504 |
+| jenny | 504 |
+| concorde | 503 |
+| customer | 503 |
+| cupcake | 502 |
+| ant | 501 |
 
 ### Top 10 malicious try to authenticate with
 
 | Password | Count    |
 |-----------|----------|
-| 123456 | 245 |
-| 123 | 150 |
-| password | 51 |
-| deploypassword | 37 |
-| adminpassword | 37 |
-| ubuntupassword | 36 |
-| testuserpassword | 36 |
-| oraclepassword | 36 |
-| odoopassword | 36 |
-| ftpuserpassword | 36 |
+| 123456 | 224 |
+| 123 | 29 |
+| 1234 | 26 |
+| password | 22 |
+| 12345 | 22 |
+| 1 | 22 |
+| 12345678 | 21 |
+| root | 17 |
+| qwe123 | 17 |
+| root123 | 16 |
 
 ### Top malicious commands try to execute
 
 | Client | Command |
 |--------|---------|
-| 1.94.236.100 | uname -s -m |
-| 42.203.111.50 | uname -s -m |
-| 121.250.190.43 | uname -s -m |
+| 182.92.237.4 | uname -s -m |
+| 220.181.77.165 | uname -s -m |
+| 182.92.177.104 | uname -s -m |
