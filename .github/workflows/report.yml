@@ -22,7 +22,7 @@ jobs:
       - name: Get the latest Daily Update
         run: |
           curl -sL "${{ secrets.ZOE_SERVER }}/messages/daily-popular" > docs/daily-popular.md
-          git add daily-popular.md
+          git add docs/daily-popular.md
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "[skip ci][AUTO] Update the Daily Update"
