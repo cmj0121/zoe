@@ -13,70 +13,53 @@ system. The table is sorted by the number of attempts.
 
 | Client IP | Count    |
 |-----------|----------|
-| 182.92.87.8 | 4917 |
-| 123.57.149.249 | 4774 |
-| 8.219.182.113 | 4359 |
-| 118.31.78.74 | 1869 |
-| 118.31.22.32 | 1037 |
-| 8.130.100.234 | 837 |
-| 47.236.104.193 | 357 |
-| 159.203.16.193 | 335 |
-| 8.130.102.128 | 262 |
-| 114.55.237.250 | 160 |
+| 47.111.166.12 | 4669 |
+| 47.236.104.193 | 4222 |
+| 120.77.224.247 | 3825 |
+| 8.219.6.77 | 864 |
+| 118.31.22.32 | 738 |
+| 202.39.239.109 | 210 |
+| 120.27.146.140 | 159 |
+| 185.147.125.238 | 147 |
+| 8.130.102.128 | 90 |
+| 8.221.136.235 | 66 |
 
 ### Top 10 malicious try to login as
 
 | Usernames | Count    |
 |-----------|----------|
-| root | 349 |
-| admin | 40 |
-| user | 17 |
-| postgres | 12 |
-| mms | 9 |
-| rxiao | 9 |
-| safour | 9 |
-| venez | 9 |
-| c1buser | 8 |
-| cido | 8 |
+| root | 483 |
+| admin | 25 |
+| chenzilong | 20 |
+| sammy | 20 |
+| alifamous | 14 |
+| bermu | 14 |
+| giri | 14 |
+| haniet | 14 |
+| nksystem | 14 |
+| tiptop01 | 14 |
 
 ### Top 10 malicious try to authenticate with
 
 | Password | Count    |
 |-----------|----------|
-| 123456 | 497 |
-| admin | 15 |
-| 123 | 14 |
-| root | 13 |
-| password | 13 |
-| 1234 | 12 |
-| mms | 9 |
-| varshas | 8 |
-| twbo | 8 |
-| negar | 8 |
+| 123456 | 456 |
+| 1 | 25 |
+| chenzilong | 20 |
+| 123 | 20 |
+| haniet | 14 |
+| giri | 14 |
+| zpg | 13 |
+| tangseng | 13 |
+| santamaria | 13 |
+| jabiam | 13 |
 
 ### Top malicious commands try to execute
 
 | Client | Command |
 |--------|---------|
-| 114.55.237.250 | mkdir /lib/tfsyvgtqcgfd |
-| 114.55.237.250 | scp -t -r /lib/tfsyvgtqcgfd/ |
-| 114.55.237.250 | mkdir .lgyjfauskfrm |
-| 114.55.237.250 | scp -t -r .lgyjfauskfrm/ |
-| 114.55.237.250 | mkdir /dev/yasqdcablmgp |
-| 114.55.237.250 | scp -t -r /dev/yasqdcablmgp/ |
-| 114.55.237.250 | mkdir /dev/shm/vtjaamlhel |
-| 114.55.237.250 | scp -t -r /dev/shm/vtjaamlhel/ |
-| 114.55.237.250 | mkdir /var/volatile/axilgkksjbrw |
-| 114.55.237.250 | scp -t -r /var/volatile/axilgkksjbrw/ |
-| 114.55.237.250 | mkdir /tmp/rrotuhbmog |
-| 114.55.237.250 | scp -t -r /tmp/rrotuhbmog/ |
-| 114.55.237.250 | mkdir /sys/qmyngekcllnp |
-| 114.55.237.250 | scp -t -r /sys/qmyngekcllnp/ |
-| 114.55.237.250 | mkdir /var/lib/oxjwvpcfncg |
-| 114.55.237.250 | scp -t -r /var/lib/oxjwvpcfncg/ |
-| 114.55.237.250 | mkdir /root/mekpnjtxdl |
-| 114.55.237.250 | scp -t -r /root/mekpnjtxdl/ |
-| 114.55.237.250 | mkdir /etc/uepiacxxcuo |
-| 114.55.237.250 | scp -t -r /etc/uepiacxxcuo/ |
-| 114.55.237.250 | mkdir /var/log/efqapkpjpxp |
-| 114.55.237.250 | scp -t -r /var/log/efqapkpjpxp/ |
+| 120.27.219.138 | uname -s -m |
+| 60.165.238.30 | uname -s -m |
+| 47.251.162.23 | uname -s -m |
+| 120.27.146.140 | uname -s -m |
+| 47.251.99.255 | uname -s -m |
