@@ -13,53 +13,54 @@ system. The table is sorted by the number of attempts.
 
 | Client IP | Count    |
 |-----------|----------|
-| 47.111.166.12 | 4669 |
-| 47.236.104.193 | 4222 |
-| 120.77.224.247 | 3825 |
-| 8.219.6.77 | 864 |
-| 118.31.22.32 | 738 |
-| 202.39.239.109 | 210 |
-| 120.27.146.140 | 159 |
-| 185.147.125.238 | 147 |
-| 8.130.102.128 | 90 |
-| 8.221.136.235 | 66 |
+| 47.92.132.66 | 4721 |
+| 8.210.45.247 | 4684 |
+| 138.197.167.143 | 4500 |
+| 8.219.10.103 | 4420 |
+| 121.40.81.63 | 4410 |
+| 47.242.112.197 | 4192 |
+| 8.219.6.77 | 3683 |
+| 103.173.227.187 | 1592 |
+| 120.77.224.247 | 1232 |
+| 118.31.22.32 | 1032 |
 
 ### Top 10 malicious try to login as
 
 | Usernames | Count    |
 |-----------|----------|
-| root | 483 |
-| admin | 25 |
-| chenzilong | 20 |
-| sammy | 20 |
-| alifamous | 14 |
-| bermu | 14 |
-| giri | 14 |
-| haniet | 14 |
-| nksystem | 14 |
-| tiptop01 | 14 |
+| root | 1211 |
+| hadoop | 519 |
+| service | 509 |
+| deploy | 507 |
+| csgoserver | 501 |
+| validator | 108 |
+| ubuntu | 104 |
+| user | 90 |
+| ansible_user | 84 |
+| node | 72 |
 
 ### Top 10 malicious try to authenticate with
 
 | Password | Count    |
 |-----------|----------|
-| 123456 | 456 |
-| 1 | 25 |
-| chenzilong | 20 |
-| 123 | 20 |
-| haniet | 14 |
-| giri | 14 |
-| zpg | 13 |
-| tangseng | 13 |
-| santamaria | 13 |
-| jabiam | 13 |
+| 123456 | 436 |
+| validator | 96 |
+| node | 72 |
+| defi | 60 |
+| 12345678 | 49 |
+| root | 46 |
+| Aa123456 | 46 |
+| 111111 | 44 |
+| 1234 | 37 |
+| 123 | 37 |
 
 ### Top malicious commands try to execute
 
 | Client | Command |
 |--------|---------|
-| 120.27.219.138 | uname -s -m |
-| 60.165.238.30 | uname -s -m |
-| 47.251.162.23 | uname -s -m |
-| 120.27.146.140 | uname -s -m |
-| 47.251.99.255 | uname -s -m |
+| 120.27.142.148 | uname -s -m |
+| 58.222.76.171 | uname -s -m |
+| 36.212.239.140 | uname -s -m |
+| 182.92.220.165 | uname -s -m |
+| 119.188.125.137 | uname -s -m |
+| 182.92.219.129 | uname -s -m |
