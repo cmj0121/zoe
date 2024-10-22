@@ -13,52 +13,71 @@ system. The table is sorted by the number of attempts.
 
 | Client IP | Count    |
 |-----------|----------|
-| 47.251.85.16 | 24014 |
-| 39.101.68.101 | 17012 |
-| 47.105.207.193 | 4778 |
-| 39.107.249.135 | 4680 |
-| 47.254.14.171 | 1145 |
-| 8.216.121.252 | 530 |
-| 47.109.65.194 | 221 |
-| 182.92.166.28 | 159 |
-| 47.84.86.67 | 94 |
-| 120.26.0.237 | 93 |
+| 120.79.150.179 | 4556 |
+| 8.218.186.25 | 4386 |
+| 8.219.220.53 | 4273 |
+| 51.89.167.240 | 3031 |
+| 47.97.86.152 | 1921 |
+| 39.106.21.123 | 1180 |
+| 115.28.198.131 | 872 |
+| 143.198.141.71 | 315 |
+| 147.139.144.147 | 136 |
+| 51.250.109.228 | 114 |
 
 ### Top 10 malicious try to login as
 
 | Usernames | Count    |
 |-----------|----------|
-| root | 21497 |
-| ollama | 88 |
-| sammy | 52 |
-| chenzilong | 49 |
-| admin | 29 |
-| ubuntu | 27 |
-| user | 24 |
-| test | 16 |
-| administrator | 13 |
-| bitrix | 13 |
+| root | 1471 |
+| ubuntu | 520 |
+| sammy | 47 |
+| chenzilong | 42 |
+| admin | 38 |
+| test | 32 |
+| postgres | 28 |
+| oracle | 25 |
+| user | 19 |
+| guest | 11 |
 
 ### Top 10 malicious try to authenticate with
 
 | Password | Count    |
 |-----------|----------|
-| 123456 | 708 |
-| 1 | 73 |
-| chenzilong | 49 |
-| 123 | 49 |
-| password | 36 |
-| 12345678 | 30 |
+| 123456 | 330 |
+| 1 | 62 |
+| 123 | 59 |
+| 111111 | 50 |
+| chenzilong | 42 |
 | 1234 | 27 |
-| root | 19 |
-| 12345 | 19 |
-| 123456789 | 18 |
+| password | 21 |
+| 12345 | 18 |
+| root | 16 |
+| 1qaz2wsx | 15 |
 
 ### Top malicious commands try to execute
 
 | Client | Command |
 |--------|---------|
-| 182.92.219.129 | uname -s -m |
-| 47.251.99.255 | uname -s -m |
-| 182.92.166.28 | uname -s -m |
-| 203.33.206.39 | uname -s -m |
+| 182.92.222.235 | uname -s -m |
+| 39.106.21.123 | mkdir /lib/niciqfqmdpmb |
+| 39.106.21.123 | scp -t -r /lib/niciqfqmdpmb/ |
+| 39.106.21.123 | mkdir .ujloxvawcnh |
+| 39.106.21.123 | scp -t -r .ujloxvawcnh/ |
+| 39.106.21.123 | mkdir /dev/ciqpoqfwuqqa |
+| 39.106.21.123 | scp -t -r /dev/ciqpoqfwuqqa/ |
+| 39.106.21.123 | mkdir /dev/shm/dewrhcmqne |
+| 39.106.21.123 | scp -t -r /dev/shm/dewrhcmqne/ |
+| 39.106.21.123 | mkdir /var/volatile/jenntxjygcqu |
+| 39.106.21.123 | scp -t -r /var/volatile/jenntxjygcqu/ |
+| 39.106.21.123 | mkdir /tmp/wtrpmswryv |
+| 39.106.21.123 | scp -t -r /tmp/wtrpmswryv/ |
+| 39.106.21.123 | mkdir /sys/ixybmfsxlg |
+| 39.106.21.123 | scp -t -r /sys/ixybmfsxlg/ |
+| 39.106.21.123 | mkdir /var/lib/fexemdvhaues |
+| 39.106.21.123 | scp -t -r /var/lib/fexemdvhaues/ |
+| 39.106.21.123 | mkdir /root/qnjjofuwdtx |
+| 39.106.21.123 | scp -t -r /root/qnjjofuwdtx/ |
+| 39.106.21.123 | mkdir /etc/yqskahsehy |
+| 39.106.21.123 | scp -t -r /etc/yqskahsehy/ |
+| 39.106.21.123 | mkdir /var/log/mubnrhgeyvn |
+| 39.106.21.123 | scp -t -r /var/log/mubnrhgeyvn/ |
