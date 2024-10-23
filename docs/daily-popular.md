@@ -13,71 +13,50 @@ system. The table is sorted by the number of attempts.
 
 | Client IP | Count    |
 |-----------|----------|
-| 120.79.150.179 | 4556 |
-| 8.218.186.25 | 4386 |
-| 8.219.220.53 | 4273 |
-| 51.89.167.240 | 3031 |
-| 47.97.86.152 | 1921 |
-| 39.106.21.123 | 1180 |
-| 115.28.198.131 | 872 |
-| 143.198.141.71 | 315 |
-| 147.139.144.147 | 136 |
-| 51.250.109.228 | 114 |
+| 39.105.113.134 | 6008 |
+| 39.106.143.108 | 4805 |
+| 8.134.160.152 | 4683 |
+| 39.108.232.198 | 3752 |
+| 159.203.114.147 | 3594 |
+| 39.100.212.234 | 3542 |
+| 51.250.109.228 | 2276 |
+| 39.106.141.162 | 1723 |
+| 116.62.206.190 | 600 |
+| 115.28.198.131 | 448 |
 
 ### Top 10 malicious try to login as
 
 | Usernames | Count    |
 |-----------|----------|
-| root | 1471 |
-| ubuntu | 520 |
-| sammy | 47 |
-| chenzilong | 42 |
-| admin | 38 |
-| test | 32 |
-| postgres | 28 |
-| oracle | 25 |
-| user | 19 |
-| guest | 11 |
+| root | 151 |
+| ubuntu | 10 |
+| user | 10 |
+| validator | 9 |
+| ansible_user | 7 |
+| node | 6 |
+| polkadot | 5 |
+| sshd | 5 |
+| admin | 4 |
+| ansible | 4 |
 
 ### Top 10 malicious try to authenticate with
 
 | Password | Count    |
 |-----------|----------|
-| 123456 | 330 |
-| 1 | 62 |
-| 123 | 59 |
-| 111111 | 50 |
-| chenzilong | 42 |
-| 1234 | 27 |
-| password | 21 |
-| 12345 | 18 |
-| root | 16 |
-| 1qaz2wsx | 15 |
+| 123456 | 389 |
+| 123 | 380 |
+| validator | 8 |
+| 111111 | 8 |
+| P@ssw0rd | 7 |
+| Aa123456 | 7 |
+| root | 6 |
+| node | 6 |
+| defi | 5 |
+| snarkOS | 3 |
 
 ### Top malicious commands try to execute
 
 | Client | Command |
 |--------|---------|
-| 182.92.222.235 | uname -s -m |
-| 39.106.21.123 | mkdir /lib/niciqfqmdpmb |
-| 39.106.21.123 | scp -t -r /lib/niciqfqmdpmb/ |
-| 39.106.21.123 | mkdir .ujloxvawcnh |
-| 39.106.21.123 | scp -t -r .ujloxvawcnh/ |
-| 39.106.21.123 | mkdir /dev/ciqpoqfwuqqa |
-| 39.106.21.123 | scp -t -r /dev/ciqpoqfwuqqa/ |
-| 39.106.21.123 | mkdir /dev/shm/dewrhcmqne |
-| 39.106.21.123 | scp -t -r /dev/shm/dewrhcmqne/ |
-| 39.106.21.123 | mkdir /var/volatile/jenntxjygcqu |
-| 39.106.21.123 | scp -t -r /var/volatile/jenntxjygcqu/ |
-| 39.106.21.123 | mkdir /tmp/wtrpmswryv |
-| 39.106.21.123 | scp -t -r /tmp/wtrpmswryv/ |
-| 39.106.21.123 | mkdir /sys/ixybmfsxlg |
-| 39.106.21.123 | scp -t -r /sys/ixybmfsxlg/ |
-| 39.106.21.123 | mkdir /var/lib/fexemdvhaues |
-| 39.106.21.123 | scp -t -r /var/lib/fexemdvhaues/ |
-| 39.106.21.123 | mkdir /root/qnjjofuwdtx |
-| 39.106.21.123 | scp -t -r /root/qnjjofuwdtx/ |
-| 39.106.21.123 | mkdir /etc/yqskahsehy |
-| 39.106.21.123 | scp -t -r /etc/yqskahsehy/ |
-| 39.106.21.123 | mkdir /var/log/mubnrhgeyvn |
-| 39.106.21.123 | scp -t -r /var/log/mubnrhgeyvn/ |
+| 42.51.12.195 | uname -s -m |
+| 47.251.102.172 | uname -s -m |
