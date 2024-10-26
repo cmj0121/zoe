@@ -13,50 +13,48 @@ system. The table is sorted by the number of attempts.
 
 | Client IP | Count    |
 |-----------|----------|
-| 161.35.206.58 | 34478 |
-| 112.74.38.153 | 6844 |
-| 8.219.10.103 | 3505 |
-| 8.218.166.108 | 3480 |
-| 8.218.114.221 | 3421 |
-| 8.217.180.105 | 1141 |
-| 8.138.147.140 | 432 |
-| 8.217.110.184 | 293 |
-| 8.210.72.158 | 185 |
-| 8.130.102.128 | 161 |
+| 103.215.83.221 | 48633 |
+| 8.142.215.78 | 4814 |
+| 8.218.166.108 | 4392 |
+| 8.218.114.221 | 1351 |
+| 8.219.10.103 | 1205 |
+| 8.138.147.140 | 199 |
+| 154.213.192.15 | 69 |
+| 47.251.110.228 | 38 |
+| 139.199.80.137 | 24 |
+| 8.130.102.128 | 23 |
 
 ### Top 10 malicious try to login as
 
 | Usernames | Count    |
 |-----------|----------|
-| root | 4042 |
-| ftpuser | 523 |
-| php | 517 |
-| sam | 507 |
-| USERID | 506 |
-| angie | 503 |
-| damogran | 501 |
-| test | 76 |
-| oracle | 66 |
-| ubuntu | 55 |
+| root | 24372 |
+| !@#$%^ | 5 |
+| admin | 1 |
+| alias | 1 |
+| ansible | 1 |
+| bjf | 1 |
+| bpadmin | 1 |
+| eurek | 1 |
+| fhf | 1 |
+| pi | 1 |
 
 ### Top 10 malicious try to authenticate with
 
 | Password | Count    |
 |-----------|----------|
-| 123456 | 2964 |
-| 123 | 2369 |
-| password | 129 |
-| 1 | 49 |
-| 1234 | 36 |
-| toma0215 | 30 |
-| loloro3133 | 30 |
-| haceruvps | 30 |
-| V*i+S{a&0AM3 | 30 |
-| 12345 | 29 |
+| P@ssw0rd | 6 |
+| 123456 | 6 |
+| root | 4 |
+| 123 | 3 |
+| student1 | 2 |
+| raspberry | 2 |
+| password | 2 |
+| maintenance | 2 |
+| changeme | 2 |
+| 1qaz@WSX3edc | 2 |
 
 ### Top malicious commands try to execute
 
 | Client | Command |
 |--------|---------|
-| 163.172.41.120 | uname -s -m |
-| 161.35.206.58 | uname -a ; lsb_release -a ; nproc |
