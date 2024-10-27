@@ -13,48 +13,51 @@ system. The table is sorted by the number of attempts.
 
 | Client IP | Count    |
 |-----------|----------|
-| 103.215.83.221 | 48633 |
-| 8.142.215.78 | 4814 |
-| 8.218.166.108 | 4392 |
-| 8.218.114.221 | 1351 |
-| 8.219.10.103 | 1205 |
-| 8.138.147.140 | 199 |
-| 154.213.192.15 | 69 |
-| 47.251.110.228 | 38 |
-| 139.199.80.137 | 24 |
-| 8.130.102.128 | 23 |
+| 47.93.101.113 | 4562 |
+| 8.219.220.53 | 4352 |
+| 8.210.49.224 | 4235 |
+| 159.223.234.224 | 2849 |
+| 149.129.95.70 | 2406 |
+| 104.248.87.127 | 631 |
+| 161.35.173.168 | 617 |
+| 138.68.131.163 | 605 |
+| 148.135.33.34 | 502 |
+| 8.210.72.158 | 423 |
 
 ### Top 10 malicious try to login as
 
 | Usernames | Count    |
 |-----------|----------|
-| root | 24372 |
-| !@#$%^ | 5 |
-| admin | 1 |
-| alias | 1 |
-| ansible | 1 |
-| bjf | 1 |
-| bpadmin | 1 |
-| eurek | 1 |
-| fhf | 1 |
-| pi | 1 |
+| root | 631 |
+| postgres | 74 |
+| admin | 67 |
+| 123321 | 56 |
+| ubuntu | 54 |
+| validator | 52 |
+| lotus | 44 |
+| user | 42 |
+| ethereum | 36 |
+| Ethereum | 33 |
 
 ### Top 10 malicious try to authenticate with
 
 | Password | Count    |
 |-----------|----------|
-| P@ssw0rd | 6 |
-| 123456 | 6 |
-| root | 4 |
-| 123 | 3 |
-| student1 | 2 |
-| raspberry | 2 |
-| password | 2 |
-| maintenance | 2 |
-| changeme | 2 |
-| 1qaz@WSX3edc | 2 |
+| 123456 | 176 |
+| validator | 71 |
+| dappnode | 40 |
+| 123 | 40 |
+| 12345678 | 38 |
+| node | 37 |
+| root | 34 |
+| Aa123456 | 34 |
+| crypto | 33 |
+| bot123 | 33 |
 
 ### Top malicious commands try to execute
 
 | Client | Command |
 |--------|---------|
+| 59.80.30.252 | uname -s -m |
+| 120.27.158.177 | uname -s -m |
+| 203.12.201.27 | uname -s -m |
