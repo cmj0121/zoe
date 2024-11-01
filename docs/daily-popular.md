@@ -13,53 +13,51 @@ system. The table is sorted by the number of attempts.
 
 | Client IP | Count    |
 |-----------|----------|
-| 47.236.8.230 | 22311 |
-| 123.56.13.185 | 6816 |
-| 39.104.166.212 | 6658 |
-| 8.140.108.10 | 6611 |
-| 47.114.105.196 | 4493 |
-| 8.210.51.175 | 4460 |
-| 8.209.253.5 | 4398 |
-| 149.129.249.160 | 2827 |
-| 159.203.11.24 | 2293 |
-| 157.230.177.83 | 813 |
+| 39.103.214.192 | 12878 |
+| 159.203.11.24 | 7229 |
+| 47.245.98.191 | 6690 |
+| 120.25.149.220 | 4717 |
+| 149.129.122.57 | 4402 |
+| 39.104.166.212 | 2390 |
+| 8.216.95.92 | 296 |
+| 8.138.147.140 | 203 |
+| 120.202.149.185 | 159 |
+| 8.130.102.128 | 126 |
 
 ### Top 10 malicious try to login as
 
 | Usernames | Count    |
 |-----------|----------|
-| root | 12062 |
-| support | 522 |
-| ftpuser | 506 |
-| PlcmSpIp | 505 |
-| newuser | 505 |
-| usuario | 505 |
-| master | 503 |
-| omar | 503 |
-| beavis1 | 501 |
-| concorde | 501 |
+| root | 4991 |
+| ubuntu | 811 |
+| admin | 808 |
+| anaconda | 509 |
+| prueba | 509 |
+| back_newshops | 508 |
+| beaches | 504 |
+| cirros | 504 |
+| web | 504 |
+| cyber | 503 |
 
 ### Top 10 malicious try to authenticate with
 
 | Password | Count    |
 |-----------|----------|
-| P@ssw0rd | 28 |
-| 123456 | 27 |
-| 1234 | 22 |
-| 1111 | 18 |
-| password | 17 |
-| abc123 | 17 |
-| 12345678 | 17 |
-| 12345 | 17 |
-| rootroot | 16 |
-| root123 | 16 |
+| Ripple!2024Pass | 42 |
+| Polkadot2024@ | 42 |
+| Ledger@2024Pass | 42 |
+| Chainlink2024$ | 42 |
+| CZ@2024Binance | 42 |
+| 123456 | 38 |
+| Vitalik@123 | 28 |
+| Vitalik2024@Pass | 28 |
+| Vitalik1234$ | 28 |
+| Uniswap@1234 | 28 |
 
 ### Top malicious commands try to execute
 
 | Client | Command |
 |--------|---------|
-| 183.61.19.105 | uname -s -m |
-| 31.220.95.113 | uname -s -m |
-| 182.92.151.31 | uname -s -m |
-| 182.92.177.196 | uname -s -m |
-| 101.126.20.192 | uname -s -m |
+| 89.213.174.34 | uname -s -m |
+| 120.202.149.185 | uname -s -m |
+| 182.92.153.129 | uname -s -m |
