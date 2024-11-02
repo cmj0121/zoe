@@ -13,51 +13,49 @@ system. The table is sorted by the number of attempts.
 
 | Client IP | Count    |
 |-----------|----------|
-| 39.103.214.192 | 12878 |
-| 159.203.11.24 | 7229 |
-| 47.245.98.191 | 6690 |
-| 120.25.149.220 | 4717 |
-| 149.129.122.57 | 4402 |
-| 39.104.166.212 | 2390 |
-| 8.216.95.92 | 296 |
-| 8.138.147.140 | 203 |
-| 120.202.149.185 | 159 |
-| 8.130.102.128 | 126 |
+| 159.203.11.24 | 7338 |
+| 39.103.214.192 | 7007 |
+| 60.205.179.11 | 4903 |
+| 119.23.110.193 | 4104 |
+| 47.245.98.191 | 3220 |
+| 195.178.110.9 | 863 |
+| 182.92.194.8 | 159 |
+| 47.251.110.228 | 83 |
+| 8.130.102.128 | 43 |
+| 139.199.80.137 | 40 |
 
 ### Top 10 malicious try to login as
 
 | Usernames | Count    |
 |-----------|----------|
-| root | 4991 |
-| ubuntu | 811 |
-| admin | 808 |
-| anaconda | 509 |
-| prueba | 509 |
-| back_newshops | 508 |
-| beaches | 504 |
-| cirros | 504 |
-| web | 504 |
-| cyber | 503 |
+| root | 3235 |
+| ubuntu | 1143 |
+| admin | 782 |
+| composer | 505 |
+| cynthia | 504 |
+| c-comatic | 503 |
+| vscode | 503 |
+| sysadm | 502 |
+| vpn | 502 |
+| spider | 154 |
 
 ### Top 10 malicious try to authenticate with
 
 | Password | Count    |
 |-----------|----------|
-| Ripple!2024Pass | 42 |
-| Polkadot2024@ | 42 |
-| Ledger@2024Pass | 42 |
-| Chainlink2024$ | 42 |
-| CZ@2024Binance | 42 |
-| 123456 | 38 |
+| 123456 | 486 |
+| Ripple!2024Pass | 41 |
+| Polkadot2024@ | 41 |
+| Ledger@2024Pass | 41 |
+| Chainlink2024$ | 41 |
+| CZ@2024Binance | 41 |
 | Vitalik@123 | 28 |
 | Vitalik2024@Pass | 28 |
-| Vitalik1234$ | 28 |
-| Uniswap@1234 | 28 |
+| Uniswap1234! | 28 |
+| Uniswap!2024 | 28 |
 
 ### Top malicious commands try to execute
 
 | Client | Command |
 |--------|---------|
-| 89.213.174.34 | uname -s -m |
-| 120.202.149.185 | uname -s -m |
-| 182.92.153.129 | uname -s -m |
+| 182.92.194.8 | uname -s -m |
