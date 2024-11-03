@@ -13,49 +13,49 @@ system. The table is sorted by the number of attempts.
 
 | Client IP | Count    |
 |-----------|----------|
-| 159.203.11.24 | 7338 |
-| 39.103.214.192 | 7007 |
-| 60.205.179.11 | 4903 |
-| 119.23.110.193 | 4104 |
-| 47.245.98.191 | 3220 |
-| 195.178.110.9 | 863 |
-| 182.92.194.8 | 159 |
-| 47.251.110.228 | 83 |
-| 8.130.102.128 | 43 |
-| 139.199.80.137 | 40 |
+| 159.203.11.24 | 7228 |
+| 39.99.232.59 | 6508 |
+| 39.96.5.27 | 5508 |
+| 39.105.35.153 | 4587 |
+| 8.218.131.101 | 4295 |
+| 149.129.249.160 | 3460 |
+| 123.57.218.103 | 3026 |
+| 119.23.110.193 | 901 |
+| 8.217.10.15 | 758 |
+| 117.50.202.179 | 159 |
 
 ### Top 10 malicious try to login as
 
 | Usernames | Count    |
 |-----------|----------|
-| root | 3235 |
-| ubuntu | 1143 |
-| admin | 782 |
-| composer | 505 |
-| cynthia | 504 |
-| c-comatic | 503 |
-| vscode | 503 |
-| sysadm | 502 |
-| vpn | 502 |
-| spider | 154 |
+| root | 5207 |
+| ubuntu | 827 |
+| admin | 729 |
+| adm | 537 |
+| Admin | 519 |
+| frappe-user | 163 |
+| composer | 156 |
+| composeruser | 153 |
+| vhserver | 103 |
+| csserver | 55 |
 
 ### Top 10 malicious try to authenticate with
 
 | Password | Count    |
 |-----------|----------|
-| 123456 | 486 |
-| Ripple!2024Pass | 41 |
-| Polkadot2024@ | 41 |
-| Ledger@2024Pass | 41 |
-| Chainlink2024$ | 41 |
-| CZ@2024Binance | 41 |
-| Vitalik@123 | 28 |
-| Vitalik2024@Pass | 28 |
-| Uniswap1234! | 28 |
-| Uniswap!2024 | 28 |
+| 123456 | 1657 |
+| 123 | 120 |
+| csserver | 54 |
+| composer | 54 |
+| frappe-user | 53 |
+| composeruser123 | 52 |
+| ts3server | 51 |
+| composeruser | 51 |
+| composer123 | 51 |
+| vhserver | 50 |
 
 ### Top malicious commands try to execute
 
 | Client | Command |
 |--------|---------|
-| 182.92.194.8 | uname -s -m |
+| 117.50.202.179 | uname -s -m |
