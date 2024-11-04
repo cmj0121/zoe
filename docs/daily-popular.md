@@ -13,49 +13,52 @@ system. The table is sorted by the number of attempts.
 
 | Client IP | Count    |
 |-----------|----------|
-| 159.203.11.24 | 7228 |
-| 39.99.232.59 | 6508 |
-| 39.96.5.27 | 5508 |
-| 39.105.35.153 | 4587 |
-| 8.218.131.101 | 4295 |
-| 149.129.249.160 | 3460 |
-| 123.57.218.103 | 3026 |
-| 119.23.110.193 | 901 |
-| 8.217.10.15 | 758 |
-| 117.50.202.179 | 159 |
+| 159.203.11.24 | 7299 |
+| 47.76.142.218 | 4798 |
+| 8.218.102.174 | 4793 |
+| 101.37.161.39 | 4327 |
+| 8.209.216.183 | 4258 |
+| 47.74.38.218 | 4110 |
+| 47.106.170.98 | 1570 |
+| 149.129.249.160 | 1104 |
+| 159.89.207.36 | 788 |
+| 39.99.232.59 | 385 |
 
 ### Top 10 malicious try to login as
 
 | Usernames | Count    |
 |-----------|----------|
-| root | 5207 |
-| ubuntu | 827 |
-| admin | 729 |
-| adm | 537 |
-| Admin | 519 |
-| frappe-user | 163 |
-| composer | 156 |
-| composeruser | 153 |
-| vhserver | 103 |
-| csserver | 55 |
+| root | 2169 |
+| admin | 815 |
+| ubuntu | 800 |
+| composer | 159 |
+| composeruser | 158 |
+| frappe-user | 150 |
+| vhserver | 107 |
+| csserver | 69 |
+| csserver2 | 54 |
+| ts3server | 53 |
 
 ### Top 10 malicious try to authenticate with
 
 | Password | Count    |
 |-----------|----------|
-| 123456 | 1657 |
-| 123 | 120 |
-| csserver | 54 |
-| composer | 54 |
-| frappe-user | 53 |
-| composeruser123 | 52 |
-| ts3server | 51 |
-| composeruser | 51 |
-| composer123 | 51 |
-| vhserver | 50 |
+| 123456 | 1352 |
+| 123 | 199 |
+| csserver | 69 |
+| vhserver | 54 |
+| ts3server | 53 |
+| composeruser123 | 53 |
+| composer123 | 53 |
+| composeruser | 52 |
+| composer | 52 |
+| frappe-user | 51 |
 
 ### Top malicious commands try to execute
 
 | Client | Command |
 |--------|---------|
-| 117.50.202.179 | uname -s -m |
+| 111.75.179.200 | uname -s -m |
+| 36.189.253.173 | uname -s -m |
+| 159.89.207.36 | uname -a |
+| 182.92.151.31 | uname -s -m |
