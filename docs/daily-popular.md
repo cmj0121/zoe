@@ -13,52 +13,53 @@ system. The table is sorted by the number of attempts.
 
 | Client IP | Count    |
 |-----------|----------|
-| 159.203.11.24 | 7299 |
-| 47.76.142.218 | 4798 |
-| 8.218.102.174 | 4793 |
-| 101.37.161.39 | 4327 |
-| 8.209.216.183 | 4258 |
-| 47.74.38.218 | 4110 |
-| 47.106.170.98 | 1570 |
-| 149.129.249.160 | 1104 |
-| 159.89.207.36 | 788 |
-| 39.99.232.59 | 385 |
+| 176.241.70.177 | 53999 |
+| 47.242.107.246 | 4921 |
+| 8.219.214.186 | 4262 |
+| 120.77.235.53 | 3665 |
+| 159.203.11.24 | 3443 |
+| 200.14.213.25 | 502 |
+| 62.84.191.31 | 168 |
+| 14.29.167.193 | 159 |
+| 47.239.231.117 | 148 |
+| 168.194.164.218 | 124 |
 
 ### Top 10 malicious try to login as
 
 | Usernames | Count    |
 |-----------|----------|
-| root | 2169 |
-| admin | 815 |
-| ubuntu | 800 |
-| composer | 159 |
-| composeruser | 158 |
-| frappe-user | 150 |
-| vhserver | 107 |
-| csserver | 69 |
-| csserver2 | 54 |
-| ts3server | 53 |
+| root | 27861 |
+| admin | 490 |
+| ubuntu | 442 |
+| test | 59 |
+| azureuser | 48 |
+| mcserver | 47 |
+| es | 41 |
+| minecraft | 41 |
+| vpn | 35 |
+| casaos | 34 |
 
 ### Top 10 malicious try to authenticate with
 
 | Password | Count    |
 |-----------|----------|
-| 123456 | 1352 |
-| 123 | 199 |
-| csserver | 69 |
-| vhserver | 54 |
-| ts3server | 53 |
-| composeruser123 | 53 |
-| composer123 | 53 |
-| composeruser | 52 |
-| composer | 52 |
-| frappe-user | 51 |
+| 123456 | 1033 |
+| 123 | 515 |
+| 12345 | 46 |
+| password | 38 |
+| P@ssw0rd | 35 |
+| casaos | 34 |
+| password123 | 33 |
+| kali | 31 |
+| test | 27 |
+| pgadmin | 26 |
 
 ### Top malicious commands try to execute
 
 | Client | Command |
 |--------|---------|
-| 111.75.179.200 | uname -s -m |
-| 36.189.253.173 | uname -s -m |
-| 159.89.207.36 | uname -a |
-| 182.92.151.31 | uname -s -m |
+| 64.235.61.168 | uname -s -m |
+| 176.241.70.177 | echo -e "\x6F\x6B" |
+| 62.84.191.31 | uname -s -m |
+| 47.251.120.132 | uname -s -m |
+| 14.29.167.193 | uname -s -m |
