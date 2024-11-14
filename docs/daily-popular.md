@@ -13,49 +13,50 @@ system. The table is sorted by the number of attempts.
 
 | Client IP | Count    |
 |-----------|----------|
-| 47.92.243.59 | 9585 |
-| 47.76.57.93 | 4427 |
-| 8.210.112.164 | 4382 |
-| 8.217.63.115 | 4284 |
-| 47.238.199.19 | 4219 |
-| 47.238.198.5 | 4184 |
-| 47.121.203.235 | 2927 |
-| 47.109.53.53 | 1149 |
-| 8.138.147.140 | 522 |
-| 157.245.47.11 | 99 |
+| 47.92.243.59 | 11311 |
+| 47.242.107.246 | 4765 |
+| 8.217.95.215 | 4678 |
+| 47.238.224.55 | 4320 |
+| 39.105.50.154 | 3596 |
+| 47.243.5.249 | 2536 |
+| 47.121.203.235 | 1888 |
+| 47.242.171.144 | 503 |
+| 8.138.147.140 | 446 |
+| 47.109.53.53 | 405 |
 
 ### Top 10 malicious try to login as
 
 | Usernames | Count    |
 |-----------|----------|
-| root | 8648 |
-| stefano | 17 |
-| deamon_root | 16 |
-| deamon | 13 |
-| debian | 6 |
-| guest | 2 |
+| root | 9100 |
+| bob | 500 |
+| gabriel | 500 |
+| test | 4 |
+| ubuntu | 4 |
+| dev | 3 |
+| admin | 2 |
 | near | 2 |
 | ravencoin | 2 |
 | terra | 2 |
-| a | 1 |
 
 ### Top 10 malicious try to authenticate with
 
 | Password | Count    |
 |-----------|----------|
-| Server123@ | 38 |
-| stefano | 17 |
-| admin@123 | 17 |
-| deamon_root | 16 |
-| 1Qaz@wsx | 15 |
-| kontol | 14 |
-| deamon | 13 |
-| adm1n12345 | 10 |
-| Qaz.123456 | 10 |
-| PA$$w0rd_123 | 9 |
+| 123456 | 11 |
+| 0p9o8i7u6y5t | 8 |
+| p@ssw0rd123!@# | 7 |
+| Aa123456 | 7 |
+| 12345678qwertyui | 7 |
+| 12345678 | 7 |
+| $passwor | 7 |
+| zxcvbn | 6 |
+| ztesoft | 6 |
+| zaq!@34RFV | 6 |
 
 ### Top malicious commands try to execute
 
 | Client | Command |
 |--------|---------|
-| 47.92.243.59 | echo -e "\x6F\x6B" |
+| 198.199.87.217 | uname -s -m |
+| 120.27.23.57 | uname -s -m |
