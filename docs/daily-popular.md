@@ -13,72 +13,49 @@ system. The table is sorted by the number of attempts.
 
 | Client IP | Count    |
 |-----------|----------|
-| 47.238.215.164 | 4691 |
-| 39.106.156.142 | 4672 |
-| 139.196.79.175 | 2511 |
-| 8.218.97.135 | 1826 |
-| 47.119.122.175 | 1507 |
-| 39.105.113.134 | 1293 |
-| 8.142.215.78 | 1206 |
-| 8.135.77.231 | 258 |
-| 47.109.53.53 | 194 |
-| 8.138.147.140 | 115 |
+| 59.110.221.129 | 5137 |
+| 47.98.43.142 | 4920 |
+| 39.107.251.62 | 4778 |
+| 47.236.26.78 | 4440 |
+| 47.238.226.162 | 4314 |
+| 149.129.249.160 | 4270 |
+| 8.142.215.78 | 3593 |
+| 8.218.97.135 | 2847 |
+| 8.221.140.121 | 502 |
+| 8.135.77.231 | 445 |
 
 ### Top 10 malicious try to login as
 
 | Usernames | Count    |
 |-----------|----------|
-| root | 843 |
-| Admin | 531 |
-| user | 91 |
-| admin | 86 |
-| test | 86 |
-| ubuntu | 82 |
-| user1 | 55 |
-| postgres | 54 |
-| ftpuser | 50 |
-| deploy | 37 |
+| root | 252 |
+| ubuntu | 231 |
+| user | 217 |
+| test | 123 |
+| admin | 89 |
+| debian | 62 |
+| user1 | 62 |
+| deploy | 58 |
+| oracle | 50 |
+| ftpuser | 45 |
 
 ### Top 10 malicious try to authenticate with
 
 | Password | Count    |
 |-----------|----------|
-| 123456 | 42 |
-| 1q2w3e | 19 |
-| 1234567890 | 19 |
-| test | 17 |
-| 12345678 | 16 |
-| 666666 | 15 |
-| 1234 | 14 |
-| qwerty | 13 |
-| password | 13 |
-| 1234554321 | 12 |
+| 123456 | 105 |
+| secret | 74 |
+| 12345 | 48 |
+| admin123 | 45 |
+| 1234 | 39 |
+| 111111 | 32 |
+| 123 | 27 |
+| 123123 | 21 |
+| 1qaz2wsx | 18 |
+| passwd | 17 |
 
 ### Top malicious commands try to execute
 
 | Client | Command |
 |--------|---------|
-| 47.119.122.175 | mkdir /lib/jvcfhtsiqj |
-| 47.119.122.175 | scp -t -r /lib/jvcfhtsiqj/ |
-| 47.119.122.175 | mkdir .lvjpltsmbo |
-| 47.119.122.175 | scp -t -r .lvjpltsmbo/ |
-| 47.119.122.175 | mkdir /dev/bvpuswekeofi |
-| 47.119.122.175 | scp -t -r /dev/bvpuswekeofi/ |
-| 47.119.122.175 | mkdir /dev/shm/olhqgacbfgcv |
-| 47.119.122.175 | scp -t -r /dev/shm/olhqgacbfgcv/ |
-| 47.119.122.175 | mkdir /var/volatile/scabdwsoois |
-| 47.119.122.175 | scp -t -r /var/volatile/scabdwsoois/ |
-| 47.119.122.175 | mkdir /tmp/wrdjnvguclhv |
-| 47.119.122.175 | scp -t -r /tmp/wrdjnvguclhv/ |
-| 47.119.122.175 | mkdir /sys/ugidpoknby |
-| 47.119.122.175 | scp -t -r /sys/ugidpoknby/ |
-| 47.119.122.175 | mkdir /var/lib/onydskrrxosg |
-| 47.119.122.175 | scp -t -r /var/lib/onydskrrxosg/ |
-| 47.119.122.175 | mkdir /root/xefgawxdnd |
-| 47.119.122.175 | scp -t -r /root/xefgawxdnd/ |
-| 47.119.122.175 | mkdir /etc/lgnjecdrbah |
-| 47.119.122.175 | scp -t -r /etc/lgnjecdrbah/ |
-| 47.119.122.175 | mkdir /var/log/yjiuoarypc |
-| 47.119.122.175 | scp -t -r /var/log/yjiuoarypc/ |
-| 182.92.251.127 | uname -s -m |
-| 101.47.133.94 | uname -s -m |
+| 218.28.169.58 | uname -s -m |
