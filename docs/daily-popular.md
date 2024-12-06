@@ -13,50 +13,49 @@ system. The table is sorted by the number of attempts.
 
 | Client IP | Count    |
 |-----------|----------|
-| 47.89.173.126 | 4459 |
-| 8.219.170.104 | 4222 |
-| 47.109.55.67 | 2526 |
-| 87.121.78.20 | 207 |
+| 112.124.11.94 | 4822 |
+| 47.254.14.171 | 4602 |
+| 47.238.170.89 | 3132 |
+| 47.109.55.67 | 2316 |
 | 154.216.19.22 | 168 |
-| 101.47.73.217 | 159 |
-| 175.6.37.123 | 159 |
-| 39.107.96.168 | 149 |
-| 43.136.20.152 | 18 |
-| 3.101.191.13 | 8 |
+| 101.37.88.200 | 167 |
+| 39.107.96.168 | 165 |
+| 87.121.78.20 | 140 |
+| 164.90.163.133 | 64 |
+| 176.124.198.210 | 62 |
 
 ### Top 10 malicious try to login as
 
 | Usernames | Count    |
 |-----------|----------|
-| root | 163 |
-| maobinjie | 6 |
-| mgalasso | 5 |
-| mkravec | 5 |
-| nfokina | 5 |
-| maiyuxiang | 4 |
-| markusliu | 4 |
-| mengying.bu | 4 |
-| mkyuan | 4 |
-| msong | 4 |
+| root | 12 |
+| Pavel_test | 7 |
+| peisen | 6 |
+| postgres | 6 |
+| Pdolgirev | 5 |
+| nilayraj | 5 |
+| nseryh | 5 |
+| ofeya | 5 |
+| nluo | 4 |
+| oracle | 4 |
 
 ### Top 10 malicious try to authenticate with
 
 | Password | Count    |
 |-----------|----------|
 | 123456 | 26 |
-| 123 | 13 |
-| Aa123456 | 6 |
-| password | 5 |
-| 12345678 | 5 |
-| qweasd | 3 |
-| 1234 | 3 |
-| venus | 2 |
-| ucloud.cn | 2 |
-| tizi@123 | 2 |
+| 123 | 9 |
+| qweasd | 6 |
+| 1234 | 4 |
+| xwang | 2 |
+| wmc | 2 |
+| wangjie123 | 2 |
+| wai | 2 |
+| ttrss | 2 |
+| scdf | 2 |
 
 ### Top malicious commands try to execute
 
 | Client | Command |
 |--------|---------|
-| 175.6.37.123 | uname -s -m |
-| 101.47.73.217 | uname -s -m |
+| 103.140.154.245 | uname -s -m |
