@@ -13,49 +13,48 @@ system. The table is sorted by the number of attempts.
 
 | Client IP | Count    |
 |-----------|----------|
-| 112.124.11.94 | 4822 |
-| 47.254.14.171 | 4602 |
-| 47.238.170.89 | 3132 |
-| 47.109.55.67 | 2316 |
+| 118.31.78.74 | 5331 |
+| 47.76.77.188 | 4236 |
 | 154.216.19.22 | 168 |
-| 101.37.88.200 | 167 |
-| 39.107.96.168 | 165 |
-| 87.121.78.20 | 140 |
-| 164.90.163.133 | 64 |
-| 176.124.198.210 | 62 |
+| 39.107.96.168 | 132 |
+| 101.37.88.200 | 108 |
+| 182.92.184.221 | 104 |
+| 103.234.236.96 | 68 |
+| 103.69.84.149 | 68 |
+| 152.32.147.9 | 68 |
+| 156.238.98.112 | 68 |
 
 ### Top 10 malicious try to login as
 
 | Usernames | Count    |
 |-----------|----------|
-| root | 12 |
-| Pavel_test | 7 |
-| peisen | 6 |
-| postgres | 6 |
-| Pdolgirev | 5 |
-| nilayraj | 5 |
-| nseryh | 5 |
-| ofeya | 5 |
-| nluo | 4 |
-| oracle | 4 |
+| root | 708 |
+| ubuntu | 24 |
+| erpnext | 12 |
+| daniel | 7 |
+| deamon | 7 |
+| asus | 6 |
+| cedric | 6 |
+| ekp | 6 |
+| a | 5 |
+| antony | 5 |
 
 ### Top 10 malicious try to authenticate with
 
 | Password | Count    |
 |-----------|----------|
-| 123456 | 26 |
-| 123 | 9 |
-| qweasd | 6 |
-| 1234 | 4 |
-| xwang | 2 |
-| wmc | 2 |
-| wangjie123 | 2 |
-| wai | 2 |
-| ttrss | 2 |
-| scdf | 2 |
+| 123456 | 179 |
+| 123 | 62 |
+| babu | 52 |
+| 123456aA@ | 31 |
+| 1234 | 27 |
+| password | 25 |
+| 123123123 | 24 |
+| Aa@123456 | 19 |
+| Aa111111. | 19 |
+| Aa123456@ | 18 |
 
 ### Top malicious commands try to execute
 
 | Client | Command |
 |--------|---------|
-| 103.140.154.245 | uname -s -m |
