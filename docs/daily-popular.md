@@ -13,51 +13,52 @@ system. The table is sorted by the number of attempts.
 
 | Client IP | Count    |
 |-----------|----------|
-| 47.112.1.201 | 787 |
-| 118.190.94.60 | 519 |
-| 120.24.194.132 | 356 |
-| 154.216.19.22 | 168 |
-| 182.92.219.129 | 164 |
-| 182.92.192.85 | 159 |
-| 218.78.114.184 | 159 |
-| 103.84.236.242 | 98 |
-| 134.17.94.89 | 98 |
-| 172.245.42.201 | 98 |
+| 8.222.164.227 | 4765 |
+| 120.55.180.31 | 4678 |
+| 118.190.94.60 | 4571 |
+| 47.112.1.201 | 3884 |
+| 47.239.201.124 | 2779 |
+| 8.210.118.192 | 1592 |
+| 47.236.150.50 | 920 |
+| 120.24.194.132 | 187 |
+| 154.216.19.22 | 167 |
+| 61.153.194.229 | 159 |
 
 ### Top 10 malicious try to login as
 
 | Usernames | Count    |
 |-----------|----------|
-| root | 303 |
-| sachin | 38 |
-| nodered | 27 |
-| ubuntu | 27 |
-| ociisprd | 25 |
-| ociispth | 24 |
-| ociisstd | 24 |
-| deploy | 21 |
+| root | 461 |
+| sachin | 53 |
+| nodered | 40 |
+| ociisstd | 40 |
+| ociisprd | 37 |
+| ociispth | 37 |
+| deploy | 36 |
+| ubuntu | 34 |
 | test | 20 |
-| arun | 14 |
+| user | 18 |
 
 ### Top 10 malicious try to authenticate with
 
 | Password | Count    |
 |-----------|----------|
-| 123456 | 185 |
-| password | 137 |
-| secret | 22 |
-| 123456789 | 21 |
-| 1 | 14 |
-| test1 | 11 |
-| sammy | 10 |
-| sachin@123 | 10 |
-| sachin | 10 |
-| 123 | 10 |
+| 123456 | 332 |
+| password | 195 |
+| 123456789 | 33 |
+| secret | 30 |
+| 123 | 18 |
+| 111111 | 18 |
+| 1 | 18 |
+| nodered123 | 14 |
+| nodered | 14 |
+| sammy | 13 |
 
 ### Top malicious commands try to execute
 
 | Client | Command |
 |--------|---------|
-| 182.92.219.129 | uname -s -m |
-| 182.92.192.85 | uname -s -m |
-| 218.78.114.184 | uname -s -m |
+| 1.94.56.119 | uname -s -m |
+| 1.94.7.129 | uname -s -m |
+| 61.153.194.229 | uname -s -m |
+| 1.194.236.112 | uname -s -m |
