@@ -13,54 +13,57 @@ system. The table is sorted by the number of attempts.
 
 | Client IP | Count    |
 |-----------|----------|
-| 39.100.33.130 | 4723 |
-| 47.242.33.226 | 4683 |
-| 47.238.28.190 | 4455 |
-| 149.129.249.160 | 4397 |
-| 47.98.59.94 | 3116 |
-| 64.226.93.37 | 402 |
-| 101.37.88.200 | 186 |
-| 182.253.191.50 | 170 |
-| 103.13.206.142 | 100 |
-| 103.176.78.100 | 100 |
+| 120.24.194.132 | 5221 |
+| 8.216.83.198 | 4139 |
+| 167.71.106.13 | 3383 |
+| 193.32.162.10 | 2598 |
+| 8.210.46.33 | 732 |
+| 47.243.116.26 | 502 |
+| 8.217.80.96 | 502 |
+| 38.147.185.204 | 213 |
+| 64.226.93.37 | 201 |
+| 170.64.217.119 | 198 |
 
 ### Top 10 malicious try to login as
 
 | Usernames | Count    |
 |-----------|----------|
-| root | 1755 |
+| root | 2584 |
+| git | 529 |
+| crowley | 450 |
+| ftpuser | 55 |
+| dev | 44 |
+| deploy | 26 |
+| debian | 25 |
+| guest | 25 |
 | admin | 22 |
-| mark | 9 |
-| test | 7 |
-| cosmo | 6 |
-| ubnt | 6 |
-| user | 6 |
-| akemi | 5 |
-| banking | 5 |
-| bigdata | 5 |
+| ubuntu | 19 |
 
 ### Top 10 malicious try to authenticate with
 
 | Password | Count    |
 |-----------|----------|
-| 123456 | 325 |
-| 123 | 26 |
-| 1 | 19 |
-| P@ssw0rd | 13 |
-| Aa123456 | 6 |
-| 12345%$ | 6 |
-| zxcvbgfdsa | 5 |
-| xiangjj | 5 |
-| umts | 5 |
-| tomato | 5 |
+| 123456 | 497 |
+| 123 | 72 |
+| 1 | 62 |
+| P@ssw0rd | 33 |
+| password | 30 |
+| 1234 | 27 |
+| 12345678 | 25 |
+| 111111 | 25 |
+| root | 15 |
+| abc123 | 15 |
 
 ### Top malicious commands try to execute
 
 | Client | Command |
 |--------|---------|
-| 87.120.113.175 | uname -s -v -n -r |
-| 87.120.113.175 | grep "model name" /proc/cpuinfo \| cut -d ' ' -f3- \| awk '{print $1,$2,$3,$4,$5,$6,$7,$8,$9,$10}' \| head -1 |
-| 87.120.113.175 | nproc |
-| 101.126.26.93 | uname -s -m |
-| 120.27.120.108 | uname -s -m |
-| 182.92.210.172 | uname -s -m |
+| 87.120.113.181 | uname -s -v -n -r |
+| 87.120.113.181 | grep "model name" /proc/cpuinfo \| cut -d ' ' -f3- \| awk '{print $1,$2,$3,$4,$5,$6,$7,$8,$9,$10}' \| head -1 |
+| 87.120.113.181 | nproc |
+| 203.2.113.101 | uname -s -m |
+| 182.92.153.226 | uname -s -m |
+| 38.147.185.204 | uname -s -m |
+| 193.32.162.10 | echo "Operating System: $(uname -s -r -m)" && echo "Total Memory: $(free -h \| awk '/Mem:/{print $2}')" && echo "Core Count: $(lscpu \| awk '/^CPU\(s\):/{print $2}')" && echo "Architecture: $(uname -m)" && echo "Distribution: $(lsb_release -d \| awk -F"\t" '{print $2}')" && (lspci \| grep -i 'vga\\|3d\\|2d' \| awk -F: '{print "Graphical Device: " $3}' \|\| echo "Graphical Device: Not present") |
+| 182.92.241.182 | uname -s -m |
+| 47.251.102.172 | uname -s -m |
