@@ -13,57 +13,53 @@ system. The table is sorted by the number of attempts.
 
 | Client IP | Count    |
 |-----------|----------|
-| 120.24.194.132 | 5221 |
-| 8.216.83.198 | 4139 |
-| 167.71.106.13 | 3383 |
-| 193.32.162.10 | 2598 |
-| 8.210.46.33 | 732 |
-| 47.243.116.26 | 502 |
-| 8.217.80.96 | 502 |
-| 38.147.185.204 | 213 |
-| 64.226.93.37 | 201 |
-| 170.64.217.119 | 198 |
+| 8.210.46.33 | 4657 |
+| 114.55.236.5 | 1080 |
+| 170.64.195.155 | 815 |
+| 8.217.83.38 | 503 |
+| 157.245.215.150 | 488 |
+| 170.64.217.119 | 352 |
+| 167.71.7.226 | 200 |
+| 2.59.119.239 | 200 |
+| 72.167.55.58 | 136 |
+| 87.120.113.181 | 103 |
 
 ### Top 10 malicious try to login as
 
 | Usernames | Count    |
 |-----------|----------|
-| root | 2584 |
-| git | 529 |
-| crowley | 450 |
-| ftpuser | 55 |
-| dev | 44 |
-| deploy | 26 |
-| debian | 25 |
-| guest | 25 |
+| root | 2196 |
+| oracle | 35 |
+| git | 30 |
+| test | 28 |
 | admin | 22 |
 | ubuntu | 19 |
+| user | 18 |
+| postgres | 17 |
+| hadoop | 14 |
+| odoo | 13 |
 
 ### Top 10 malicious try to authenticate with
 
 | Password | Count    |
 |-----------|----------|
-| 123456 | 497 |
-| 123 | 72 |
-| 1 | 62 |
-| P@ssw0rd | 33 |
+| 123456 | 114 |
+| 123 | 94 |
+| 1 | 73 |
 | password | 30 |
-| 1234 | 27 |
-| 12345678 | 25 |
-| 111111 | 25 |
-| root | 15 |
-| abc123 | 15 |
+| test | 18 |
+| 12345678 | 18 |
+| root | 16 |
+| P@ssw0rd | 15 |
+| admin | 14 |
+| 321 | 12 |
 
 ### Top malicious commands try to execute
 
 | Client | Command |
 |--------|---------|
+| 47.251.29.45 | uname -s -m |
+| 182.92.153.226 | uname -s -m |
 | 87.120.113.181 | uname -s -v -n -r |
 | 87.120.113.181 | grep "model name" /proc/cpuinfo \| cut -d ' ' -f3- \| awk '{print $1,$2,$3,$4,$5,$6,$7,$8,$9,$10}' \| head -1 |
 | 87.120.113.181 | nproc |
-| 203.2.113.101 | uname -s -m |
-| 182.92.153.226 | uname -s -m |
-| 38.147.185.204 | uname -s -m |
-| 193.32.162.10 | echo "Operating System: $(uname -s -r -m)" && echo "Total Memory: $(free -h \| awk '/Mem:/{print $2}')" && echo "Core Count: $(lscpu \| awk '/^CPU\(s\):/{print $2}')" && echo "Architecture: $(uname -m)" && echo "Distribution: $(lsb_release -d \| awk -F"\t" '{print $2}')" && (lspci \| grep -i 'vga\\|3d\\|2d' \| awk -F: '{print "Graphical Device: " $3}' \|\| echo "Graphical Device: Not present") |
-| 182.92.241.182 | uname -s -m |
-| 47.251.102.172 | uname -s -m |
