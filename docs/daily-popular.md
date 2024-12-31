@@ -13,49 +13,53 @@ system. The table is sorted by the number of attempts.
 
 | Client IP | Count    |
 |-----------|----------|
-| 8.153.36.169 | 4906 |
-| 8.219.99.214 | 4587 |
-| 47.237.7.29 | 4193 |
-| 60.205.56.230 | 3155 |
-| 170.64.217.189 | 1637 |
-| 157.245.215.150 | 986 |
-| 121.43.189.23 | 928 |
-| 8.222.181.107 | 602 |
-| 170.64.217.119 | 536 |
-| 8.217.83.38 | 504 |
+| 91.132.146.181 | 56234 |
+| 47.102.205.188 | 4744 |
+| 47.116.160.21 | 4560 |
+| 47.113.150.109 | 4552 |
+| 161.35.149.156 | 897 |
+| 170.64.195.155 | 825 |
+| 204.48.28.188 | 667 |
+| 170.64.159.86 | 631 |
+| 8.218.241.243 | 484 |
+| 170.64.217.119 | 454 |
 
 ### Top 10 malicious try to login as
 
 | Usernames | Count    |
 |-----------|----------|
-| root | 2804 |
-| user | 44 |
-| ubuntu | 43 |
-| admin | 35 |
-| oracle | 28 |
-| validator | 19 |
-| node | 15 |
-| ansible_user | 14 |
-| mysql | 14 |
-| near | 14 |
+| root | 32544 |
+| git | 70 |
+| oracle | 64 |
+| admin | 51 |
+| ubuntu | 44 |
+| postgres | 39 |
+| test | 39 |
+| solana | 34 |
+| docker | 33 |
+| node | 30 |
 
 ### Top 10 malicious try to authenticate with
 
 | Password | Count    |
 |-----------|----------|
-| 123456 | 222 |
-| 123456Dd | 67 |
-| Admin@2024 | 42 |
-| admin2025 | 41 |
-| 12345678 | 38 |
-| password | 36 |
-| root | 30 |
-| 123 | 24 |
-| 12345 | 19 |
-| admin | 18 |
+| 123456 | 159 |
+| LeitboGi0ro | 82 |
+| password | 58 |
+| 1qaz@WSX | 47 |
+| 123 | 45 |
+| solana | 37 |
+| ubuntu | 34 |
+| test | 34 |
+| 12345678 | 31 |
+| sol | 30 |
 
 ### Top malicious commands try to execute
 
 | Client | Command |
 |--------|---------|
-| 103.229.125.228 | uname -s -m |
+| 103.145.145.75 | uname -s -m |
+| 47.251.99.255 | uname -s -m |
+| 94.103.125.210 | uname -s -v -n -r |
+| 94.103.125.210 | grep "model name" /proc/cpuinfo \| cut -d ' ' -f3- \| awk '{print $1,$2,$3,$4,$5,$6,$7,$8,$9,$10}' \| head -1 |
+| 94.103.125.210 | nproc |
