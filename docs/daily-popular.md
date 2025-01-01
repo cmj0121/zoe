@@ -13,53 +13,49 @@ system. The table is sorted by the number of attempts.
 
 | Client IP | Count    |
 |-----------|----------|
-| 91.132.146.181 | 56234 |
-| 47.102.205.188 | 4744 |
-| 47.116.160.21 | 4560 |
-| 47.113.150.109 | 4552 |
-| 161.35.149.156 | 897 |
-| 170.64.195.155 | 825 |
-| 204.48.28.188 | 667 |
-| 170.64.159.86 | 631 |
-| 8.218.241.243 | 484 |
-| 170.64.217.119 | 454 |
+| 118.190.94.60 | 5079 |
+| 39.105.208.122 | 4738 |
+| 47.92.97.0 | 4561 |
+| 114.215.96.169 | 4519 |
+| 8.219.155.41 | 4330 |
+| 114.55.236.5 | 1208 |
+| 157.245.215.150 | 986 |
+| 182.92.177.104 | 159 |
+| 120.26.246.115 | 118 |
+| 120.27.23.57 | 104 |
 
 ### Top 10 malicious try to login as
 
 | Usernames | Count    |
 |-----------|----------|
-| root | 32544 |
-| git | 70 |
-| oracle | 64 |
-| admin | 51 |
-| ubuntu | 44 |
-| postgres | 39 |
-| test | 39 |
-| solana | 34 |
-| docker | 33 |
-| node | 30 |
+| root | 3441 |
+| ubuntu | 43 |
+| admin | 42 |
+| user | 25 |
+| validator | 18 |
+| ansible_user | 14 |
+| node | 12 |
+| snx | 12 |
+| teamspeak | 12 |
+| polkadot | 9 |
 
 ### Top 10 malicious try to authenticate with
 
 | Password | Count    |
 |-----------|----------|
-| 123456 | 159 |
-| LeitboGi0ro | 82 |
-| password | 58 |
-| 1qaz@WSX | 47 |
-| 123 | 45 |
-| solana | 37 |
-| ubuntu | 34 |
-| test | 34 |
-| 12345678 | 31 |
-| sol | 30 |
+| LeitboGi0ro | 131 |
+| 123456 | 82 |
+| 123 | 62 |
+| Password1 | 40 |
+| P@ssw0rd | 31 |
+| validator | 16 |
+| 1234 | 16 |
+| root | 15 |
+| mini | 14 |
+| idontkno | 14 |
 
 ### Top malicious commands try to execute
 
 | Client | Command |
 |--------|---------|
-| 103.145.145.75 | uname -s -m |
-| 47.251.99.255 | uname -s -m |
-| 94.103.125.210 | uname -s -v -n -r |
-| 94.103.125.210 | grep "model name" /proc/cpuinfo \| cut -d ' ' -f3- \| awk '{print $1,$2,$3,$4,$5,$6,$7,$8,$9,$10}' \| head -1 |
-| 94.103.125.210 | nproc |
+| 182.92.177.104 | uname -s -m |
